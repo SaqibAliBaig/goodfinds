@@ -1,0 +1,17 @@
+# build output
+dist/
+
+# generated types & cache
+.astro/
+
+# dependencies
+node_modules/
+
+# environment variables
+.env
+.env.*
+!.env.example
+
+# OS metadata
+.DS_Store
+Thumbs.db

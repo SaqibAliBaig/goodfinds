@@ -1,0 +1,1245 @@
+---
+import data from '../data/tools.json';
+
+interface Props {
+  title?: string;
+  activeNav?: 'explore' | 'collections' | 'compare' | 'submit' | 'saved' | '';
+}
+
+const {
+  title = `${data.site.name} — ${data.site.tagline}`,
+  activeNav = 'explore'
+} = Astro.props;
+
+const allToolIds = data.tools.map((t) => t.id);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={data.site.tagline} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script is:inline>
+    (function () {
+      const savedTheme = localStorage.getItem('goodfinds_theme');
+      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+      const theme = savedTheme || (prefersLight ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+
+      // Clean up any stale service workers registered on localhost from prior projects
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          for (const reg of registrations) reg.unregister();
+        }).catch(() => {});
+      }
+
+      function optimizeImageLoading() {
+        const vh = window.innerHeight;
+        const scrollY = window.scrollY || window.pageYOffset || 0;
+        document.querySelectorAll('img').forEach((img) => {
+          if (!img.hasAttribute('data-image-component')) {
+            img.setAttribute('data-image-component', 'true');
+          }
+          if (!img.hasAttribute('decoding')) {
+            img.setAttribute('decoding', 'async');
+          }
+          const rect = img.getBoundingClientRect();
+          const elementY = rect.top + scrollY;
+          if (elementY <= vh) {
+            if (img.getAttribute('loading') === 'lazy') {
+              img.removeAttribute('loading');
+            }
+          } else {
+            if (img.getAttribute('loading') !== 'lazy') {
+              img.setAttribute('loading', 'lazy');
+            }
+          }
+        });
+      }
+      window.optimizeImageLoading = optimizeImageLoading;
+      window.addEventListener('resize', optimizeImageLoading, { passive: true });
+      document.addEventListener('DOMContentLoaded', optimizeImageLoading);
+      document.addEventListener('astro:page-load', optimizeImageLoading);
+    })();
+  </script>
+  <style is:global>
+    :root {
+      --bg: #090a0d;
+      --bg-topbar: rgba(9, 10, 13, 0.86);
+      --bg-card: #101217;
+      --bg-card-grad: #101217;
+      --bg-card-hover: #151820;
+      --bg-row: #0d0f14;
+      --bg-row-hover: #14171f;
+      --bg-input: #101217;
+      --bg-inset: #0b0d11;
+      --bg-icon: #171a22;
+      --bg-pill: #111319;
+      --bg-subtle: rgba(255, 255, 255, 0.045);
+      --border: #1e222b;
+      --border-subtle: #171a22;
+      --border-light: #282d3a;
+      --border-hover: #3d4456;
+      --lime: #a8ff29;
+      --lime-ink: #a8ff29;
+      --lime-bright: #b6ff3b;
+      --lime-glow: rgba(168, 255, 41, 0.14);
+      --lime-soft: rgba(168, 255, 41, 0.08);
+      --lime-border: rgba(168, 255, 41, 0.25);
+      --num-bg: #171a22;
+      --num-text: #f4f4f6;
+      --num-border: #262b38;
+      --pill-cta-bg: #161922;
+      --pill-cta-text: #9ba3b8;
+      --btn-primary-bg: #f4f4f6;
+      --btn-primary-text: #090a0d;
+      --purple: #8b5cf6;
+      --emerald: #10b981;
+      --emerald-ink: #34d399;
+      --text: #f4f4f6;
+      --text-body: #d4d7e0;
+      --text-secondary: #8e95a5;
+      --text-muted: #5e6575;
+      --shadow-search: 0 12px 32px rgba(0, 0, 0, 0.4);
+      --shadow-card: none;
+      --grid-line: rgba(255, 255, 255, 0.03);
+    }
+
+    :root[data-theme="light"] {
+      --bg: #f6f5f1;
+      --bg-topbar: rgba(246, 245, 241, 0.88);
+      --bg-card: #ffffff;
+      --bg-card-grad: #ffffff;
+      --bg-card-hover: #f9f8f5;
+      --bg-row: #ffffff;
+      --bg-row-hover: #f9f8f5;
+      --bg-input: #ffffff;
+      --bg-inset: #f2f1ec;
+      --bg-icon: #f2f1ec;
+      --bg-pill: #ffffff;
+      --bg-subtle: #efeee9;
+      --border: #e2e0d8;
+      --border-subtle: #e8e6df;
+      --border-light: #d2d0c7;
+      --border-hover: #18181b;
+      --lime: #18181b;
+      --lime-ink: #111113;
+      --lime-bright: #16a34a;
+      --lime-glow: rgba(24, 24, 27, 0.06);
+      --lime-soft: #f2f1ec;
+      --lime-border: #d5d3ca;
+      --num-bg: #f2f1ec;
+      --num-text: #111113;
+      --num-border: #e2e0d8;
+      --pill-cta-bg: #f2f1ec;
+      --pill-cta-text: #52525b;
+      --btn-primary-bg: #111113;
+      --btn-primary-text: #ffffff;
+      --purple: #5b21b6;
+      --emerald: #059669;
+      --emerald-ink: #047857;
+      --text: #111113;
+      --text-body: #27272a;
+      --text-secondary: #5a5a64;
+      --text-muted: #868690;
+      --shadow-search: 0 4px 20px rgba(0, 0, 0, 0.035);
+      --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.02);
+      --grid-line: rgba(0, 0, 0, 0.035);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.5;
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.18s ease, color 0.18s ease;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ARCHITECTURAL TOP NAVBAR */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-topbar);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand-cluster {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text);
+    }
+
+    .brand-signal {
+      width: 7px;
+      height: 7px;
+      background: #16a34a;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    :root:not([data-theme="light"]) .brand-signal {
+      background: #a8ff29;
+      box-shadow: 0 0 8px rgba(168, 255, 41, 0.6);
+    }
+
+    .brand-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      padding-left: 12px;
+      border-left: 1px solid var(--border);
+      line-height: 1.2;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      padding: 3px;
+      border-radius: 999px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .nav-menu::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-link {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      padding: 5px 13px;
+      border-radius: 999px;
+      position: relative;
+      transition: all 0.14s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    .nav-link.active {
+      background: var(--bg-card);
+      color: var(--text);
+      font-weight: 600;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    }
+
+    .saved-count-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 700;
+      background: var(--bg-subtle);
+      color: var(--text);
+      padding: 1px 5px;
+      border-radius: 999px;
+      display: none;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .random-gem-btn,
+    .theme-toggle-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      height: 34px;
+      padding: 0 11px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: inherit;
+      font-size: 0.76rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+
+    .random-gem-btn:hover,
+    .theme-toggle-btn:hover {
+      border-color: var(--border-hover);
+      color: var(--text);
+    }
+
+    .kbd-mini {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.64rem;
+      color: var(--text-muted);
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+
+    .theme-toggle-btn .sun-ico {
+      display: inline-block;
+    }
+
+    .theme-toggle-btn .moon-ico {
+      display: none;
+    }
+
+    :root[data-theme="light"] .theme-toggle-btn .sun-ico {
+      display: none;
+    }
+
+    :root[data-theme="light"] .theme-toggle-btn .moon-ico {
+      display: inline-block;
+    }
+
+    .nl-pill-btn {
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      font-size: 0.76rem;
+      font-weight: 600;
+      height: 34px;
+      padding: 0 14px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nl-pill-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    /* SECTION HEADERS — SWISS INDEX STYLE */
+    .sec-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin: 44px 0 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sec-title {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .sec-index {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .sec-action {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.15s ease;
+    }
+
+    .sec-action:hover {
+      color: var(--text);
+    }
+
+    /* EDITORIAL NEWSLETTER DISPATCH BOX */
+    .kit-banner {
+      margin: 56px 0 36px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .kit-left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-width: 540px;
+    }
+
+    .kit-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .kit-eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #16a34a;
+    }
+
+    :root:not([data-theme="light"]) .kit-eyebrow-dot {
+      background: #a8ff29;
+    }
+
+    .kit-copy h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .kit-copy p {
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .kit-form {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .kit-input {
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-family: inherit;
+      outline: none;
+      width: 240px;
+      transition: border-color 0.15s ease;
+    }
+
+    .kit-input:focus {
+      border-color: var(--border-hover);
+    }
+
+    .kit-submit {
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.15s ease;
+    }
+
+    .kit-submit:hover {
+      opacity: 0.9;
+    }
+
+    /* ARCHITECTURAL FOOTER */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 48px 0 36px;
+      margin-top: 28px;
+      background: var(--bg);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr));
+      gap: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .footer-brand-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      max-width: 340px;
+    }
+
+    .footer-brand-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.64rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-tagline {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .footer-x-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 13px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      font-weight: 600;
+      margin-top: 2px;
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .footer-x-pill:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-1px);
+    }
+
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .footer-col a {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      transition: color 0.14s ease;
+      width: fit-content;
+    }
+
+    .footer-col a:hover {
+      color: var(--text);
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-top: 22px;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .footer-bottom-right a {
+      color: var(--text-secondary);
+      font-weight: 600;
+      transition: color 0.14s ease;
+    }
+
+    .footer-bottom-right a:hover {
+      color: var(--text);
+    }
+
+    /* GLOBAL INLINE ONE-CLICK BOOKMARK BUTTON (☆ / ★) */
+    .inline-save-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--bg-inset);
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.14s ease;
+    }
+
+    .inline-save-btn:hover {
+      border-color: var(--border-hover);
+      color: var(--text);
+      transform: scale(1.06);
+    }
+
+    .inline-save-btn.is-saved {
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      border-color: var(--btn-primary-bg);
+    }
+
+    /* VOLUNTARY BEEHIIV BOOSTS 1-CLICK MODAL (Triggered on Friday Dispatch Signup) */
+    .boost-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .boost-modal {
+      max-width: 480px;
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      padding: 26px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    .boost-pill {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      font-weight: 700;
+      color: var(--emerald-ink);
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      padding: 3px 9px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    .boost-head h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+
+    .boost-head p {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .boost-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .boost-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .boost-card input {
+      margin-top: 3px;
+    }
+
+    .boost-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-size: 0.8rem;
+    }
+
+    .boost-info span {
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+    }
+
+    .boost-continue-btn {
+      width: 100%;
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 600;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+    }
+
+    @media (max-width: 940px) {
+      .brand-meta {
+        display: none;
+      }
+      .topbar-inner {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .nav-menu {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .nav-link {
+        flex: 1;
+        justify-content: center;
+      }
+      .kit-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 22px;
+      }
+      .kit-form {
+        width: 100%;
+      }
+      .kit-input {
+        flex: 1;
+        min-width: 0;
+      }
+      .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 0 14px;
+      }
+      .topbar {
+        padding: 8px 0;
+      }
+      .topbar-inner {
+        gap: 8px;
+      }
+      .brand-logo {
+        font-size: 1.1rem;
+      }
+      .topbar-actions {
+        gap: 5px;
+      }
+      .random-gem-btn,
+      .theme-toggle-btn {
+        height: 30px;
+        padding: 0 8px;
+        font-size: 0.72rem;
+        gap: 4px;
+        border-radius: 7px;
+      }
+      .nl-pill-btn {
+        height: 30px;
+        padding: 0 10px;
+        font-size: 0.72rem;
+        border-radius: 7px;
+        white-space: nowrap;
+      }
+      .nav-menu {
+        padding: 3px;
+        gap: 2px;
+        border-radius: 10px;
+      }
+      .nav-link {
+        font-size: 0.72rem;
+        padding: 5px 8px;
+        border-radius: 7px;
+      }
+      .sec-header {
+        margin: 24px 0 12px;
+        padding-bottom: 10px;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .sec-title {
+        font-size: 0.94rem;
+        gap: 7px;
+      }
+      .view-mode-group,
+      .col-mode-switch {
+        display: none !important;
+      }
+      .inline-save-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 0.88rem;
+      }
+      .kit-banner {
+        margin: 32px 0 22px;
+        padding: 18px 16px;
+        gap: 14px;
+      }
+      .kit-copy h3 {
+        font-size: 1.02rem;
+      }
+      .kit-copy p {
+        font-size: 0.8rem;
+      }
+      .kit-form {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+      }
+      .kit-input {
+        width: 100%;
+        font-size: 16px;
+        padding: 10px 12px;
+      }
+      .kit-submit {
+        width: 100%;
+        padding: 11px 16px;
+      }
+      .site-footer {
+        padding: 32px 0 28px;
+      }
+      .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px 16px;
+        padding-bottom: 24px;
+      }
+      .footer-brand-col {
+        grid-column: 1 / -1;
+        max-width: 100%;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        padding-top: 16px;
+        font-size: 0.72rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAVIGATION -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand-cluster">
+        <a href="/" class="brand-logo">
+          <span>GoodFinds</span><span class="brand-signal"></span>
+        </a>
+        <span class="brand-meta">INDEX // #1—#{data.tools.length}+</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="/" class={`nav-link ${activeNav === 'explore' ? 'active' : ''}`}>Index</a>
+        <a href="/compare" class={`nav-link ${activeNav === 'compare' ? 'active' : ''}`}>Free Alternatives</a>
+        <a href="/collections" class={`nav-link ${activeNav === 'collections' ? 'active' : ''}`}>Collections</a>
+        <a href="/submit" class={`nav-link ${activeNav === 'submit' ? 'active' : ''}`}>Submit</a>
+        <a href="/saved" class={`nav-link ${activeNav === 'saved' ? 'active' : ''}`}>
+          Saved
+          <span id="navSavedCount" class="saved-count-pill">0</span>
+        </a>
+      </nav>
+
+      <div class="topbar-actions">
+        <button
+          type="button"
+          class="random-gem-btn"
+          id="randomGemBtn"
+          title="Jump to a random website"
+        >
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="21" y2="3"></line><polyline points="21 16 21 21 16 21"></polyline><line x1="15" y1="15" x2="21" y2="21"></line><line x1="4" y1="4" x2="9" y2="9"></line></svg>
+          <span>Random</span>
+        </button>
+
+        <button
+          type="button"
+          class="theme-toggle-btn"
+          id="themeToggleBtn"
+          aria-label="Toggle color theme"
+          title="Switch between minimal light and dark theme"
+        >
+          <svg class="sun-ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+          <svg class="moon-ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+          <span id="themeToggleLabel">Light</span>
+        </button>
+
+        <a href="#kit-newsletter" class="nl-pill-btn">
+          Weekly Dispatch
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE CONTENT -->
+  <slot />
+
+  <!-- KIT (CONVERTKIT) FREE WEEKLY NEWSLETTER BANNER -->
+  <div class="container" id="kit-newsletter">
+    <section class="kit-banner">
+      <div class="kit-left">
+        <div class="kit-eyebrow">
+          <span class="kit-eyebrow-dot"></span>
+          FRIDAY DISPATCH // FREE WEEKLY ARCHIVE
+        </div>
+        <div class="kit-copy">
+          <h3>Five useful websites, every Friday.</h3>
+          <p>Your weekly internet dispatch: 5 high-leverage websites, free browser utilities, and open-source tools worth bookmarking. Zero noise.</p>
+        </div>
+      </div>
+
+      <form class="kit-form" action={data.site.kitActionUrl} method="post" onsubmit="handleKitSubmit(event)">
+        <input
+          type="email"
+          name="email_address"
+          id="kitEmailInput"
+          class="kit-input"
+          placeholder="you@domain.com"
+          required
+        />
+        <button type="submit" class="kit-submit" id="kitSubmitBtn">Subscribe →</button>
+      </form>
+    </section>
+  </div>
+
+  <!-- VOLUNTARY BEEHIIV BOOSTS 1-CLICK PARTNER MODAL (Payout #1 on Friday Dispatch Signup) -->
+  <div class="boost-modal-backdrop" id="beehiivBoostModal" style="display:none;">
+    <div class="boost-modal">
+      <div class="boost-head">
+        <span class="boost-pill">✓ SUBSCRIBED TO FRIDAY DISPATCH</span>
+        <h3>Want to also get these 3 free daily newsletters? (1-Click Subscribe)</h3>
+        <p>Hand-picked free daily digests read by 2M+ students, builders, and creators:</p>
+      </div>
+
+      <div class="boost-list">
+        <label class="boost-card">
+          <input type="checkbox" checked />
+          <div class="boost-info">
+            <strong>The Rundown AI</strong>
+            <span>Get the latest AI tools, workflows, and news in 5 minutes a day (Free).</span>
+          </div>
+        </label>
+        <label class="boost-card">
+          <input type="checkbox" checked />
+          <div class="boost-info">
+            <strong>Morning Brew</strong>
+            <span>The witty 5-minute daily business and tech briefing (Free).</span>
+          </div>
+        </label>
+        <label class="boost-card">
+          <input type="checkbox" checked />
+          <div class="boost-info">
+            <strong>1440 Daily Digest</strong>
+            <span>Unbiased, fact-focused daily world & science news in 5 minutes (Free).</span>
+          </div>
+        </label>
+      </div>
+
+      <button type="button" class="boost-continue-btn" id="boostContinueBtn">
+        Complete 1-Click Subscribe →
+      </button>
+    </div>
+  </div>
+
+  <!-- ARCHITECTURAL FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="footer-brand-top">
+            <a href="/" class="brand-logo" style="font-size:1.15rem;">
+              <span>GoodFinds</span><span class="brand-signal"></span>
+            </a>
+            <span class="footer-brand-badge">INDEX // #1—#{data.tools.length}+</span>
+          </div>
+          <p class="footer-tagline">
+            A continuously expanding, numbered index of {data.tools.length}+ essential AI tools, free browser utilities, open-source replacements, and hidden internet gems.
+          </p>
+          <a
+            href="https://x.com/SaqibBaig1100"
+            target="_blank"
+            rel="noopener"
+            class="footer-x-pill"
+            aria-label="Follow @SaqibBaig1100 on X"
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
+            <span>@SaqibBaig1100</span>
+          </a>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">Directory</span>
+          <a href="/">Numbered Index (#1–#{data.tools.length}+)</a>
+          <a href="/compare">Free Alternatives ($0 Matrix)</a>
+          <a href="/collections">Curated Collections</a>
+          <a href="/saved">Saved Stack</a>
+          <a href="/submit">Submit a Website</a>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">Curated Collections</span>
+          <a href="/collections/students">Student Collection</a>
+          <a href="/collections/creators">Creator Collection</a>
+          <a href="/collections/open-source-replacements">Open-Source Replacements</a>
+          <a href="/collections/zero-login">Zero-Login Utilities</a>
+          <a href="/collections/save-money">Save Money & Perks</a>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">Popular Categories</span>
+          <a href="/?cat=AI+tools">AI Tools</a>
+          <a href="/?cat=File+%26+PDF+tools">File & PDF Tools</a>
+          <a href="/?cat=Design">Design & Creative</a>
+          <a href="/?cat=Career+%26+Coding">Career & Coding</a>
+          <a href="/?cat=Privacy+%26+Security">Privacy & Security</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© {new Date().getFullYear()} GoodFinds · {data.tools.length}+ Curated Websites · Expanding Weekly</span>
+        <span class="footer-bottom-right">
+          Curated by <a href="https://x.com/SaqibBaig1100" target="_blank" rel="noopener">@SaqibBaig1100</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script is:inline define:vars={{ allToolIds }}>
+    // Theme Toggle Handler
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeToggleLabel = document.getElementById('themeToggleLabel');
+
+    function syncThemeUI() {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      if (themeToggleLabel) {
+        themeToggleLabel.textContent = current === 'light' ? 'Dark' : 'Light';
+      }
+    }
+
+    syncThemeUI();
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') || 'dark';
+        const next = current === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('goodfinds_theme', next);
+        syncThemeUI();
+      });
+    }
+
+    // Update Saved Count Pill & Sync Inline Save Buttons Across Site
+    function getNormalizedSaved() {
+      const raw = JSON.parse(localStorage.getItem('goodfinds_saved') || '[]');
+      const normalized = Array.from(new Set(raw.map((id) => String(parseInt(id, 10) || id))));
+      if (JSON.stringify(raw) !== JSON.stringify(normalized)) {
+        localStorage.setItem('goodfinds_saved', JSON.stringify(normalized));
+      }
+      return normalized;
+    }
+
+    function syncInlineSaveButtons() {
+      const saved = getNormalizedSaved();
+      const pill = document.getElementById('navSavedCount');
+      if (pill) {
+        if (saved.length > 0) {
+          pill.textContent = String(saved.length);
+          pill.style.display = 'inline-block';
+        } else {
+          pill.style.display = 'none';
+        }
+      }
+
+      document.querySelectorAll('.inline-save-btn[data-save-id]').forEach((btn) => {
+        const id = btn.getAttribute('data-save-id');
+        const active = saved.includes(id);
+        btn.textContent = active ? '★' : '☆';
+        btn.classList.toggle('is-saved', active);
+        btn.setAttribute('title', active ? `Saved (#${id}) — Click to remove` : `Bookmark #${id}`);
+      });
+    }
+
+    window.syncInlineSaveButtons = syncInlineSaveButtons;
+    syncInlineSaveButtons();
+    if (window.optimizeImageLoading) {
+      window.optimizeImageLoading();
+      setTimeout(window.optimizeImageLoading, 50);
+      setTimeout(window.optimizeImageLoading, 200);
+    }
+    window.addEventListener('storage', syncInlineSaveButtons);
+    window.addEventListener('goodfinds:saved-updated', syncInlineSaveButtons);
+
+    // Global delegated click handler for inline ☆ bookmark buttons
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.inline-save-btn[data-save-id]');
+      if (!btn) return;
+      e.preventDefault();
+      e.stopPropagation();
+
+      const id = btn.getAttribute('data-save-id');
+      if (!id) return;
+
+      let saved = JSON.parse(localStorage.getItem('goodfinds_saved') || '[]');
+      if (saved.includes(id)) {
+        saved = saved.filter((item) => item !== id);
+      } else {
+        saved.push(id);
+      }
+      localStorage.setItem('goodfinds_saved', JSON.stringify(saved));
+      window.dispatchEvent(new Event('goodfinds:saved-updated'));
+    });
+
+    // Random Gem Teleport
+    function jumpToRandomGem() {
+      if (!allToolIds || !allToolIds.length) return;
+      const currentPath = window.location.pathname;
+      const pool = allToolIds.filter((id) => !currentPath.endsWith(`/tool/${id}`));
+      const pick = pool[Math.floor(Math.random() * pool.length)] || allToolIds[0];
+      window.location.href = `/tool/${pick}`;
+    }
+
+    const randomGemBtn = document.getElementById('randomGemBtn');
+    if (randomGemBtn) {
+      randomGemBtn.addEventListener('click', jumpToRandomGem);
+    }
+
+    // Global Keyboard Shortcuts: Cmd+K (Search), R (Random Gem)
+    window.addEventListener('keydown', (e) => {
+      const tag = (document.activeElement && document.activeElement.tagName) || '';
+      const isTyping = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT';
+
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        const searchInput = document.getElementById('heroSearchInput') || document.getElementById('exploreSearch');
+        if (searchInput) {
+          searchInput.focus();
+          searchInput.select();
+        } else {
+          window.location.href = '/explore';
+        }
+        return;
+      }
+
+      if (!isTyping && !e.metaKey && !e.ctrlKey && !e.altKey && e.key.toLowerCase() === 'r') {
+        e.preventDefault();
+        jumpToRandomGem();
+      }
+    });
+
+    window.handleKitSubmit = function (e) {
+      const form = e.target;
+      const action = form.getAttribute('action') || '';
+      const email = document.getElementById('kitEmailInput').value.trim();
+      if (!email) return;
+
+      const subs = JSON.parse(localStorage.getItem('goodfinds_kit_subs') || '[]');
+      subs.push({ email, date: new Date().toISOString() });
+      localStorage.setItem('goodfinds_kit_subs', JSON.stringify(subs));
+
+      if (action.includes('YOUR_KIT_FORM_ID')) {
+        e.preventDefault();
+        const btn = document.getElementById('kitSubmitBtn');
+        btn.textContent = 'Subscribed ✓';
+        document.getElementById('kitEmailInput').value = '';
+        const boostModal = document.getElementById('beehiivBoostModal');
+        if (boostModal) boostModal.style.display = 'flex';
+      }
+    };
+
+    const boostContinueBtn = document.getElementById('boostContinueBtn');
+    const boostModalEl = document.getElementById('beehiivBoostModal');
+    if (boostContinueBtn && boostModalEl) {
+      boostContinueBtn.addEventListener('click', () => {
+        boostModalEl.style.display = 'none';
+      });
+      boostModalEl.addEventListener('click', (e) => {
+        if (e.target === boostModalEl) boostModalEl.style.display = 'none';
+      });
+    }
+  </script>
+</body>
+</html>

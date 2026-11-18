@@ -1,0 +1,1022 @@
+---
+import Layout from '../layouts/Layout.astro';
+import data from '../data/tools.json';
+
+const nextCoordinate = data.tools.length + 1;
+
+const categories = [
+  'AI tools',
+  'Student life',
+  'Productivity',
+  'Creator tools',
+  'Design',
+  'File & PDF tools',
+  'Privacy & Security',
+  'Audio & Music',
+  'Career & Coding',
+  'Rabbit Holes',
+  'Health & Fitness',
+  'Entertainment',
+  'Money-saving'
+];
+
+const accessModels = [
+  { label: '100% Free (No Login)', desc: 'Works immediately in browser with zero account' },
+  { label: '100% Free', desc: 'Completely free with optional account sync' },
+  { label: 'Open Source', desc: 'Public source code (MIT, GPL, Apache)' },
+  { label: 'Free Tier (Freemium)', desc: 'Generous permanent $0 plan, optional upgrade' },
+  { label: 'Free with .edu Email', desc: 'Unlocks Pro tier free for students' }
+];
+
+const existingDirectoryLookup = data.tools.map((t) => ({
+  id: t.id,
+  name: t.name,
+  domain: t.domain.toLowerCase()
+}));
+---
+
+<Layout title="Submit a Website — GoodFinds" activeNav="submit">
+  <main class="container submit-page">
+    <div class="submit-grid">
+      <!-- LEFT COLUMN: WORKING SUBMISSION FORM WITH CUSTOM DROPDOWNS -->
+      <section class="submit-box">
+        <div class="eyebrow-tag" id="formCoordinateTag">ARCHIVE NOMINATION // #{nextCoordinate}</div>
+        <h1>Submit a useful <em class="serif-italic">website.</em></h1>
+        <p class="lead-sub">
+          Know an underrated website, free browser utility, or open-source replacement that deserves a permanent Vault coordinate? Submit it below.
+        </p>
+
+        <form id="submitToolForm" class="sub-form" autocomplete="off">
+          <div class="field">
+            <label for="nomNameInput">WEBSITE NAME *</label>
+            <input
+              type="text"
+              id="nomNameInput"
+              required
+              placeholder="e.g. Excalidraw, Squoosh, Omni Calculator..."
+            />
+          </div>
+
+          <div class="field">
+            <div class="label-row">
+              <label for="nomUrlInput">PRIMARY URL *</label>
+              <span id="urlDuplicateStatus" class="url-status"></span>
+            </div>
+            <input
+              type="url"
+              id="nomUrlInput"
+              required
+              placeholder="https://example.com"
+            />
+          </div>
+
+          <div class="field-row">
+            <!-- CUSTOM ARCHITECTURAL DROPDOWN 1: CATEGORY -->
+            <div class="field">
+              <label>CATEGORY *</label>
+              <div class="custom-dropdown" id="categoryDropdown">
+                <input type="hidden" id="nomCategoryValue" value={categories[0]} />
+                <button type="button" class="dd-trigger" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="dd-selected-text" id="ddCategoryLabel">{categories[0]}</span>
+                  <svg class="dd-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="dd-menu" role="listbox">
+                  {categories.map((cat, idx) => (
+                    <button
+                      type="button"
+                      role="option"
+                      class={`dd-option ${idx === 0 ? 'selected' : ''}`}
+                      data-value={cat}
+                    >
+                      <span>{cat}</span>
+                      <span class="dd-check">✓</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <!-- CUSTOM ARCHITECTURAL DROPDOWN 2: ACCESS MODEL -->
+            <div class="field">
+              <label>ACCESS MODEL *</label>
+              <div class="custom-dropdown" id="accessDropdown">
+                <input type="hidden" id="nomAccessValue" value={accessModels[0].label} />
+                <button type="button" class="dd-trigger" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="dd-selected-text" id="ddAccessLabel">{accessModels[0].label}</span>
+                  <svg class="dd-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="dd-menu" role="listbox">
+                  {accessModels.map((item, idx) => (
+                    <button
+                      type="button"
+                      role="option"
+                      class={`dd-option ${idx === 0 ? 'selected' : ''}`}
+                      data-value={item.label}
+                    >
+                      <div class="dd-opt-copy">
+                        <strong>{item.label}</strong>
+                        <small>{item.desc}</small>
+                      </div>
+                      <span class="dd-check">✓</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="nomDescInput">WHY IS IT GENUINELY USEFUL? *</label>
+            <textarea
+              id="nomDescInput"
+              rows="3"
+              required
+              placeholder="What specific problem does it solve in 1–2 sentences? Mention what is included on the free tier."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="sub-btn" id="submitBtn">
+            Submit Website (<span id="submitBtnCoord">#{nextCoordinate}</span>) →
+          </button>
+
+          <div id="subSuccessBanner" class="success-banner" style="display:none;">
+            <span id="subSuccessText">✓ Nomination added to your Vault queue below!</span>
+          </div>
+        </form>
+      </section>
+
+      <!-- RIGHT COLUMN: LIVE CARD PREVIEW & EDITORIAL STANDARDS -->
+      <aside class="preview-col">
+        <div class="preview-frame">
+          <div class="ed-label">LIVE DIRECTORY CARD PREVIEW</div>
+          <p class="preview-sub">How your submission will appear in the GoodFinds Index:</p>
+
+          <!-- LIVE BENTO CARD PREVIEW -->
+          <div class="live-preview-card">
+            <div class="dir-card-top">
+              <span class="dir-num" id="prevCoord">#{nextCoordinate}</span>
+              <span class="prev-cat-text" id="prevCat">{categories[0]}</span>
+            </div>
+
+            <div class="dir-card-body">
+              <div class="dir-ico">
+                <img
+                  id="prevFavicon"
+                  src="https://www.google.com/s2/favicons?domain=example.com&sz=64"
+                  alt="Preview icon"
+                  width="20"
+                  height="20"
+                  decoding="async"
+                  data-image-component="true"
+                  loading="lazy"
+                />
+              </div>
+              <div class="dir-copy">
+                <strong class="dir-name" id="prevName">Your Website Name</strong>
+                <p class="dir-tagline" id="prevDesc">
+                  Describe what specific problem this website solves in 1–2 clear sentences.
+                </p>
+              </div>
+            </div>
+
+            <div class="dir-card-foot">
+              <span class="dir-domain" id="prevDomain">example.com</span>
+              <span class="dir-open-link" id="prevAccess">{accessModels[0].label} ↗</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="criteria-frame">
+          <div class="ed-label">EDITORIAL VERIFICATION CHECKLIST</div>
+          <div class="criteria-list">
+            <div class="crit-row">
+              <span class="crit-num">1</span>
+              <div>
+                <strong>Real $0 Utility</strong>
+                <p>Must offer a genuinely functional free tier, open-source license, or no-login utility without credit card gates.</p>
+              </div>
+            </div>
+            <div class="crit-row">
+              <span class="crit-num">2</span>
+              <div>
+                <strong>Zero Paywall Traps</strong>
+                <p>No tools that let a user spend 20 minutes editing only to demand $19 at export.</p>
+              </div>
+            </div>
+            <div class="crit-row">
+              <span class="crit-num">3</span>
+              <div>
+                <strong>Not Already in #1–#{data.tools.length}</strong>
+                <p>Our URL field automatically checks if the domain is already indexed in the Vault.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- SUBMITTED NOMINATIONS QUEUE (PERSISTENT IN LOCALSTORAGE) -->
+    <section class="queue-section" id="nominationsQueueSection">
+      <div class="sec-header" style="margin-top:44px;">
+        <div class="sec-title">
+          <span class="sec-index">QUEUE //</span>
+          <span id="queueHeadingTitle">Your Submitted Nominations (#{nextCoordinate}+)</span>
+        </div>
+        <button type="button" id="clearQueueBtn" class="clear-queue-btn" style="display:none;">
+          Clear Submitted Queue
+        </button>
+      </div>
+
+      <div id="emptyQueueState" class="empty-queue-box">
+        <p>No custom nominations submitted from this browser yet. Fill out the form above to add <strong>#{nextCoordinate}</strong> to your queue.</p>
+      </div>
+
+      <div class="nominations-grid" id="nominationsGrid" style="display:none;"></div>
+    </section>
+  </main>
+
+  <style>
+    .submit-page {
+      padding-top: 38px;
+    }
+
+    .submit-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .submit-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .eyebrow-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg-inset);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+    }
+
+    .submit-box h1 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      margin-bottom: 6px;
+    }
+
+    .serif-italic {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.06em;
+    }
+
+    .lead-sub {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      line-height: 1.55;
+    }
+
+    .field {
+      margin-bottom: 18px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .field-row {
+      display: flex;
+      gap: 14px;
+    }
+
+    .label-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .field label {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .label-row label {
+      margin-bottom: 0;
+    }
+
+    .url-status {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.64rem;
+      font-weight: 600;
+    }
+
+    .url-status.exists {
+      color: #d97706;
+    }
+
+    .url-status.available {
+      color: var(--emerald-ink);
+    }
+
+    .field input[type="text"],
+    .field input[type="url"],
+    .field textarea {
+      width: 100%;
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 11px 14px;
+      border-radius: 8px;
+      font-size: 0.86rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.14s ease, box-shadow 0.14s ease;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--border-hover);
+      box-shadow: 0 0 0 3px var(--lime-glow);
+    }
+
+    /* CUSTOM ARCHITECTURAL DROPDOWN (REPLACES GENERIC OS SELECT) */
+    .custom-dropdown {
+      position: relative;
+      width: 100%;
+    }
+
+    .dd-trigger {
+      width: 100%;
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 11px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      cursor: pointer;
+      text-align: left;
+      transition: border-color 0.14s ease, background-color 0.14s ease;
+    }
+
+    .dd-trigger:hover,
+    .custom-dropdown.open .dd-trigger {
+      border-color: var(--border-hover);
+      background: var(--bg-card);
+    }
+
+    .dd-selected-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .dd-chevron {
+      color: var(--text-muted);
+      flex-shrink: 0;
+      transition: transform 0.16s ease;
+    }
+
+    .custom-dropdown.open .dd-chevron {
+      transform: rotate(180deg);
+      color: var(--text);
+    }
+
+    .dd-menu {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      z-index: 60;
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 5px;
+      max-height: 260px;
+      overflow-y: auto;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
+      display: none;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .custom-dropdown.open .dd-menu {
+      display: flex;
+    }
+
+    .dd-option {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: var(--text-body);
+      padding: 8px 10px;
+      border-radius: 7px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      cursor: pointer;
+      transition: background-color 0.12s ease, color 0.12s ease;
+    }
+
+    .dd-option:hover {
+      background: var(--bg-inset);
+      color: var(--text);
+    }
+
+    .dd-option.selected {
+      background: var(--bg-inset);
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .dd-opt-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .dd-opt-copy strong {
+      font-size: 0.81rem;
+      color: var(--text);
+    }
+
+    .dd-opt-copy small {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .dd-check {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: transparent;
+      flex-shrink: 0;
+    }
+
+    .dd-option.selected .dd-check {
+      color: var(--emerald-ink);
+    }
+
+    .sub-btn {
+      width: 100%;
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 13px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.14s ease, transform 0.14s ease;
+    }
+
+    .sub-btn:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .success-banner {
+      margin-top: 14px;
+      background: var(--bg-inset);
+      border: 1px solid var(--border-light);
+      color: var(--emerald-ink);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 11px 14px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    /* RIGHT COLUMN: PREVIEW & CRITERIA */
+    .preview-col {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .preview-frame,
+    .criteria-frame {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 24px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .ed-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .preview-sub {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+
+    .live-preview-card {
+      background: var(--bg-inset);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .dir-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .dir-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--num-text);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 2px 7px;
+      border-radius: 5px;
+    }
+
+    .prev-cat-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .dir-card-body {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+    }
+
+    .dir-ico {
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .dir-copy {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .dir-name {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .dir-tagline {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.48;
+    }
+
+    .dir-card-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 11px;
+      border-top: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+    }
+
+    .dir-domain {
+      color: var(--text-muted);
+    }
+
+    .dir-open-link {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .criteria-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .crit-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .crit-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 700;
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 22px;
+      height: 22px;
+      border-radius: 5px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .crit-row strong {
+      font-size: 0.84rem;
+      color: var(--text);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .crit-row p {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    /* SUBMITTED NOMINATIONS QUEUE */
+    .clear-queue-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .clear-queue-btn:hover {
+      border-color: var(--border-hover);
+      color: var(--text);
+    }
+
+    .empty-queue-box {
+      background: var(--bg-card);
+      border: 1px dashed var(--border-light);
+      border-radius: 12px;
+      padding: 28px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.86rem;
+    }
+
+    .nominations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-rows: 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    :global(.nom-card) {
+      background: var(--bg-card);
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    :global(.nom-remove-btn) {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.64rem;
+      color: var(--text-muted);
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 2px 7px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    :global(.nom-remove-btn:hover) {
+      color: var(--text);
+      border-color: var(--border-hover);
+    }
+
+    @media (max-width: 920px) {
+      .submit-grid {
+        grid-template-columns: 1fr;
+      }
+      .nominations-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .submit-page {
+        padding-top: 20px;
+      }
+      .submit-box,
+      .preview-panel {
+        padding: 18px 16px;
+      }
+      .submit-box h1 {
+        font-size: 1.65rem;
+      }
+      .field input,
+      .field textarea {
+        font-size: 16px;
+      }
+      .field-row {
+        flex-direction: column;
+        gap: 0;
+      }
+      .nominations-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+        gap: 10px;
+      }
+    }
+  </style>
+
+  <script is:inline define:vars={{ existingDirectoryLookup, nextCoordinate }}>
+    const nameInput = document.getElementById('nomNameInput');
+    const urlInput = document.getElementById('nomUrlInput');
+    const catValueInput = document.getElementById('nomCategoryValue');
+    const accessValueInput = document.getElementById('nomAccessValue');
+    const descInput = document.getElementById('nomDescInput');
+    const urlStatus = document.getElementById('urlDuplicateStatus');
+
+    const prevCoord = document.getElementById('prevCoord');
+    const prevCat = document.getElementById('prevCat');
+    const prevFavicon = document.getElementById('prevFavicon');
+    const prevName = document.getElementById('prevName');
+    const prevDesc = document.getElementById('prevDesc');
+    const prevDomain = document.getElementById('prevDomain');
+    const prevAccess = document.getElementById('prevAccess');
+    const formCoordinateTag = document.getElementById('formCoordinateTag');
+    const submitBtnCoord = document.getElementById('submitBtnCoord');
+
+    const submitForm = document.getElementById('submitToolForm');
+    const subSuccessBanner = document.getElementById('subSuccessBanner');
+    const subSuccessText = document.getElementById('subSuccessText');
+    const emptyQueueState = document.getElementById('emptyQueueState');
+    const nominationsGrid = document.getElementById('nominationsGrid');
+    const clearQueueBtn = document.getElementById('clearQueueBtn');
+    const queueHeadingTitle = document.getElementById('queueHeadingTitle');
+
+    // Custom Dropdown Controller
+    const dropdowns = document.querySelectorAll('.custom-dropdown');
+
+    dropdowns.forEach((dd) => {
+      const trigger = dd.querySelector('.dd-trigger');
+      const hiddenInput = dd.querySelector('input[type="hidden"]');
+      const labelSpan = dd.querySelector('.dd-selected-text');
+      const options = dd.querySelectorAll('.dd-option');
+
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = dd.classList.contains('open');
+        dropdowns.forEach((other) => {
+          other.classList.remove('open');
+          other.querySelector('.dd-trigger').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          dd.classList.add('open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      options.forEach((opt) => {
+        opt.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const val = opt.getAttribute('data-value') || '';
+          options.forEach((o) => o.classList.remove('selected'));
+          opt.classList.add('selected');
+          hiddenInput.value = val;
+          labelSpan.textContent = val;
+          dd.classList.remove('open');
+          trigger.setAttribute('aria-expanded', 'false');
+          updateLivePreview();
+        });
+      });
+    });
+
+    document.addEventListener('click', () => {
+      dropdowns.forEach((dd) => {
+        dd.classList.remove('open');
+        dd.querySelector('.dd-trigger').setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    function extractDomain(rawUrl) {
+      try {
+        const withProto = /^https?:\/\//i.test(rawUrl) ? rawUrl : `https://${rawUrl}`;
+        const u = new URL(withProto);
+        return u.hostname.replace(/^www\./i, '').toLowerCase();
+      } catch {
+        return '';
+      }
+    }
+
+    function getSubmissions() {
+      try {
+        return JSON.parse(localStorage.getItem('goodfinds_submissions') || '[]');
+      } catch {
+        return [];
+      }
+    }
+
+    function getCurrentNextCoord() {
+      const subs = getSubmissions();
+      return nextCoordinate + subs.length;
+    }
+
+    function updateLivePreview() {
+      const coord = getCurrentNextCoord();
+      const nameVal = nameInput.value.trim();
+      const urlVal = urlInput.value.trim();
+      const catVal = catValueInput.value;
+      const accessVal = accessValueInput.value;
+      const descVal = descInput.value.trim();
+      const domain = extractDomain(urlVal);
+
+      prevCoord.textContent = `#${coord}`;
+      formCoordinateTag.textContent = `ARCHIVE NOMINATION // #${coord}`;
+      submitBtnCoord.textContent = `#${coord}`;
+      prevCat.textContent = catVal;
+      prevName.textContent = nameVal || 'Your Website Name';
+      prevDesc.textContent =
+        descVal || 'Describe what specific problem this website solves in 1–2 clear sentences.';
+      prevDomain.textContent = domain || 'example.com';
+      prevAccess.textContent = `${accessVal} ↗`;
+
+      if (domain && domain.includes('.')) {
+        prevFavicon.src = `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+        const match = existingDirectoryLookup.find(
+          (item) => item.domain === domain || domain.endsWith(`.${item.domain}`)
+        );
+        if (match) {
+          urlStatus.className = 'url-status exists';
+          urlStatus.innerHTML = `Already in Vault as <a href="/tool/${match.id}" style="text-decoration:underline;">#${match.id} ${match.name} →</a>`;
+        } else {
+          urlStatus.className = 'url-status available';
+          urlStatus.textContent = `✓ Eligible for Coordinate #${coord}`;
+        }
+      } else {
+        prevFavicon.src = 'https://www.google.com/s2/favicons?domain=example.com&sz=64';
+        urlStatus.textContent = '';
+      }
+    }
+
+    function renderQueue() {
+      const subs = getSubmissions();
+      updateLivePreview();
+
+      if (subs.length === 0) {
+        emptyQueueState.style.display = 'block';
+        nominationsGrid.style.display = 'none';
+        clearQueueBtn.style.display = 'none';
+        queueHeadingTitle.textContent = `Your Submitted Nominations (#${nextCoordinate}+)`;
+        return;
+      }
+
+      emptyQueueState.style.display = 'none';
+      nominationsGrid.style.display = 'grid';
+      clearQueueBtn.style.display = 'inline-block';
+      queueHeadingTitle.textContent = `Your Submitted Nominations (${subs.length})`;
+
+      nominationsGrid.innerHTML = '';
+      subs.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'nom-card';
+        card.innerHTML = `
+          <div class="dir-card-top">
+            <span class="dir-num">#${item.coord}</span>
+            <button type="button" class="nom-remove-btn" data-remove-idx="${index}">Remove</button>
+          </div>
+          <div class="dir-card-body">
+            <div class="dir-ico">
+              <img src="https://www.google.com/s2/favicons?domain=${item.domain}&sz=64" alt="${item.name}" width="20" height="20" loading="lazy" decoding="async" data-image-component="true" />
+            </div>
+            <div class="dir-copy">
+              <strong class="dir-name">${item.name}</strong>
+              <p class="dir-tagline">${item.desc}</p>
+            </div>
+          </div>
+          <div class="dir-card-foot">
+            <span class="dir-domain">${item.domain} · ${item.category}</span>
+            <a href="${item.url}" target="_blank" rel="noopener" class="dir-open-link">Open ↗</a>
+          </div>
+        `;
+        nominationsGrid.appendChild(card);
+      });
+
+      nominationsGrid.querySelectorAll('.nom-remove-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const idx = Number(btn.getAttribute('data-remove-idx'));
+          const current = getSubmissions();
+          current.splice(idx, 1);
+          // Re-index coordinates cleanly
+          current.forEach((entry, i) => {
+            entry.coord = nextCoordinate + i;
+          });
+          localStorage.setItem('goodfinds_submissions', JSON.stringify(current));
+          renderQueue();
+        });
+      });
+    }
+
+    nameInput.addEventListener('input', updateLivePreview);
+    urlInput.addEventListener('input', updateLivePreview);
+    descInput.addEventListener('input', updateLivePreview);
+
+    submitForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const rawUrl = urlInput.value.trim();
+      const cleanUrl = /^https?:\/\//i.test(rawUrl) ? rawUrl : `https://${rawUrl}`;
+      const domain = extractDomain(cleanUrl) || 'example.com';
+      const subs = getSubmissions();
+      const assignedCoord = nextCoordinate + subs.length;
+
+      const newEntry = {
+        coord: assignedCoord,
+        name: nameInput.value.trim(),
+        url: cleanUrl,
+        domain,
+        category: catValueInput.value,
+        access: accessValueInput.value,
+        desc: descInput.value.trim(),
+        createdAt: new Date().toISOString()
+      };
+
+      subs.push(newEntry);
+      localStorage.setItem('goodfinds_submissions', JSON.stringify(subs));
+
+      subSuccessText.textContent = `✓ Submitted #${assignedCoord} ${newEntry.name} (${domain}) to your Vault queue below!`;
+      subSuccessBanner.style.display = 'block';
+
+      nameInput.value = '';
+      urlInput.value = '';
+      descInput.value = '';
+      urlStatus.textContent = '';
+
+      renderQueue();
+    });
+
+    if (clearQueueBtn) {
+      clearQueueBtn.addEventListener('click', () => {
+        localStorage.setItem('goodfinds_submissions', '[]');
+        renderQueue();
+      });
+    }
+
+    renderQueue();
+  </script>
+</Layout>

@@ -1,0 +1,221 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import data from '../../data/tools.json';
+
+const enriched = data.collections.map((col, idx) => ({
+  ...col,
+  indexNum: String(idx + 1),
+  previewTools: data.tools.filter((t) => t.collections.includes(col.slug)).slice(0, 6)
+}));
+---
+
+<Layout title="Curated Dossiers — GoodFinds" activeNav="collections">
+  <main class="container col-index">
+    <div class="header-box">
+      <div class="eyebrow-tag">CURATED DOSSIERS // THEMATIC INDEXES</div>
+      <h1>Thematic <em class="serif-italic">Collections.</em></h1>
+      <p>Hand-picked toolkits organized by workflow and use case.</p>
+    </div>
+
+    <div class="col-bento">
+      {enriched.map((col) => (
+        <a href={`/collections/${col.slug}`} class="col-big-card">
+          <div class="card-top">
+            <span class="mono-code">DOSSIER // {col.indexNum}</span>
+            <span class="sub-pill">{col.subtitle}</span>
+          </div>
+
+          <div class="card-mid">
+            <h2>{col.fullTitle}</h2>
+            <p>{col.desc}</p>
+          </div>
+
+          <div class="col-foot">
+            <div class="fav-row">
+              {col.previewTools.map((t) => (
+                <span class="fav-chip" title={`#${t.id} ${t.name}`}>
+                  <img
+                    src={`https://www.google.com/s2/favicons?domain=${t.domain}&sz=64`}
+                    alt={t.name}
+                    width="15"
+                    height="15"
+                    decoding="async"
+                    data-image-component="true"
+                    loading="lazy"
+                  />
+                </span>
+              ))}
+            </div>
+            <span class="open-dossier">Open Dossier →</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </main>
+
+  <style>
+    .col-index {
+      padding-top: 38px;
+    }
+
+    .header-box {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .eyebrow-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .header-box h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      margin-bottom: 6px;
+    }
+
+    .serif-italic {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.06em;
+    }
+
+    .header-box p {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+    }
+
+    .col-bento {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .col-big-card {
+      background: var(--bg-card);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      min-width: 0;
+      overflow: hidden;
+      transition: background-color 0.15s ease;
+    }
+
+    .col-big-card:hover {
+      background: var(--bg-card-hover);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+    }
+
+    .mono-code {
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .sub-pill {
+      color: var(--text-body);
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .card-mid h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 8px;
+    }
+
+    .card-mid p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .col-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .fav-row {
+      display: flex;
+      align-items: center;
+    }
+
+    .fav-chip {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background: var(--bg-icon);
+      border: 1px solid var(--border);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: -6px;
+    }
+
+    .fav-chip img {
+      width: 15px;
+      height: 15px;
+    }
+
+    .open-dossier {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    @media (max-width: 720px) {
+      .col-index {
+        padding-top: 22px;
+      }
+      .header-box {
+        margin-bottom: 20px;
+      }
+      .header-box h1 {
+        font-size: 1.85rem;
+      }
+      .col-bento {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .col-dossier-card {
+        padding: 18px 16px;
+        gap: 16px;
+      }
+      .card-mid h2 {
+        font-size: 1.15rem;
+      }
+    }
+  </style>
+</Layout>

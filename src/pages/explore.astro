@@ -1,0 +1,430 @@
+---
+import Layout from '../layouts/Layout.astro';
+import data from '../data/tools.json';
+
+const categories = [
+  'All websites',
+  'AI tools',
+  'Student life',
+  'Productivity',
+  'Creator tools',
+  'Design',
+  'File & PDF tools',
+  'Privacy & Security',
+  'Audio & Music',
+  'Career & Coding',
+  'Rabbit Holes',
+  'Health & Fitness',
+  'Entertainment',
+  'Money-saving'
+];
+---
+
+<Layout title={`Complete Index (#1 — #${data.tools.length}) — GoodFinds`} activeNav="explore">
+  <main class="container explore-page">
+    <div class="explore-header">
+      <div class="eyebrow-tag">COMPLETE ARCHIVE // #1 — #{data.tools.length}+</div>
+      <h1>Every verified <em class="serif-italic">internet find.</em></h1>
+      <p>A continuously expanding index of {data.tools.length}+ essential AI tools, free browser utilities, open-source replacements, and hidden internet gems.</p>
+
+      <div class="controls-bar">
+        <div class="search-box">
+          <span class="prefix">FIND //</span>
+          <input
+            type="text"
+            id="exploreSearch"
+            placeholder={`Search #number (#1–#${data.tools.length}), domain, or keyword...`}
+            class="explore-input"
+          />
+        </div>
+        <select id="exploreSort" class="explore-select">
+          <option value="num">Index Order (#1 → #{data.tools.length})</option>
+          <option value="free">100% Free Tier First</option>
+          <option value="name">Alphabetical (A → Z)</option>
+        </select>
+      </div>
+
+      <div class="cat-pills-row">
+        {categories.map((cat, idx) => (
+          <button class={`cat-pill ${idx === 0 ? 'active' : ''}`} data-cat={cat}>
+            {cat}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div class="dir-bento" id="exploreGrid">
+      {data.tools.map((tool, idx) => (
+        <a
+          href={`/tool/${tool.id}`}
+          class="dir-card"
+          data-id={tool.id}
+          data-name={tool.name.toLowerCase()}
+          data-cat={tool.category}
+          data-free={tool.pricingBadge.includes('100%') ? '1' : '0'}
+          data-desc={`${tool.tagline} ${tool.domain}`.toLowerCase()}
+        >
+          <div class="dir-card-top">
+            <span class="num-pill">#{tool.id}</span>
+            <button type="button" class="inline-save-btn" data-save-id={tool.id} aria-label={`Bookmark #${tool.id}`}>☆</button>
+          </div>
+
+          <div class="dir-card-mid">
+            <div class="ico-box">
+              <img
+                src={`https://www.google.com/s2/favicons?domain=${tool.domain}&sz=64`}
+                alt={tool.name}
+                width="22"
+                height="22"
+                decoding="async"
+                data-image-component="true"
+                loading="lazy"
+              />
+            </div>
+            <div>
+              <h3>{tool.name}</h3>
+              <p>{tool.tagline}</p>
+            </div>
+          </div>
+
+          <div class="dir-card-foot">
+            <span class="domain-txt">{tool.domain}</span>
+            <span class="open-txt">Inspect #{tool.id} ↗</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </main>
+
+  <style>
+    .explore-page {
+      padding-top: 38px;
+    }
+
+    .explore-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .eyebrow-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .explore-header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      margin-bottom: 6px;
+    }
+
+    .serif-italic {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.06em;
+    }
+
+    .explore-header p {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      margin-bottom: 20px;
+    }
+
+    .controls-bar {
+      display: flex;
+      gap: 8px;
+      max-width: 700px;
+      margin: 0 auto 14px;
+    }
+
+    .search-box {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      background: var(--bg-input);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 0 14px;
+    }
+
+    .search-box:focus-within {
+      border-color: var(--border-hover);
+    }
+
+    .prefix {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-right: 8px;
+    }
+
+    .explore-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      padding: 10px 4px;
+      font-size: 0.86rem;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .explore-select {
+      background: var(--bg-input);
+      border: 1px solid var(--border-light);
+      color: var(--text-body);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .cat-pills-row {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .cat-pill {
+      background: var(--bg-pill);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 6px 13px;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+
+    .cat-pill.active {
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      border-color: var(--btn-primary-bg);
+      font-weight: 600;
+    }
+
+    .dir-bento {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .dir-card {
+      background: var(--bg-card);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      min-width: 0;
+      overflow: hidden;
+      transition: background-color 0.14s ease;
+    }
+
+    .dir-card:hover {
+      background: var(--bg-card-hover);
+    }
+
+    .dir-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dir-id-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .num-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--num-bg);
+      color: var(--num-text);
+      border: 1px solid var(--num-border);
+      padding: 2px 7px;
+      border-radius: 5px;
+    }
+
+    .cat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .free-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      font-weight: 500;
+      background: var(--pill-cta-bg);
+      color: var(--pill-cta-text);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 5px;
+    }
+
+    .dir-card-mid {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .ico-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 9px;
+      background: var(--bg-icon);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .ico-box img {
+      width: 22px;
+      height: 22px;
+    }
+
+    .dir-card-mid h3 {
+      font-size: 1.02rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 3px;
+    }
+
+    .dir-card-mid p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    .dir-card-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-subtle);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+    }
+
+    .domain-txt {
+      color: var(--text-muted);
+    }
+
+    .open-txt {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    @media (max-width: 760px) {
+      .explore-page {
+        padding-top: 22px;
+      }
+      .explore-header h1 {
+        font-size: 1.85rem;
+      }
+      .explore-input,
+      .explore-select {
+        font-size: 16px;
+      }
+      .cat-pills-row {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        margin: 0 -14px;
+        padding: 2px 14px 4px;
+      }
+      .cat-pills-row::-webkit-scrollbar {
+        display: none;
+      }
+      .cat-pill {
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .dir-bento {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .controls-bar {
+        flex-direction: column;
+      }
+    }
+  </style>
+
+  <script is:inline>
+    const searchEl = document.getElementById('exploreSearch');
+    const sortEl = document.getElementById('exploreSort');
+    const gridEl = document.getElementById('exploreGrid');
+    const pills = document.querySelectorAll('.cat-pill');
+    const cards = Array.from(gridEl.querySelectorAll('.dir-card'));
+
+    let currentCat = 'All websites';
+
+    function updateExplore() {
+      const q = (searchEl.value || '').trim().toLowerCase().replace(/^#/, '');
+      const sortMode = sortEl.value;
+
+      const filtered = cards.filter((c) => {
+        const id = c.getAttribute('data-id') || '';
+        const name = c.getAttribute('data-name') || '';
+        const cat = c.getAttribute('data-cat') || '';
+        const desc = c.getAttribute('data-desc') || '';
+        if (currentCat !== 'All websites' && cat !== currentCat) return false;
+        if (!q) return true;
+        return id.includes(q) || name.includes(q) || cat.toLowerCase().includes(q) || desc.includes(q);
+      });
+
+      filtered.sort((a, b) => {
+        if (sortMode === 'free') {
+          return Number(b.getAttribute('data-free')) - Number(a.getAttribute('data-free'));
+        }
+        if (sortMode === 'name') {
+          return (a.getAttribute('data-name') || '').localeCompare(b.getAttribute('data-name') || '');
+        }
+        return Number(a.getAttribute('data-id') || 0) - Number(b.getAttribute('data-id') || 0);
+      });
+
+      gridEl.innerHTML = '';
+      filtered.forEach((c) => gridEl.appendChild(c));
+      if (window.syncInlineSaveButtons) window.syncInlineSaveButtons();
+    }
+
+    searchEl.addEventListener('input', updateExplore);
+    sortEl.addEventListener('change', updateExplore);
+    pills.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        pills.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentCat = btn.getAttribute('data-cat') || 'All websites';
+        updateExplore();
+      });
+    });
+  </script>
+</Layout>

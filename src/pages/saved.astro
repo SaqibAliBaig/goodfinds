@@ -1,0 +1,1159 @@
+---
+import Layout from '../layouts/Layout.astro';
+import data from '../data/tools.json';
+
+const starterStacks = [
+  {
+    key: 'exam',
+    title: 'Exam Week Survival Stack',
+    subtitle: '6 Academic & Study Tools',
+    desc: 'Turn lecture PDFs into study guides, access free college textbooks, cite papers, and drill active-recall flashcards.',
+    ids: ['1', '2', '3', '11', '33', '38']
+  },
+  {
+    key: 'creator',
+    title: 'Creator Studio Stack',
+    subtitle: '6 Video, Audio & Design Tools',
+    desc: 'Studio AI voiceovers, 4K B-roll footage, vocal isolation, browser Photoshop, and Hollywood-grade video editing.',
+    ids: ['15', '16', '18', '19', '20', '301']
+  },
+  {
+    key: 'subkiller',
+    title: '$0 Subscription Killer Stack',
+    subtitle: '8 Paid-App Replacements',
+    desc: 'Replace Photoshop, Acrobat Pro, Office 365, Typeform, Calendly, Grammarly, Audible, and 1Password for $0/yr.',
+    ids: ['20', '32', '43', '61', '62', '84', '91', '310']
+  },
+  {
+    key: 'coding',
+    title: 'Software Engineer & CS Stack',
+    subtitle: '6 Career & Coding Tools',
+    desc: 'ATS-proof resume builder, verified tech salary tables, coding interview roadmaps, and 30 hrs/wk of free cloud GPUs.',
+    ids: ['44', '98', '141', '142', '143', '318']
+  }
+].map((st) => ({
+  ...st,
+  previewTools: st.ids.map((id) => data.tools.find((t) => t.id === id)).filter(Boolean)
+}));
+
+const quickAddPool = data.tools.map((t) => ({
+  id: t.id,
+  name: t.name,
+  domain: t.domain,
+  category: t.category,
+  tagline: t.tagline
+}));
+---
+
+<Layout title="Saved Stack & Custom Toolkits — GoodFinds" activeNav="saved">
+  <main class="container saved-page">
+    <!-- HEADER + QUICK-ADD SEARCH BAR -->
+    <div class="header-box">
+      <div class="eyebrow-tag" id="stackEyebrow">LOCAL ARCHIVE // SHAREABLE TOOL STACK</div>
+      <h1 id="stackHeading">Your Saved <em class="serif-italic">Stack.</em></h1>
+      <p id="stackSubtitle">
+        Bookmark websites anywhere with ☆, add tools directly below, or load a curated starter stack with one click.
+      </p>
+
+      <!-- QUICK-ADD TOOL SEARCH PICKER -->
+      <div class="quick-add-wrap" id="quickAddWrap">
+        <div class="quick-add-bar">
+          <span class="qa-prefix">ADD TOOL //</span>
+          <input
+            type="text"
+            id="quickAddInput"
+            placeholder={`Search #1–#${data.tools.length} or website name (Photopea, NotebookLM, Tally...) to add to your stack...`}
+            autocomplete="off"
+          />
+        </div>
+        <div class="quick-add-dropdown" id="quickAddDropdown" style="display:none;"></div>
+      </div>
+    </div>
+
+    <!-- SHARED STACK IMPORT BANNER (shown when visiting /saved?stack=1,20,31) -->
+    <div id="sharedStackBanner" class="shared-banner" style="display:none;">
+      <div class="shared-banner-left">
+        <span class="shared-badge">SHARED STACK LINK</span>
+        <span id="sharedBannerText">Viewing a custom curated stack of websites.</span>
+      </div>
+      <div class="shared-banner-actions">
+        <button type="button" class="stack-primary-btn" id="importStackBtn">
+          + Save All to My Stack
+        </button>
+        <a href="/saved" class="stack-secondary-btn">View My Own Stack</a>
+      </div>
+    </div>
+
+    <!-- STACK MANAGEMENT & SHARE TOOLBAR -->
+    <div id="stackToolbar" class="stack-toolbar" style="display:none;">
+      <div class="stack-toolbar-left">
+        <span class="toolbar-label">STACK NAME //</span>
+        <input
+          type="text"
+          id="stackNameInput"
+          class="stack-name-input"
+          placeholder="Name your stack (e.g. Finals Week Stack, My Daily Toolkit)..."
+          maxlength="48"
+        />
+      </div>
+      <div class="stack-toolbar-right">
+        <span class="stack-count-mono" id="stackCountLabel">0 WEBSITES</span>
+        <button type="button" class="stack-primary-btn" id="shareStackBtn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+          <span id="shareStackBtnText">Share Stack URL</span>
+        </button>
+        <button type="button" class="stack-secondary-btn" id="copyListBtn">
+          Copy List
+        </button>
+        <button type="button" class="stack-secondary-btn" id="clearStackBtn">
+          Clear
+        </button>
+        <div class="col-mode-switch" role="group" aria-label="Grid column layout">
+          <button type="button" class="col-mode-btn active" data-cols="3">3-Col</button>
+          <button type="button" class="col-mode-btn" data-cols="2">2-Col</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Generated Share URL Preview Box -->
+    <div id="shareUrlBox" class="share-url-box" style="display:none;">
+      <span class="share-url-label">SHAREABLE URL COPIED //</span>
+      <input type="text" id="shareUrlInput" class="share-url-input" readonly />
+      <button type="button" class="stack-secondary-btn" id="copyAgainBtn">Copy Link</button>
+    </div>
+
+    <!-- SAVED BENTO CARDS GRID -->
+    <div class="saved-bento cols-3" id="savedGrid" style="display:none;">
+      {data.tools.map((tool) => (
+        <a href={`/tool/${tool.id}`} class="dir-row saved-card" data-id={tool.id} style="display:none;">
+          <div class="dir-card-top">
+            <span class="dir-num">#{tool.id}</span>
+            <button type="button" class="inline-save-btn" data-save-id={tool.id} aria-label={`Remove #${tool.id}`}>★</button>
+          </div>
+
+          <div class="dir-card-body">
+            <div class="dir-ico">
+              <img
+                src={`https://www.google.com/s2/favicons?domain=${tool.domain}&sz=64`}
+                alt={tool.name}
+                width="20"
+                height="20"
+                decoding="async"
+                data-image-component="true"
+                loading="lazy"
+              />
+            </div>
+            <div class="dir-copy">
+              <strong class="dir-name">{tool.name}</strong>
+              <p class="dir-tagline">{tool.tagline}</p>
+            </div>
+          </div>
+
+          <div class="dir-card-foot">
+            <span class="dir-domain">{tool.domain}</span>
+            <span class="dir-open-link">Open <span class="dir-row-arr">↗</span></span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- EMPTY BANNER NOTICE -->
+    <div id="emptySavedNotice" class="empty-notice" style="display:none;">
+      <div class="empty-notice-inner">
+        <strong>Your Saved Stack has 0 websites right now.</strong>
+        <span>Use the search bar above to add any website (#1–#{data.tools.length}), or load one of the 4 starter stacks below with 1 click:</span>
+      </div>
+    </div>
+
+    <!-- 1-CLICK STARTER STACK TEMPLATES (ALWAYS WORKING — SAVES DIRECTLY TO LOCALSTORAGE) -->
+    <section class="starter-section">
+      <div class="sec-header" style="margin-top:36px;">
+        <div class="sec-title">
+          <span class="sec-index">TEMPLATES //</span>
+          <span>1-Click Starter Stacks (Instant Load)</span>
+        </div>
+      </div>
+
+      <div class="starter-bento">
+        {starterStacks.map((st) => (
+          <div class="starter-card">
+            <div class="starter-top">
+              <div>
+                <span class="starter-sub">{st.subtitle}</span>
+                <h3>{st.title}</h3>
+              </div>
+              <button
+                type="button"
+                class="load-starter-btn"
+                data-ids={st.ids.join(',')}
+                data-name={st.title}
+              >
+                + Load Stack ({st.ids.length})
+              </button>
+            </div>
+
+            <p class="starter-desc">{st.desc}</p>
+
+            <div class="starter-preview-pills">
+              {st.previewTools.map((t) => t && (
+                <span class="st-tool-chip">
+                  <img
+                    src={`https://www.google.com/s2/favicons?domain=${t.domain}&sz=64`}
+                    alt={t.name}
+                    width="14"
+                    height="14"
+                    decoding="async"
+                    data-image-component="true"
+                    loading="lazy"
+                  />
+                  <span>#{t.id} {t.name}</span>
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <style>
+    .saved-page {
+      padding-top: 38px;
+      min-height: 65vh;
+    }
+
+    .header-box {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .header-box h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      margin-bottom: 6px;
+    }
+
+    .serif-italic {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.06em;
+    }
+
+    .header-box p {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      margin-bottom: 20px;
+    }
+
+    /* QUICK-ADD TOOL BAR */
+    .quick-add-wrap {
+      max-width: 660px;
+      margin: 0 auto;
+      position: relative;
+      text-align: left;
+    }
+
+    .quick-add-bar {
+      display: flex;
+      align-items: center;
+      background: var(--bg-input);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 4px 14px 4px 16px;
+      box-shadow: var(--shadow-search);
+    }
+
+    .quick-add-bar:focus-within {
+      border-color: var(--border-hover);
+      box-shadow: 0 0 0 3px var(--lime-glow);
+    }
+
+    .qa-prefix {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-right: 8px;
+      flex-shrink: 0;
+    }
+
+    .quick-add-bar input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      padding: 10px 6px;
+      font-size: 0.86rem;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .quick-add-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      z-index: 70;
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 6px;
+      max-height: 290px;
+      overflow-y: auto;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    :global(.qa-item) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 10px;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: background-color 0.12s ease;
+    }
+
+    :global(.qa-item:hover) {
+      background: var(--bg-inset);
+    }
+
+    :global(.qa-item-left) {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    :global(.qa-id) {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      width: 34px;
+      flex-shrink: 0;
+    }
+
+    :global(.qa-name) {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    :global(.qa-dom) {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      margin-left: 6px;
+    }
+
+    :global(.qa-action-btn) {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--bg-inset);
+      color: var(--text);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    :global(.qa-action-btn.in-stack) {
+      color: var(--emerald-ink);
+    }
+
+    /* SHARED BANNER */
+    .shared-banner {
+      background: var(--bg-inset);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .shared-banner-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.86rem;
+    }
+
+    .shared-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 700;
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .shared-banner-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* STACK TOOLBAR */
+    .stack-toolbar {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow-card);
+    }
+
+    .stack-toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .toolbar-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .stack-name-input {
+      flex: 1;
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 7px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      outline: none;
+    }
+
+    .stack-name-input:focus {
+      border-color: var(--border-hover);
+    }
+
+    .stack-toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .stack-count-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-right: 4px;
+    }
+
+    .stack-primary-btn {
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 600;
+      height: 34px;
+      padding: 0 14px;
+      border-radius: 7px;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .stack-secondary-btn {
+      background: var(--bg-inset);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      font-family: inherit;
+      font-size: 0.76rem;
+      font-weight: 500;
+      height: 34px;
+      padding: 0 12px;
+      border-radius: 7px;
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .stack-secondary-btn:hover {
+      border-color: var(--border-hover);
+      color: var(--text);
+    }
+
+    .col-mode-switch {
+      display: inline-flex;
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 2px;
+      gap: 2px;
+    }
+
+    .col-mode-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: transparent;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .col-mode-btn.active {
+      background: var(--bg-card);
+      color: var(--text);
+    }
+
+    /* SHARE URL PREVIEW BOX */
+    .share-url-box {
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .share-url-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      font-weight: 700;
+      color: var(--emerald-ink);
+    }
+
+    .share-url-input {
+      flex: 1;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      padding: 6px 10px;
+      border-radius: 5px;
+      outline: none;
+      min-width: 220px;
+    }
+
+    /* SAVED BENTO GRID */
+    .saved-bento {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-rows: 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .saved-bento.cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dir-row {
+      background: var(--bg-card);
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      min-width: 0;
+      height: 100%;
+      transition: background-color 0.14s ease;
+    }
+
+    .dir-row:hover {
+      background: var(--bg-card-hover);
+    }
+
+    .dir-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .dir-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--num-text);
+      background: var(--num-bg);
+      border: 1px solid var(--num-border);
+      padding: 2px 7px;
+      border-radius: 5px;
+    }
+
+    .dir-card-body {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .dir-ico {
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+      background: var(--bg-icon);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .dir-copy {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .dir-name {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.25;
+    }
+
+    .dir-tagline {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.48;
+    }
+
+    .dir-card-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 11px;
+      border-top: 1px solid var(--border-subtle);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+    }
+
+    .dir-domain {
+      color: var(--text-muted);
+    }
+
+    .dir-open-link {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* EMPTY NOTICE */
+    .empty-notice {
+      background: var(--bg-card);
+      border: 1px dashed var(--border-light);
+      border-radius: 12px;
+      padding: 22px 24px;
+      text-align: center;
+    }
+
+    .empty-notice-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+    }
+
+    .empty-notice-inner strong {
+      color: var(--text);
+      font-size: 0.96rem;
+    }
+
+    /* STARTER STACK TEMPLATES BENTO */
+    .starter-bento {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .starter-card {
+      background: var(--bg-card);
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .starter-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .starter-sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.64rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .starter-top h3 {
+      font-size: 1.08rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .load-starter-btn {
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 7px 12px;
+      border-radius: 7px;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: opacity 0.14s ease;
+    }
+
+    .load-starter-btn:hover {
+      opacity: 0.9;
+    }
+
+    .starter-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .starter-preview-pills {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .st-tool-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      color: var(--text-body);
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      padding: 3px 8px;
+      border-radius: 5px;
+    }
+
+    @media (max-width: 920px) {
+      .saved-bento,
+      .starter-bento {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .saved-page {
+        padding-top: 20px;
+      }
+      .header-box {
+        margin-bottom: 18px;
+      }
+      .header-box h1 {
+        font-size: 1.85rem;
+      }
+      .quick-add-box input,
+      .stack-name-input {
+        font-size: 16px;
+        min-width: 0;
+      }
+      .stack-toolbar {
+        padding: 14px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .stack-name-wrap {
+        width: 100%;
+      }
+      .stack-name-input {
+        flex: 1;
+        width: 100%;
+      }
+      .toolbar-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .saved-bento,
+      .saved-bento.cols-2,
+      .starter-bento {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+        gap: 10px;
+      }
+      .starter-card {
+        padding: 16px;
+      }
+      .starter-top {
+        flex-direction: column;
+      }
+      .load-starter-btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+
+  <script is:inline define:vars={{ quickAddPool }}>
+    const params = new URLSearchParams(window.location.search);
+    const urlStackParam = params.get('stack');
+    const urlStackName = params.get('name');
+
+    const grid = document.getElementById('savedGrid');
+    const emptyNotice = document.getElementById('emptySavedNotice');
+    const toolbar = document.getElementById('stackToolbar');
+    const sharedBanner = document.getElementById('sharedStackBanner');
+    const sharedBannerText = document.getElementById('sharedBannerText');
+    const importStackBtn = document.getElementById('importStackBtn');
+    const stackNameInput = document.getElementById('stackNameInput');
+    const stackCountLabel = document.getElementById('stackCountLabel');
+    const shareStackBtn = document.getElementById('shareStackBtn');
+    const shareStackBtnText = document.getElementById('shareStackBtnText');
+    const copyListBtn = document.getElementById('copyListBtn');
+    const clearStackBtn = document.getElementById('clearStackBtn');
+    const shareUrlBox = document.getElementById('shareUrlBox');
+    const shareUrlInput = document.getElementById('shareUrlInput');
+    const copyAgainBtn = document.getElementById('copyAgainBtn');
+    const stackHeading = document.getElementById('stackHeading');
+    const stackEyebrow = document.getElementById('stackEyebrow');
+    const quickAddInput = document.getElementById('quickAddInput');
+    const quickAddDropdown = document.getElementById('quickAddDropdown');
+    const quickAddWrap = document.getElementById('quickAddWrap');
+    const cards = Array.from(document.querySelectorAll('.saved-card'));
+    const starterBtns = document.querySelectorAll('.load-starter-btn');
+    const colModeBtns = document.querySelectorAll('.col-mode-btn');
+
+    let isSharedView = Boolean(urlStackParam);
+    const sharedIds = urlStackParam
+      ? urlStackParam
+          .split(',')
+          .map((s) => String(parseInt(s.trim(), 10) || s.trim()))
+          .filter(Boolean)
+      : [];
+
+    if (!isSharedView) {
+      stackNameInput.value = localStorage.getItem('goodfinds_stack_name') || '';
+      stackNameInput.addEventListener('input', () => {
+        localStorage.setItem('goodfinds_stack_name', stackNameInput.value.trim());
+      });
+    } else if (urlStackName) {
+      stackNameInput.value = urlStackName;
+      stackHeading.textContent = urlStackName;
+      stackEyebrow.textContent = `SHARED STACK // ${sharedIds.length} CURATED WEBSITES`;
+    }
+
+    function getSavedIds() {
+      const raw = JSON.parse(localStorage.getItem('goodfinds_saved') || '[]');
+      return Array.from(new Set(raw.map((id) => String(parseInt(id, 10) || id))));
+    }
+
+    function renderStack() {
+      const activeIds = isSharedView ? sharedIds : getSavedIds();
+
+      let count = 0;
+      cards.forEach((c) => {
+        const id = c.getAttribute('data-id');
+        if (activeIds.includes(id)) {
+          c.style.display = 'flex';
+          count++;
+        } else {
+          c.style.display = 'none';
+        }
+      });
+
+      if (isSharedView) {
+        sharedBanner.style.display = 'flex';
+        sharedBannerText.textContent = urlStackName
+          ? `"${urlStackName}" (${count} websites in this shared stack)`
+          : `Viewing ${count} websites in this shared stack.`;
+      } else {
+        sharedBanner.style.display = 'none';
+      }
+
+      if (count === 0) {
+        grid.style.display = 'none';
+        toolbar.style.display = 'none';
+        emptyNotice.style.display = 'block';
+      } else {
+        emptyNotice.style.display = 'none';
+        toolbar.style.display = 'flex';
+        grid.style.display = 'grid';
+        stackCountLabel.textContent = `${count} ${count === 1 ? 'WEBSITE' : 'WEBSITES'}`;
+      }
+
+      if (window.syncInlineSaveButtons) window.syncInlineSaveButtons();
+    }
+
+    // 1-Click Starter Stack Loader (Directly saves to localStorage and displays cards!)
+    starterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const idsToLoad = (btn.getAttribute('data-ids') || '').split(',').filter(Boolean);
+        const presetName = btn.getAttribute('data-name') || '';
+        isSharedView = false;
+
+        let saved = getSavedIds();
+        idsToLoad.forEach((id) => {
+          if (!saved.includes(id)) saved.push(id);
+        });
+        localStorage.setItem('goodfinds_saved', JSON.stringify(saved));
+
+        if (!stackNameInput.value.trim() && presetName) {
+          stackNameInput.value = presetName;
+          localStorage.setItem('goodfinds_stack_name', presetName);
+        }
+
+        window.dispatchEvent(new Event('goodfinds:saved-updated'));
+        renderStack();
+
+        const origText = btn.textContent;
+        btn.textContent = `✓ Loaded (${idsToLoad.length})!`;
+        setTimeout(() => {
+          btn.textContent = origText;
+        }, 1800);
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // Quick-Add Search Picker
+    function renderQuickAddResults() {
+      const q = (quickAddInput.value || '').trim().toLowerCase().replace(/^#/, '');
+      if (!q) {
+        quickAddDropdown.style.display = 'none';
+        return;
+      }
+
+      const saved = getSavedIds();
+      const matches = quickAddPool
+        .filter(
+          (t) =>
+            t.id === q ||
+            t.id.includes(q) ||
+            t.name.toLowerCase().includes(q) ||
+            t.domain.toLowerCase().includes(q) ||
+            t.category.toLowerCase().includes(q)
+        )
+        .slice(0, 8);
+
+      if (matches.length === 0) {
+        quickAddDropdown.style.display = 'none';
+        return;
+      }
+
+      quickAddDropdown.innerHTML = '';
+      matches.forEach((item) => {
+        const inStack = saved.includes(item.id);
+        const row = document.createElement('div');
+        row.className = 'qa-item';
+        row.innerHTML = `
+          <div class="qa-item-left">
+            <span class="qa-id">#${item.id}</span>
+            <img src="https://www.google.com/s2/favicons?domain=${item.domain}&sz=64" alt="${item.name}" width="16" height="16" decoding="async" data-image-component="true" />
+            <div>
+              <span class="qa-name">${item.name}</span>
+              <span class="qa-dom">${item.domain}</span>
+            </div>
+          </div>
+          <button type="button" class="qa-action-btn ${inStack ? 'in-stack' : ''}">
+            ${inStack ? '✓ In Stack (Remove)' : '+ Add to Stack'}
+          </button>
+        `;
+        row.addEventListener('click', (e) => {
+          e.stopPropagation();
+          let current = getSavedIds();
+          if (current.includes(item.id)) {
+            current = current.filter((x) => x !== item.id);
+          } else {
+            current.push(item.id);
+          }
+          isSharedView = false;
+          localStorage.setItem('goodfinds_saved', JSON.stringify(current));
+          window.dispatchEvent(new Event('goodfinds:saved-updated'));
+          renderStack();
+          renderQuickAddResults();
+        });
+        quickAddDropdown.appendChild(row);
+      });
+
+      quickAddDropdown.style.display = 'flex';
+    }
+
+    if (quickAddInput) {
+      quickAddInput.addEventListener('input', renderQuickAddResults);
+      quickAddInput.addEventListener('focus', renderQuickAddResults);
+    }
+
+    document.addEventListener('click', (e) => {
+      if (quickAddWrap && !quickAddWrap.contains(e.target)) {
+        quickAddDropdown.style.display = 'none';
+      }
+    });
+
+    function buildShareableUrl() {
+      const activeIds = isSharedView ? sharedIds : getSavedIds();
+      const customName = stackNameInput.value.trim();
+      const url = new URL('/saved', window.location.origin);
+      url.searchParams.set('stack', activeIds.join(','));
+      if (customName) {
+        url.searchParams.set('name', customName);
+      }
+      return url.toString();
+    }
+
+    if (shareStackBtn) {
+      shareStackBtn.addEventListener('click', () => {
+        const shareUrl = buildShareableUrl();
+        shareUrlInput.value = shareUrl;
+        shareUrlBox.style.display = 'flex';
+        navigator.clipboard.writeText(shareUrl);
+        shareStackBtnText.textContent = 'Copied Stack URL ✓';
+        setTimeout(() => {
+          shareStackBtnText.textContent = 'Share Stack URL';
+        }, 2000);
+      });
+    }
+
+    if (copyListBtn) {
+      copyListBtn.addEventListener('click', () => {
+        const activeIds = isSharedView ? sharedIds : getSavedIds();
+        const title = stackNameInput.value.trim() || 'My GoodFinds Website Stack';
+        const lines = activeIds
+          .map((id) => quickAddPool.find((t) => t.id === id))
+          .filter(Boolean)
+          .map((t) => `- #${t.id} ${t.name} (https://${t.domain}) — ${t.tagline}`);
+        const textOut = `${title}\n\n${lines.join('\n')}`;
+        navigator.clipboard.writeText(textOut);
+        copyListBtn.textContent = 'Copied List ✓';
+        setTimeout(() => {
+          copyListBtn.textContent = 'Copy List';
+        }, 1800);
+      });
+    }
+
+    if (copyAgainBtn) {
+      copyAgainBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(shareUrlInput.value);
+        copyAgainBtn.textContent = 'Copied ✓';
+        setTimeout(() => {
+          copyAgainBtn.textContent = 'Copy Link';
+        }, 1600);
+      });
+    }
+
+    if (importStackBtn) {
+      importStackBtn.addEventListener('click', () => {
+        let saved = getSavedIds();
+        sharedIds.forEach((id) => {
+          if (!saved.includes(id)) saved.push(id);
+        });
+        localStorage.setItem('goodfinds_saved', JSON.stringify(saved));
+        if (urlStackName) {
+          localStorage.setItem('goodfinds_stack_name', urlStackName);
+        }
+        isSharedView = false;
+        window.dispatchEvent(new Event('goodfinds:saved-updated'));
+        importStackBtn.textContent = `✓ Saved ${sharedIds.length} Websites!`;
+        setTimeout(() => {
+          window.history.replaceState({}, '', '/saved');
+          renderStack();
+        }, 900);
+      });
+    }
+
+    if (clearStackBtn) {
+      clearStackBtn.addEventListener('click', () => {
+        localStorage.setItem('goodfinds_saved', '[]');
+        shareUrlBox.style.display = 'none';
+        window.dispatchEvent(new Event('goodfinds:saved-updated'));
+        if (isSharedView) {
+          window.location.href = '/saved';
+        } else {
+          renderStack();
+        }
+      });
+    }
+
+    colModeBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        colModeBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cols = btn.getAttribute('data-cols');
+        grid.classList.toggle('cols-2', cols === '2');
+        grid.classList.toggle('cols-3', cols !== '2');
+      });
+    });
+
+    window.addEventListener('goodfinds:saved-updated', renderStack);
+    renderStack();
+  </script>
+</Layout>

@@ -1,0 +1,353 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import data from '../../data/tools.json';
+
+export function getStaticPaths() {
+  return data.collections.map((col) => ({
+    params: { slug: col.slug },
+    props: { col },
+  }));
+}
+
+const { col } = Astro.props;
+const toolsInCol = data.tools.filter((t) => t.collections.includes(col.slug));
+---
+
+<Layout title={`${col.fullTitle} — GoodFinds`} activeNav="collections">
+  <main class="container col-detail">
+    <a href="/collections" class="back-link">← All Dossiers</a>
+
+    <header class="col-hero">
+      <div class="col-hero-top">
+        <div>
+          <span class="eyebrow-tag">DOSSIER // {toolsInCol.length} VERIFIED WEBSITES</span>
+          <h1>{col.fullTitle}</h1>
+          <p>{col.desc}</p>
+        </div>
+
+        <div class="col-mode-switch" role="group" aria-label="Grid column layout">
+          <button type="button" class="col-mode-btn active" data-cols="3">3-Col Cards</button>
+          <button type="button" class="col-mode-btn" data-cols="2">2-Col Cards</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="dossier-grid cols-3" id="dossierToolsGrid">
+      {toolsInCol.map((tool, idx) => (
+        <a href={`/tool/${tool.id}`} class="dir-row">
+          <div class="dir-card-top">
+            <span class="dir-num">#{tool.id}</span>
+            <button type="button" class="inline-save-btn" data-save-id={tool.id} aria-label={`Bookmark #${tool.id}`}>☆</button>
+          </div>
+
+          <div class="dir-card-body">
+            <div class="dir-ico">
+              <img
+                src={`https://www.google.com/s2/favicons?domain=${tool.domain}&sz=64`}
+                alt={tool.name}
+                width="20"
+                height="20"
+                decoding="async"
+                data-image-component="true"
+                loading="lazy"
+              />
+            </div>
+            <div class="dir-copy">
+              <strong class="dir-name">{tool.name}</strong>
+              <p class="dir-tagline">{tool.tagline}</p>
+            </div>
+          </div>
+
+          <div class="dir-card-foot">
+            <span class="dir-domain">{tool.domain}</span>
+            <span class="dir-open-link">Open <span class="dir-row-arr">↗</span></span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </main>
+
+  <style>
+    .col-detail {
+      padding-top: 28px;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .back-link:hover {
+      color: var(--text);
+    }
+
+    .col-hero {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .col-hero-top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .eyebrow-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg-inset);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 3px 9px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .col-hero h1 {
+      font-size: 1.95rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+
+    .col-hero p {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      max-width: 680px;
+    }
+
+    .col-mode-switch {
+      display: inline-flex;
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 2px;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+
+    .col-mode-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: transparent;
+      border: none;
+      padding: 4px 9px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+
+    .col-mode-btn:hover {
+      color: var(--text);
+    }
+
+    .col-mode-btn.active {
+      background: var(--bg-card);
+      color: var(--text);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    }
+
+    .dossier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-rows: 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .dossier-grid.cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dir-row {
+      background: var(--bg-card);
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      min-width: 0;
+      height: 100%;
+      transition: background-color 0.14s ease;
+    }
+
+    .dir-row:hover {
+      background: var(--bg-card-hover);
+    }
+
+    .dir-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .dir-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--num-text);
+      background: var(--num-bg);
+      border: 1px solid var(--num-border);
+      padding: 2px 7px;
+      border-radius: 5px;
+      transition: all 0.14s ease;
+    }
+
+    .dir-row:hover .dir-num {
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      border-color: var(--btn-primary-bg);
+    }
+
+    .dir-card-body {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .dir-ico {
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+      background: var(--bg-icon);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .dir-ico img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
+
+    .dir-copy {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .dir-name {
+      font-size: 0.98rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1.25;
+    }
+
+    .dir-tagline {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.48;
+    }
+
+    .dir-card-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-top: 11px;
+      border-top: 1px solid var(--border-subtle);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+    }
+
+    .dir-domain {
+      color: var(--text-muted);
+    }
+
+    .dir-open-link {
+      font-weight: 600;
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .dir-row-arr {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      display: inline-block;
+      transition: transform 0.14s ease, color 0.14s ease;
+    }
+
+    .dir-row:hover .dir-row-arr {
+      transform: translate(2px, -2px);
+      color: var(--text);
+    }
+
+    @media (max-width: 980px) {
+      .dossier-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .col-detail {
+        padding-top: 18px;
+      }
+      .col-hero {
+        padding: 18px 16px;
+        margin-bottom: 14px;
+      }
+      .col-hero h1 {
+        font-size: 1.45rem;
+      }
+      .col-hero p {
+        font-size: 0.84rem;
+      }
+      .dossier-grid,
+      .dossier-grid.cols-2 {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+        gap: 10px;
+      }
+      .dir-row {
+        padding: 15px;
+        gap: 11px;
+      }
+    }
+  </style>
+
+  <script is:inline>
+    const colModeBtns = document.querySelectorAll('.col-mode-btn');
+    const grid = document.getElementById('dossierToolsGrid');
+    colModeBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        colModeBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cols = btn.getAttribute('data-cols');
+        grid.classList.toggle('cols-2', cols === '2');
+        grid.classList.toggle('cols-3', cols !== '2');
+      });
+    });
+  </script>
+</Layout>

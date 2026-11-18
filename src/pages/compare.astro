@@ -1,0 +1,1078 @@
+---
+import Layout from '../layouts/Layout.astro';
+import data from '../data/tools.json';
+
+const rawSwaps = [
+  // 1. ADOBE & CREATIVE SUITE
+  { group: 'Adobe & Creative', paidName: 'Adobe Photoshop', monthly: 23, yearly: 276, freeId: '20', freeName: 'Photopea', note: 'Opens & edits native .PSD, .XCF, and .Sketch files with full layers, masks, and smart objects right in your browser.' },
+  { group: 'Adobe & Creative', paidName: 'Adobe Illustrator', monthly: 23, yearly: 276, freeId: '302', freeName: 'Vectorpea / Inkscape', note: 'Edit .AI, .EPS, and .SVG vector graphics with bezier pen tools, artboards, and CMYK/SVG export for $0.' },
+  { group: 'Adobe & Creative', paidName: 'Adobe Premiere Pro', monthly: 23, yearly: 276, freeId: '301', freeName: 'DaVinci Resolve', note: 'Hollywood-grade multi-track 4K 60fps video editor, Fairlight audio studio, and Fusion VFX with zero watermarks.' },
+  { group: 'Adobe & Creative', paidName: 'Adobe Acrobat Pro', monthly: 20, yearly: 240, freeId: '32', freeName: 'PDF24 Tools', note: '35+ unlimited PDF utilities—merge, split, compress, OCR, sign, and redact PDFs with zero daily limits.' },
+  { group: 'Adobe & Creative', paidName: 'Adobe Lightroom', monthly: 10, yearly: 120, freeId: '304', freeName: 'darktable', note: 'Open-source non-destructive RAW photo developer and digital lighttable supporting 500+ camera profiles.' },
+  { group: 'Adobe & Creative', paidName: 'Cinema 4D / Maya', monthly: 60, yearly: 720, freeId: '305', freeName: 'Blender', note: 'Complete open-source 3D creation suite: modeling, sculpting, rigging, Cycles ray-tracing, and video compositing.' },
+  { group: 'Adobe & Creative', paidName: 'Adobe InDesign', monthly: 23, yearly: 276, freeId: '309', freeName: 'Scribus', note: 'Open-source desktop publishing for print-ready magazines, books, and CMYK PDF/X-4 press layouts.' },
+  { group: 'Adobe & Creative', paidName: 'Figma Professional', monthly: 15, yearly: 180, freeId: '122', freeName: 'Penpot', note: 'Open-source web UI/UX design & prototyping platform built on native CSS Grid, Flexbox, and SVG standards.' },
+  { group: 'Adobe & Creative', paidName: 'Procreate / Clip Studio', monthly: 5, yearly: 60, freeId: '306', freeName: 'Krita', note: 'Professional digital painting studio with 100+ brush engines, pressure stabilizers, and frame-by-frame 2D animation.' },
+  { group: 'Adobe & Creative', paidName: 'Adobe Audition', monthly: 23, yearly: 276, freeId: '307', freeName: 'Audacity', note: 'Legendary open-source multi-track audio recorder, spectrogram editor, noise reducer, and podcast mastering tool.' },
+
+  // 2. OFFICE, SAAS & PRODUCTIVITY
+  { group: 'Office & SaaS', paidName: 'Microsoft Office 365', monthly: 9, yearly: 100, freeId: '310', freeName: 'LibreOffice', note: 'Complete offline office suite replacing Word (.docx), Excel (.xlsx), and PowerPoint (.pptx) with zero subscriptions.' },
+  { group: 'Office & SaaS', paidName: 'Typeform Basic', monthly: 29, yearly: 348, freeId: '61', freeName: 'Tally', note: 'Unlimited forms, unlimited submissions, conditional logic, file uploads, and custom branding on the 100% free tier.' },
+  { group: 'Office & SaaS', paidName: 'Calendly Standard', monthly: 12, yearly: 144, freeId: '62', freeName: 'Cal.com', note: 'Open-source scheduling infrastructure with unlimited event types, Google/Outlook calendar sync, and Stripe support.' },
+  { group: 'Office & SaaS', paidName: 'Miro + Notion Team', monthly: 18, yearly: 216, freeId: '312', freeName: 'AFFiNE', note: 'Open-source, local-first workspace that merges Notion-style block documents with Miro-style infinite whiteboards.' },
+  { group: 'Office & SaaS', paidName: 'Airtable Team', monthly: 20, yearly: 240, freeId: '313', freeName: 'NocoDB', note: 'Turns any database into a smart spreadsheet with Kanban, Gallery, Form, and Calendar views for $0.' },
+  { group: 'Office & SaaS', paidName: 'Zapier Professional', monthly: 30, yearly: 360, freeId: '314', freeName: 'n8n', note: 'Fair-code visual workflow automation with 400+ integrations, webhooks, and AI agent nodes when self-hosted.' },
+  { group: 'Office & SaaS', paidName: 'Evernote Personal', monthly: 11, yearly: 130, freeId: '315', freeName: 'Joplin', note: 'Open-source Markdown note-taking and web clipper app with end-to-end encryption across desktop and mobile.' },
+  { group: 'Office & SaaS', paidName: 'Grammarly Premium', monthly: 12, yearly: 144, freeId: '43', freeName: 'LanguageTool', note: 'Open-source grammar, style, and tone checker supporting 30+ languages across browsers, Word, and Google Docs.' },
+  { group: 'Office & SaaS', paidName: 'WeTransfer Pro', monthly: 12, yearly: 144, freeId: '127', freeName: 'ToffeeShare / Wormhole', note: 'Direct peer-to-peer encrypted file transfer with no file-size limits and zero cloud storage middleman.' },
+  { group: 'Office & SaaS', paidName: '1Password / LastPass', monthly: 4, yearly: 48, freeId: '91', freeName: 'Bitwarden', note: 'Independently audited open-source password & passkey manager with unlimited logins synced across all devices.' },
+
+  // 3. AI, CODING & CLOUD
+  { group: 'AI & Coding', paidName: 'ChatGPT Plus / Claude Pro', monthly: 20, yearly: 240, freeId: '317', freeName: 'Duck.ai', note: 'Anonymous, zero-login access to frontier AI models (Claude, GPT-4o mini, Llama, Mistral) with zero IP tracking.' },
+  { group: 'AI & Coding', paidName: 'Google Colab Pro', monthly: 10, yearly: 120, freeId: '318', freeName: 'Kaggle Notebooks', note: '30 hours/week of 100% free cloud GPU compute (dual NVIDIA T4 GPUs with 32GB VRAM) for ML and Python.' },
+  { group: 'AI & Coding', paidName: 'GitHub Copilot', monthly: 10, yearly: 120, freeId: '319', freeName: 'Codeium', note: 'Unlimited free AI code autocomplete, in-editor chat, and repo context inside VS Code, JetBrains, and Neovim.' },
+  { group: 'AI & Coding', paidName: 'Vercel Pro / Paid Hosting', monthly: 20, yearly: 240, freeId: '320', freeName: 'Cloudflare Pages', note: 'Deploy static sites and full-stack apps with UNLIMITED free bandwidth and commercial rights on Cloudflare’s edge.' },
+
+  // 4. COLLEGE, STEM & RESEARCH SOFTWARE
+  { group: 'College & STEM', paidName: 'College Textbooks ($200/ea)', monthly: 35, yearly: 420, freeId: '11', freeName: 'OpenStax', note: 'Rice University’s library of 100% free, peer-reviewed college textbooks in PDF and web view with zero access codes.' },
+  { group: 'College & STEM', paidName: 'WolframAlpha Pro (Steps)', monthly: 7, yearly: 84, freeId: '236', freeName: 'Integral Calculator', note: 'Shows every intermediate integration rule, substitution, and derivative step for free without a Pro paywall.' },
+  { group: 'College & STEM', paidName: 'MATLAB License', monthly: 12, yearly: 150, freeId: '330', freeName: 'GNU Octave', note: 'Drop-in open-source scientific computing language syntax-compatible with MATLAB .m scripts and matrix plots.' },
+  { group: 'College & STEM', paidName: 'IBM SPSS Statistics', monthly: 15, yearly: 180, freeId: '331', freeName: 'JASP', note: 'University-backed point-and-click statistics software that outputs publication-ready APA 7 tables and plots.' },
+  { group: 'College & STEM', paidName: 'AutoCAD / SolidWorks', monthly: 50, yearly: 600, freeId: '332', freeName: 'FreeCAD', note: 'Unrestricted open-source parametric 3D CAD modeler for mechanical engineering, architecture, and 3D printing.' },
+  { group: 'College & STEM', paidName: 'Quizlet Plus', monthly: 8, yearly: 96, freeId: '38', freeName: 'AnkiWeb', note: 'The gold-standard open-source active-recall and spaced-repetition flashcard system used by medical & CS students.' },
+
+  // 5. MEDIA, STREAMING & LEARNING
+  { group: 'Media & Learning', paidName: 'Audible Premium Plus', monthly: 15, yearly: 180, freeId: '84', freeName: 'Libby', note: 'Borrow thousands of bestselling audiobooks, ebooks, and magazines for $0 using your local or university library card.' },
+  { group: 'Media & Learning', paidName: 'Cable TV / Paid Streams', monthly: 45, yearly: 540, freeId: '321', freeName: 'Tubi + Kanopy', note: 'Stream 50,000+ legal Hollywood movies, A24 films, and Criterion classics for $0 with zero subscription fees.' },
+  { group: 'Media & Learning', paidName: 'Duolingo Super / Babbel', monthly: 13, yearly: 156, freeId: '325', freeName: 'Language Transfer', note: 'Complete, ad-free audio language courses that teach grammar intuitively from scratch with zero gamified paywalls.' },
+  { group: 'Media & Learning', paidName: 'Chess.com Diamond', monthly: 14, yearly: 168, freeId: '327', freeName: 'Lichess.org', note: '100% free, ad-free open-source chess server with unlimited tactical puzzles, opening explorer, and Stockfish analysis.' },
+  { group: 'Media & Learning', paidName: 'Splice Sounds', monthly: 13, yearly: 156, freeId: '329', freeName: 'Looperman', note: 'Community vault of 250,000+ royalty-free WAV loops, acapellas, and drum stems free to download and use.' },
+
+  // 6. OS & SYSTEM UTILITIES
+  { group: 'OS & Utilities', paidName: 'TeamViewer / AnyDesk', monthly: 25, yearly: 300, freeId: '338', freeName: 'RustDesk', note: 'Open-source remote desktop software with end-to-end encryption and zero "commercial use suspected" timeouts.' },
+  { group: 'OS & Utilities', paidName: 'CleanMyMac / CCleaner Pro', monthly: 4, yearly: 48, freeId: '342', freeName: 'Pearcleaner / BleachBit', note: 'Lightweight open-source app uninstaller and deep system cache cleaner with zero nagware or background bloat.' },
+  { group: 'OS & Utilities', paidName: 'Snagit / Loom Business', monthly: 10, yearly: 120, freeId: '55', freeName: 'Screenity', note: 'Open-source screen & camera recorder with on-screen annotations, cursor zoom, and local MP4/WebM export.' }
+];
+
+const allSwaps = rawSwaps.map((s) => {
+  const matchedTool = data.tools.find((t) => t.id === s.freeId);
+  return {
+    ...s,
+    domain: matchedTool ? matchedTool.domain : 'goodfinds.io',
+    pricingBadge: matchedTool ? matchedTool.pricingBadge : '100% Free'
+  };
+});
+
+const swapGroups = ['All Swaps', 'Adobe & Creative', 'Office & SaaS', 'AI & Coding', 'College & STEM', 'Media & Learning', 'OS & Utilities'];
+---
+
+<Layout title="Free Alternative for Everything — Subscription Killer — GoodFinds" activeNav="compare">
+  <section class="compare-hero">
+    <div class="hero-grid-bg" aria-hidden="true"></div>
+    <div class="container compare-hero-inner">
+      <div class="eyebrow-tag">
+        <span class="pulse-dot"></span>
+        <span>THE $0 REPLACEMENT MATRIX // {allSwaps.length} PAID SUBSCRIPTIONS REPLACED</span>
+      </div>
+
+      <h1>
+        A free alternative for<br />
+        <em class="serif-italic">almost everything.</em>
+      </h1>
+
+      <p class="hero-sub">
+        Stop paying monthly rent for software. Search any paid app below—or click the subscriptions you currently pay for to calculate your annual savings and build a $0 replacement stack.
+      </p>
+
+      <!-- COMMAND SEARCH BAR -->
+      <div class="swap-search-bar">
+        <span class="prefix">REPLACE //</span>
+        <input
+          type="text"
+          id="swapSearchInput"
+          placeholder="Search any paid app (Photoshop, Office 365, MATLAB, ChatGPT, Audible, Premiere, Zapier)..."
+          autocomplete="off"
+        />
+        <span class="match-pill" id="swapMatchCount">{allSwaps.length} SWAPS</span>
+      </div>
+
+      <!-- CATEGORY FILTER PILLS -->
+      <div class="cat-pills-row" id="swapGroupPills">
+        {swapGroups.map((g, i) => (
+          <button type="button" class={`cat-pill ${i === 0 ? 'active' : ''}`} data-group={g}>
+            {g}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <main class="container compare-main">
+    <!-- SECTION HEADER WITH INTEGRATED SAVINGS TALLY & VIEW SWITCH (DIRECTLY BELOW HERO FILTER PILLS) -->
+    <div class="sec-header" style="margin-top:8px;">
+      <div class="sec-title">
+        <span class="sec-index">1 //</span>
+        <span id="swapSectionTitle">Paid-to-$0 Replacement Matrix ({allSwaps.length} Verified Swaps)</span>
+      </div>
+
+      <div class="matrix-header-controls">
+        <div class="inline-tally-pill">
+          <span class="tally-label">SAVINGS:</span>
+          <strong class="tally-val" id="skMonthlyVal">$0/mo</strong>
+          <span class="tally-sep">·</span>
+          <strong class="tally-val emerald" id="skYearlyVal">$0/yr</strong>
+          <span class="tally-count" id="skSelectedCount">(0 selected)</span>
+        </div>
+
+        <button type="button" class="preset-chip" id="skToggleAllBtn">Select All {allSwaps.length}</button>
+        <button type="button" class="preset-chip reset-chip" id="skClearAllBtn" style="display:none;">× Clear</button>
+        <button type="button" class="save-swaps-btn" id="skBookmarkSwapsBtn">
+          ★ Bookmark Selected (0)
+        </button>
+
+        <div class="col-mode-switch" role="group" aria-label="Grid column layout">
+          <button type="button" class="col-mode-btn active" data-cols="3">3-Col Cards</button>
+          <button type="button" class="col-mode-btn" data-cols="2">2-Col Cards</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- EQUAL-HEIGHT BENTO SWAP CARDS (ZERO PRESELECTED CLUTTER, ZERO TRUNCATION) -->
+    <div class="swap-bento-grid cols-3" id="subkillerGrid">
+      {allSwaps.map((item, idx) => (
+        <article
+          class="swap-card"
+          data-group={item.group}
+          data-search={`${item.paidName} ${item.freeName} ${item.note} ${item.group}`.toLowerCase()}
+          data-monthly={item.monthly}
+          data-yearly={item.yearly}
+          data-free-id={item.freeId}
+        >
+          <!-- 1. MINIMAL VISUAL COMPARISON: DROP PAID -> USE $0 APP -->
+          <div class="swap-vs-box">
+            <div class="paid-tier-row">
+              <div class="paid-left">
+                <span class="vs-micro-label">INSTEAD OF</span>
+                <strong class="paid-app-title">{item.paidName}</strong>
+              </div>
+              <div class="paid-right-group">
+                <span class="paid-price-inline">${item.monthly}/mo (${item.yearly}/yr)</span>
+                <button
+                  type="button"
+                  class="swap-select-check"
+                  aria-label={`Select ${item.paidName} in savings calculator`}
+                  title="Click to include in your savings calculator"
+                >
+                  <span class="check-icon">✓</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="vs-divider"></div>
+
+            <div class="free-tier-row">
+              <div class="free-ico">
+                <img
+                  src={`https://www.google.com/s2/favicons?domain=${item.domain}&sz=64`}
+                  alt={item.freeName}
+                  width="20"
+                  height="20"
+                  decoding="async"
+                  data-image-component="true"
+                  loading="lazy"
+                />
+              </div>
+              <div class="free-main">
+                <strong class="free-app-title">{item.freeName}</strong>
+                <span class="free-domain-txt">{item.domain}</span>
+              </div>
+              <span class="zero-cost-badge">$0</span>
+            </div>
+          </div>
+
+          <!-- 2. FULL EXPLANATION (100% VISIBLE, ZERO TAG CLUTTER) -->
+          <p class="swap-note">{item.note}</p>
+
+          <!-- 3. CARD FOOTER ACTIONS -->
+          <div class="swap-card-foot">
+            <button type="button" class="calc-add-text-btn">
+              + Add to Calculator
+            </button>
+            <div class="swap-foot-actions">
+              <button
+                type="button"
+                class="inline-save-btn"
+                data-save-id={item.freeId}
+                aria-label={`Bookmark #${item.freeId}`}
+              >☆</button>
+              <a href={`/tool/${item.freeId}`} class="inspect-free-link">
+                Open <span class="arr">↗</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- EDITORIAL INDEPENDENCE & DISCLOSURE -->
+    <section class="disclosure-card" id="disclosure">
+      <div class="ed-label">POLICY // EDITORIAL INDEPENDENCE & DISCLOSURE</div>
+      <h3>How GoodFinds verifies $0 replacements</h3>
+      <p>
+        GoodFinds is an independent internet discovery archive. Every website listed in our index (#1 to #{data.tools.length}) is free to browse and verified to include a functional free tier, open-source license, university/library backing, or no-login utility. Certain outbound links are partner links, meaning we may earn a commission if you voluntarily choose to upgrade—at zero additional cost to you.
+      </p>
+    </section>
+  </main>
+
+  <style>
+    /* HERO SECTION */
+    .compare-hero {
+      position: relative;
+      padding: 52px 0 34px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .hero-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 70% 80% at 50% 35%, #000 30%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 80% at 50% 35%, #000 30%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .compare-hero-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #16a34a;
+    }
+
+    .compare-hero h1 {
+      font-size: clamp(2.3rem, 4.8vw, 3.6rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 14px;
+    }
+
+    .serif-italic {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.08em;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 6px;
+      text-decoration-color: var(--border-light);
+    }
+
+    .hero-sub {
+      color: var(--text-secondary);
+      font-size: 0.94rem;
+      max-width: 640px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
+    }
+
+    .swap-search-bar {
+      max-width: 650px;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      background: var(--bg-input);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 4px 14px 4px 16px;
+      box-shadow: var(--shadow-search);
+    }
+
+    .swap-search-bar:focus-within {
+      border-color: var(--border-hover);
+    }
+
+    .prefix {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-right: 8px;
+      flex-shrink: 0;
+    }
+
+    .swap-search-bar input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      padding: 10px 6px;
+      font-size: 0.88rem;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .match-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      padding: 3px 8px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .cat-pills-row {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .cat-pill {
+      background: var(--bg-pill);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 6px 13px;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+
+    .cat-pill:hover {
+      border-color: var(--border-hover);
+      color: var(--text);
+    }
+
+    .cat-pill.active {
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      border-color: var(--btn-primary-bg);
+      font-weight: 600;
+    }
+
+    .compare-main {
+      padding-top: 20px;
+    }
+
+    /* COMPACT HEADER CONTROLS & SAVINGS PILL */
+    .matrix-header-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .inline-tally-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 5px 11px;
+      border-radius: 7px;
+    }
+
+    .tally-label {
+      color: var(--text-muted);
+      font-size: 0.64rem;
+      font-weight: 600;
+    }
+
+    .tally-val {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .tally-val.emerald {
+      color: var(--emerald-ink);
+    }
+
+    .tally-sep {
+      color: var(--border-light);
+    }
+
+    .tally-count {
+      color: var(--text-muted);
+      font-size: 0.64rem;
+    }
+
+    .preset-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 5px 10px;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+
+    .preset-chip:hover {
+      border-color: var(--border-hover);
+      color: var(--text);
+    }
+
+    .preset-chip.reset-chip {
+      color: var(--text);
+      border-color: var(--border-light);
+    }
+
+    .save-swaps-btn {
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      font-family: inherit;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 7px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.14s ease;
+    }
+
+    .save-swaps-btn:hover {
+      opacity: 0.9;
+    }
+
+    /* VIEW SWITCHER */
+    .col-mode-switch {
+      display: inline-flex;
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 2px;
+      gap: 2px;
+    }
+
+    .col-mode-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: transparent;
+      border: none;
+      padding: 4px 9px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+
+    .col-mode-btn:hover {
+      color: var(--text);
+    }
+
+    .col-mode-btn.active {
+      background: var(--bg-card);
+      color: var(--text);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    }
+
+    /* EQUAL-HEIGHT SWAP BENTO GRID */
+    .swap-bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-rows: 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .swap-bento-grid.cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .swap-card {
+      background: var(--bg-card);
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      min-width: 0;
+      height: 100%;
+      cursor: pointer;
+      transition: background-color 0.14s ease;
+    }
+
+    .swap-card:hover {
+      background: var(--bg-card-hover);
+    }
+
+    .swap-card.checked {
+      background: var(--bg-card-hover);
+    }
+
+    /* 1. TOP BAR */
+    .swap-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .swap-group-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.64rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 5px;
+    }
+
+    .swap-top-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .save-yr-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.64rem;
+      font-weight: 700;
+      color: var(--emerald-ink);
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      padding: 2px 7px;
+      border-radius: 5px;
+    }
+
+    .swap-select-check {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 1px solid var(--border-light);
+      background: var(--bg-inset);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+
+    .check-icon {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: transparent;
+    }
+
+    .swap-card.checked .swap-select-check {
+      background: var(--btn-primary-bg);
+      border-color: var(--btn-primary-bg);
+    }
+
+    .swap-card.checked .check-icon {
+      color: var(--btn-primary-text);
+    }
+
+    /* 2. VISUAL COMPARISON BOX */
+    .swap-vs-box {
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: border-color 0.14s ease;
+    }
+
+    .swap-card.checked .swap-vs-box {
+      border-color: var(--border-hover);
+    }
+
+    .paid-tier-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .paid-left {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      min-width: 0;
+    }
+
+    .vs-micro-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.56rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .paid-app-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: line-through;
+      text-decoration-color: var(--border-light);
+    }
+
+    .paid-right-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .paid-price-inline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .vs-divider {
+      border-top: 1px dashed var(--border);
+    }
+
+    .free-tier-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .free-ico {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .free-main {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .free-title-line {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .free-id-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.64rem;
+      font-weight: 700;
+      background: var(--num-bg);
+      color: var(--num-text);
+      border: 1px solid var(--num-border);
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+
+    .free-app-title {
+      font-size: 0.94rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.015em;
+    }
+
+    .free-domain-txt {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.64rem;
+      color: var(--text-muted);
+    }
+
+    .zero-cost-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--emerald-ink);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 3px 8px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    /* 3. NOTE */
+    .swap-note {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    /* 4. FOOTER */
+    .swap-card-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-top: 11px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .calc-add-text-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: color 0.14s ease;
+    }
+
+    .swap-card:hover .calc-add-text-btn,
+    .swap-card.checked .calc-add-text-btn {
+      color: var(--emerald-ink);
+    }
+
+    .swap-foot-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .inspect-free-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .inspect-free-link:hover {
+      text-decoration: underline;
+    }
+
+    .disclosure-card {
+      margin-top: 44px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 28px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .ed-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+
+    .disclosure-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .disclosure-card p {
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 1020px) {
+      .swap-bento-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .cat-pills-row {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        margin: 0 -14px;
+        padding: 2px 14px 4px;
+        gap: 6px;
+      }
+      .cat-pills-row::-webkit-scrollbar {
+        display: none;
+      }
+      .cat-pill {
+        white-space: nowrap;
+        flex-shrink: 0;
+        padding: 6px 12px;
+        font-size: 0.74rem;
+      }
+    }
+
+    @media (max-width: 660px) {
+      .compare-hero {
+        padding: 24px 0 18px;
+      }
+      .eyebrow-tag {
+        font-size: 0.58rem;
+        padding: 4px 10px;
+        margin-bottom: 12px;
+      }
+      .compare-hero h1 {
+        font-size: clamp(1.9rem, 7.8vw, 2.4rem);
+        margin-bottom: 10px;
+      }
+      .hero-sub {
+        font-size: 0.83rem;
+        line-height: 1.5;
+        margin-bottom: 16px;
+      }
+      .swap-search-bar {
+        padding: 2px 10px 2px 12px;
+        margin-bottom: 12px;
+      }
+      .swap-search-bar input {
+        font-size: 16px;
+        padding: 8px;
+        min-width: 0;
+      }
+      .matrix-header-controls {
+        width: 100%;
+        gap: 6px;
+      }
+      .inline-tally-pill {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .swap-bento-grid,
+      .swap-bento-grid.cols-2 {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+        gap: 10px;
+      }
+      .swap-card {
+        padding: 15px;
+        gap: 11px;
+      }
+      .disclosure-card {
+        margin-top: 28px;
+        padding: 18px 16px;
+      }
+    }
+  </style>
+
+  <script is:inline>
+    const skCards = Array.from(document.querySelectorAll('#subkillerGrid .swap-card'));
+    const skSelectedCount = document.getElementById('skSelectedCount');
+    const skMonthlyVal = document.getElementById('skMonthlyVal');
+    const skYearlyVal = document.getElementById('skYearlyVal');
+    const skBookmarkSwapsBtn = document.getElementById('skBookmarkSwapsBtn');
+    const skToggleAllBtn = document.getElementById('skToggleAllBtn');
+    const skClearAllBtn = document.getElementById('skClearAllBtn');
+    const swapSearchInput = document.getElementById('swapSearchInput');
+    const swapMatchCount = document.getElementById('swapMatchCount');
+    const swapSectionTitle = document.getElementById('swapSectionTitle');
+    const groupPills = document.querySelectorAll('#swapGroupPills .cat-pill');
+    const presetChips = document.querySelectorAll('.preset-chip[data-preset]');
+    const colModeBtns = document.querySelectorAll('.col-mode-btn');
+    const grid = document.getElementById('subkillerGrid');
+
+    let currentGroup = 'All Swaps';
+
+    function filterSwaps() {
+      const q = (swapSearchInput.value || '').trim().toLowerCase();
+      let visibleCount = 0;
+
+      skCards.forEach((card) => {
+        const grp = card.getAttribute('data-group') || '';
+        const txt = card.getAttribute('data-search') || '';
+        const matchGroup = currentGroup === 'All Swaps' || grp === currentGroup;
+        const matchSearch = !q || txt.includes(q);
+        const show = matchGroup && matchSearch;
+        card.style.display = show ? 'flex' : 'none';
+        if (show) visibleCount++;
+      });
+
+      if (swapMatchCount) {
+        swapMatchCount.textContent = `${visibleCount} ${visibleCount === 1 ? 'SWAP' : 'SWAPS'}`;
+      }
+      if (swapSectionTitle) {
+        if (currentGroup === 'All Swaps' && !q) {
+          swapSectionTitle.textContent = `Paid-to-$0 Replacement Matrix (${skCards.length} Verified Swaps)`;
+        } else {
+          const parts = [];
+          if (currentGroup !== 'All Swaps') parts.push(currentGroup);
+          if (q) parts.push(`"${swapSearchInput.value.trim()}"`);
+          swapSectionTitle.textContent = `${parts.join(' · ')} (${visibleCount} ${visibleCount === 1 ? 'Swap' : 'Swaps'})`;
+        }
+      }
+    }
+
+    function updateSubKillerTotals() {
+      let monthly = 0;
+      let yearly = 0;
+      let checkedCount = 0;
+
+      skCards.forEach((card) => {
+        const isChecked = card.classList.contains('checked');
+        const addBtn = card.querySelector('.calc-add-text-btn');
+        const yr = Number(card.getAttribute('data-yearly') || 0);
+
+        if (addBtn) {
+          addBtn.textContent = isChecked ? `✓ In Calculator (-$${yr}/yr)` : `+ Add to Calculator`;
+        }
+
+        if (isChecked) {
+          monthly += Number(card.getAttribute('data-monthly') || 0);
+          yearly += yr;
+          checkedCount++;
+        }
+      });
+
+      if (skSelectedCount) skSelectedCount.textContent = `(${checkedCount} selected)`;
+      if (skMonthlyVal) skMonthlyVal.textContent = `$${monthly.toLocaleString()}/mo`;
+      if (skYearlyVal) skYearlyVal.textContent = `$${yearly.toLocaleString()}/yr`;
+      if (skBookmarkSwapsBtn) {
+        skBookmarkSwapsBtn.textContent =
+          checkedCount > 0 ? `★ Bookmark Selected (${checkedCount})` : `★ Bookmark Selected (0)`;
+      }
+      if (skClearAllBtn) {
+        skClearAllBtn.style.display = checkedCount > 0 ? 'inline-block' : 'none';
+      }
+      if (skToggleAllBtn) {
+        skToggleAllBtn.textContent =
+          checkedCount === skCards.length ? 'All 38 Selected' : `Select All ${skCards.length}`;
+      }
+    }
+
+    skCards.forEach((card) => {
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('a') || e.target.closest('.inline-save-btn')) return;
+        card.classList.toggle('checked');
+        updateSubKillerTotals();
+      });
+    });
+
+    const presetMap = {
+      adobe: ['20', '302', '301', '32', '304', '122'],
+      student: ['11', '236', '38', '84', '43', '310'],
+      saas: ['310', '61', '62', '312', '314', '91']
+    };
+
+    presetChips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const key = chip.getAttribute('data-preset');
+        const ids = presetMap[key] || [];
+        skCards.forEach((card) => {
+          const fid = card.getAttribute('data-free-id');
+          if (ids.includes(fid)) card.classList.add('checked');
+        });
+        updateSubKillerTotals();
+      });
+    });
+
+    if (skToggleAllBtn) {
+      skToggleAllBtn.addEventListener('click', () => {
+        const allChecked = skCards.every((r) => r.classList.contains('checked'));
+        skCards.forEach((r) => r.classList.toggle('checked', !allChecked));
+        updateSubKillerTotals();
+      });
+    }
+
+    if (skClearAllBtn) {
+      skClearAllBtn.addEventListener('click', () => {
+        skCards.forEach((r) => r.classList.remove('checked'));
+        updateSubKillerTotals();
+      });
+    }
+
+    if (swapSearchInput) {
+      swapSearchInput.addEventListener('input', filterSwaps);
+    }
+
+    groupPills.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        groupPills.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentGroup = btn.getAttribute('data-group') || 'All Swaps';
+        filterSwaps();
+      });
+    });
+
+    colModeBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        colModeBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cols = btn.getAttribute('data-cols');
+        grid.classList.toggle('cols-2', cols === '2');
+        grid.classList.toggle('cols-3', cols !== '2');
+      });
+    });
+
+    if (skBookmarkSwapsBtn) {
+      skBookmarkSwapsBtn.addEventListener('click', () => {
+        const selectedIds = skCards
+          .filter((r) => r.classList.contains('checked'))
+          .map((r) => r.getAttribute('data-free-id'))
+          .filter(Boolean);
+        if (selectedIds.length === 0) {
+          skBookmarkSwapsBtn.textContent = 'Select 1+ Cards First!';
+          setTimeout(updateSubKillerTotals, 1600);
+          return;
+        }
+        let saved = JSON.parse(localStorage.getItem('goodfinds_saved') || '[]');
+        selectedIds.forEach((id) => {
+          if (!saved.includes(id)) saved.push(id);
+        });
+        localStorage.setItem('goodfinds_saved', JSON.stringify(saved));
+        window.dispatchEvent(new Event('goodfinds:saved-updated'));
+        skBookmarkSwapsBtn.textContent = `✓ Saved ${selectedIds.length} Swaps to Stack!`;
+        setTimeout(updateSubKillerTotals, 2000);
+      });
+    }
+
+    updateSubKillerTotals();
+  </script>
+</Layout>

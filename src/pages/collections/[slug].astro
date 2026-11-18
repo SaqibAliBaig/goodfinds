@@ -312,27 +312,72 @@ const toolsInCol = data.tools.filter((t) => t.collections.includes(col.slug));
 
     @media (max-width: 640px) {
       .col-detail {
-        padding-top: 18px;
+        padding-top: 12px;
+      }
+      .back-link {
+        margin-bottom: 10px;
+        font-size: 0.72rem;
       }
       .col-hero {
-        padding: 18px 16px;
-        margin-bottom: 14px;
+        padding: 15px 14px;
+        margin-bottom: 10px;
+      }
+      .eyebrow-tag {
+        font-size: 0.58rem;
+        margin-bottom: 6px;
       }
       .col-hero h1 {
-        font-size: 1.45rem;
+        font-size: 1.35rem;
+        margin-bottom: 4px;
       }
       .col-hero p {
-        font-size: 0.84rem;
+        font-size: 0.79rem;
+        line-height: 1.46;
       }
       .dossier-grid,
       .dossier-grid.cols-2 {
         grid-template-columns: 1fr;
         grid-auto-rows: auto;
-        gap: 10px;
+        gap: 8px;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        overflow: visible;
+        box-shadow: none;
       }
       .dir-row {
-        padding: 15px;
+        padding: 13px 14px;
+        gap: 9px;
+        border: 1px solid var(--border);
+        border-radius: 11px;
+        box-shadow: var(--shadow-card);
+      }
+      .dir-num {
+        font-size: 0.66rem;
+        padding: 1px 6px;
+      }
+      .dir-card-body {
         gap: 11px;
+      }
+      .dir-ico {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+      }
+      .dir-ico img {
+        width: 18px;
+        height: 18px;
+      }
+      .dir-name {
+        font-size: 0.92rem;
+      }
+      .dir-tagline {
+        font-size: 0.76rem;
+        line-height: 1.42;
+      }
+      .dir-card-foot {
+        padding-top: 8px;
+        font-size: 0.65rem;
       }
     }
   </style>

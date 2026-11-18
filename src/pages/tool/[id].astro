@@ -43,7 +43,7 @@ const faqs = tool.faqs || [];
   <main class="container detail-page">
     <!-- TOP CONTROL BAR WITH KEYBOARD NAVIGATION -->
     <div class="dossier-toolbar">
-      <a href="/" class="ctrl-btn">← Complete Index (#1–#{data.tools.length})</a>
+      <a href="/" class="ctrl-btn">← <span class="hide-xs">Complete </span>Index<span class="hide-xs"> (#1–#{data.tools.length})</span></a>
 
       <div class="toolbar-right">
         <div class="cycle-group">
@@ -1432,53 +1432,211 @@ const faqs = tool.faqs || [];
     }
 
     @media (max-width: 640px) {
+      .hide-xs {
+        display: none;
+      }
       .detail-page {
-        padding-top: 16px;
+        padding-top: 10px;
       }
       .dossier-toolbar {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 8px;
-        margin-bottom: 12px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        gap: 6px;
+        margin-bottom: 10px;
       }
       .toolbar-right {
-        width: 100%;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 6px;
+        width: auto;
+        justify-content: flex-end;
+        flex-wrap: nowrap;
+        gap: 5px;
+      }
+      .ctrl-btn {
+        height: 29px;
+        padding: 0 9px;
+        font-size: 0.7rem;
+        border-radius: 7px;
+        white-space: nowrap;
       }
       .cycle-group {
-        flex: 1;
-        justify-content: space-between;
+        height: 29px;
+        border-radius: 7px;
+        flex: 0 0 auto;
+      }
+      .cycle-btn {
+        padding: 0 8px;
+        font-size: 0.68rem;
       }
       .dossier-head {
-        padding: 18px 16px;
-        gap: 16px;
+        padding: 15px 14px;
+        gap: 12px;
+      }
+      .dossier-identity {
+        display: grid;
+        grid-template-columns: 42px 1fr;
+        column-gap: 12px;
+        row-gap: 2px;
+        align-items: center;
+        width: 100%;
+      }
+      .dossier-title-block {
+        display: contents;
+      }
+      .dossier-favicon {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+      }
+      .dossier-favicon img {
+        width: 22px;
+        height: 22px;
+      }
+      .dossier-eyebrow {
+        grid-column: 2;
+        grid-row: 1;
+        margin-bottom: 0;
+        font-size: 0.65rem;
       }
       .dossier-title-block h1 {
-        font-size: 1.55rem;
+        grid-column: 2;
+        grid-row: 2;
+        font-size: 1.38rem;
+        margin-bottom: 0;
+        line-height: 1.12;
+      }
+      .tagline {
+        grid-column: 1 / -1;
+        grid-row: 3;
+        margin-top: 7px;
+        font-size: 0.82rem;
+        line-height: 1.46;
       }
       .dossier-head-cta,
       .primary-launch-btn {
         width: 100%;
         justify-content: center;
       }
+      .primary-launch-btn {
+        padding: 10px 16px;
+        font-size: 0.81rem;
+        border-radius: 8px;
+      }
       .spec-strip {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
       .spec-cell {
-        padding: 11px 13px;
+        padding: 8px 11px;
+        gap: 2px;
+      }
+      .spec-label {
+        font-size: 0.54rem;
+      }
+      .spec-val {
+        font-size: 0.69rem;
       }
       .editorial-col,
-      .sidebar-col {
-        padding: 18px 16px;
-        gap: 24px;
+      .spec-sidebar {
+        padding: 15px 14px;
+        gap: 18px;
       }
-      .quick-meta-grid,
+      .ed-block,
+      .sidebar-section {
+        gap: 9px;
+      }
+      .ed-label {
+        font-size: 0.61rem;
+        padding-bottom: 6px;
+      }
+      .overview-paragraphs {
+        gap: 9px;
+      }
+      .ed-lead {
+        font-size: 0.82rem;
+        line-height: 1.54;
+      }
+      .quick-meta-grid {
+        grid-template-columns: 1fr;
+        gap: 1px;
+        background: var(--border);
+        border: 1px solid var(--border);
+        border-radius: 9px;
+        overflow: hidden;
+        margin-top: 2px;
+      }
+      .qm-box {
+        border: none;
+        border-radius: 0;
+        padding: 8px 11px;
+        gap: 2px;
+      }
+      .qm-label {
+        font-size: 0.54rem;
+      }
+      .qm-val {
+        font-size: 0.75rem;
+      }
       .feature-matrix-grid,
       .drawbacks-grid,
+      .workflow-list,
+      .faq-list,
+      .pricing-tiers-stack {
+        grid-template-columns: 1fr;
+        gap: 7px;
+      }
+      .feat-card,
+      .wf-card,
+      .drawback-card,
+      .faq-card,
+      .pricing-tier-card {
+        padding: 11px 12px;
+        border-radius: 8px;
+        gap: 4px;
+      }
+      .feat-title,
+      .wf-body h4,
+      .db-label,
+      .faq-q {
+        font-size: 0.81rem;
+      }
+      .feat-desc,
+      .wf-body p,
+      .db-detail,
+      .faq-a,
+      .pt-summary {
+        font-size: 0.75rem;
+        line-height: 1.44;
+      }
+      .pt-price {
+        font-size: 0.88rem;
+      }
+      .pt-bullets li {
+        font-size: 0.72rem;
+      }
+      .sc-row {
+        padding: 7px 11px;
+        font-size: 0.74rem;
+      }
+      .sc-key {
+        font-size: 0.63rem;
+      }
       .related-bento {
         grid-template-columns: 1fr;
+        gap: 8px;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        overflow: visible;
+        box-shadow: none;
+      }
+      .rel-cell {
+        padding: 13px 14px;
+        gap: 8px;
+        border: 1px solid var(--border);
+        border-radius: 11px;
+        box-shadow: var(--shadow-card);
       }
     }
   </style>

@@ -193,6 +193,44 @@ const allToolIds = data.tools.map((t) => t.id);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
       padding: 12px 0;
+      transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.18s ease;
+      will-change: transform;
+    }
+
+    .topbar.topbar-hidden {
+      transform: translateY(-100%);
+    }
+
+    /* FLOATING QUICK-TOP / SEARCH PILL */
+    .quick-top-fab {
+      position: fixed;
+      right: 14px;
+      bottom: 16px;
+      z-index: 95;
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      border: 1px solid var(--border-light);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+      border-radius: 999px;
+      height: 36px;
+      padding: 0 13px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .quick-top-fab.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
     }
 
     .topbar-inner {
@@ -797,74 +835,109 @@ const allToolIds = data.tools.map((t) => t.id);
 
     @media (max-width: 640px) {
       .container {
-        padding: 0 14px;
+        padding: 0 12px;
       }
       .topbar {
-        padding: 8px 0;
+        padding: 6px 0 5px;
       }
       .topbar-inner {
-        gap: 8px;
-      }
-      .brand-logo {
-        font-size: 1.1rem;
-      }
-      .topbar-actions {
         gap: 5px;
       }
-      .random-gem-btn,
-      .theme-toggle-btn {
-        height: 30px;
-        padding: 0 8px;
-        font-size: 0.72rem;
+      .brand-cluster {
+        flex-shrink: 0;
+      }
+      .brand-logo {
+        font-size: 1.02rem;
+        gap: 5px;
+      }
+      .brand-signal {
+        width: 6px;
+        height: 6px;
+      }
+      .topbar-actions {
         gap: 4px;
-        border-radius: 7px;
+        flex-shrink: 0;
+      }
+      .random-gem-btn {
+        height: 27px;
+        padding: 0 8px;
+        font-size: 0.68rem;
+        gap: 4px;
+        border-radius: 6px;
+      }
+      .theme-toggle-btn {
+        height: 27px;
+        width: 27px;
+        padding: 0;
+        justify-content: center;
+        border-radius: 6px;
+      }
+      #themeToggleLabel {
+        display: none;
       }
       .nl-pill-btn {
-        height: 30px;
-        padding: 0 10px;
-        font-size: 0.72rem;
-        border-radius: 7px;
+        height: 27px;
+        padding: 0 9px;
+        font-size: 0.68rem;
+        border-radius: 6px;
         white-space: nowrap;
       }
       .nav-menu {
-        padding: 3px;
+        background: transparent;
+        border: none;
+        border-top: 1px solid var(--border-subtle);
+        border-radius: 0;
+        padding: 5px 0 1px;
         gap: 2px;
-        border-radius: 10px;
+        justify-content: space-between;
       }
       .nav-link {
-        font-size: 0.72rem;
-        padding: 5px 8px;
-        border-radius: 7px;
+        font-size: 0.69rem;
+        padding: 4px 7px;
+        border-radius: 6px;
+        flex: 0 0 auto;
+      }
+      .nav-link.active {
+        background: var(--btn-primary-bg);
+        color: var(--btn-primary-text);
+        box-shadow: none;
+      }
+      .nav-link.active .saved-count-pill {
+        background: rgba(255, 255, 255, 0.2);
+        color: inherit;
       }
       .sec-header {
-        margin: 24px 0 12px;
-        padding-bottom: 10px;
+        margin: 16px 0 10px;
+        padding-bottom: 8px;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 8px;
       }
       .sec-title {
-        font-size: 0.94rem;
-        gap: 7px;
+        font-size: 0.86rem;
+        gap: 6px;
+      }
+      .sec-index {
+        font-size: 0.66rem;
       }
       .view-mode-group,
       .col-mode-switch {
         display: none !important;
       }
       .inline-save-btn {
-        width: 30px;
-        height: 30px;
-        font-size: 0.88rem;
+        width: 26px;
+        height: 26px;
+        font-size: 0.82rem;
       }
       .kit-banner {
-        margin: 32px 0 22px;
-        padding: 18px 16px;
-        gap: 14px;
+        margin: 26px 0 18px;
+        padding: 16px 14px;
+        gap: 12px;
       }
       .kit-copy h3 {
-        font-size: 1.02rem;
+        font-size: 0.98rem;
       }
       .kit-copy p {
-        font-size: 0.8rem;
+        font-size: 0.77rem;
       }
       .kit-form {
         flex-direction: column;
@@ -874,19 +947,19 @@ const allToolIds = data.tools.map((t) => t.id);
       .kit-input {
         width: 100%;
         font-size: 16px;
-        padding: 10px 12px;
+        padding: 9px 12px;
       }
       .kit-submit {
         width: 100%;
-        padding: 11px 16px;
+        padding: 10px 16px;
       }
       .site-footer {
-        padding: 32px 0 28px;
+        padding: 26px 0 24px;
       }
       .footer-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 22px 16px;
-        padding-bottom: 24px;
+        gap: 18px 14px;
+        padding-bottom: 20px;
       }
       .footer-brand-col {
         grid-column: 1 / -1;
@@ -896,8 +969,8 @@ const allToolIds = data.tools.map((t) => t.id);
         flex-direction: column;
         align-items: flex-start;
         gap: 6px;
-        padding-top: 16px;
-        font-size: 0.72rem;
+        padding-top: 14px;
+        font-size: 0.7rem;
       }
     }
   </style>
@@ -1024,6 +1097,12 @@ const allToolIds = data.tools.map((t) => t.id);
       </button>
     </div>
   </div>
+
+  <!-- FLOATING QUICK-TOP / SEARCH PILL -->
+  <button type="button" class="quick-top-fab" id="quickTopFab" aria-label="Scroll back to top">
+    <span>↑</span>
+    <span>Top</span>
+  </button>
 
   <!-- ARCHITECTURAL FOOTER -->
   <footer class="site-footer">
@@ -1238,6 +1317,42 @@ const allToolIds = data.tools.map((t) => t.id);
       });
       boostModalEl.addEventListener('click', (e) => {
         if (e.target === boostModalEl) boostModalEl.style.display = 'none';
+      });
+    }
+
+    // Smart Mobile Headroom & Quick-Top Pill
+    const topbarEl = document.querySelector('.topbar');
+    const quickTopFab = document.getElementById('quickTopFab');
+    let lastScrollY = window.scrollY || 0;
+
+    window.addEventListener(
+      'scroll',
+      () => {
+        const y = window.scrollY || 0;
+        const delta = y - lastScrollY;
+
+        if (topbarEl) {
+          if (y <= 60) {
+            topbarEl.classList.remove('topbar-hidden');
+          } else if (delta > 8 && y > 80) {
+            topbarEl.classList.add('topbar-hidden');
+          } else if (delta < -6) {
+            topbarEl.classList.remove('topbar-hidden');
+          }
+        }
+
+        if (quickTopFab) {
+          quickTopFab.classList.toggle('visible', y > 450);
+        }
+
+        lastScrollY = y;
+      },
+      { passive: true }
+    );
+
+    if (quickTopFab) {
+      quickTopFab.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
   </script>

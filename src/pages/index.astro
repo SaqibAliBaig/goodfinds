@@ -1224,9 +1224,9 @@ const subscriptionSwaps = [
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
         -ms-overflow-style: none;
-        margin: 0 -14px;
-        padding: 2px 14px 4px;
-        gap: 6px;
+        margin: 0 -12px;
+        padding: 2px 12px 4px;
+        gap: 5px;
       }
       .cat-pills-row::-webkit-scrollbar {
         display: none;
@@ -1234,37 +1234,44 @@ const subscriptionSwaps = [
       .cat-pill {
         white-space: nowrap;
         flex-shrink: 0;
-        padding: 6px 12px;
-        font-size: 0.74rem;
+        padding: 5px 11px;
+        font-size: 0.72rem;
+        border-radius: 6px;
       }
     }
 
     @media (max-width: 640px) {
       .hero-section {
-        padding: 24px 0 18px;
+        padding: 16px 0 12px;
       }
       .hero-telemetry {
-        font-size: 0.6rem;
-        gap: 6px;
-        padding: 4px 11px;
-        margin-bottom: 12px;
+        font-size: 0.56rem;
+        gap: 5px;
+        padding: 3px 9px;
+        margin-bottom: 8px;
       }
       .hero-title {
-        font-size: clamp(1.95rem, 8vw, 2.45rem);
-        margin-bottom: 10px;
+        font-size: clamp(1.68rem, 7.2vw, 2.15rem);
+        margin-bottom: 6px;
+        line-height: 1.04;
       }
       .hero-subtitle {
-        font-size: 0.83rem;
-        line-height: 1.5;
-        margin-bottom: 16px;
+        font-size: 0.77rem;
+        line-height: 1.45;
+        margin-bottom: 12px;
       }
       .hero-search-wrap {
-        padding: 2px 10px 2px 12px;
-        margin-bottom: 12px;
+        padding: 1px 10px 1px 11px;
+        margin-bottom: 10px;
+        border-radius: 9px;
+      }
+      .search-prefix,
+      .match-count {
+        font-size: 0.64rem;
       }
       .hero-search-wrap input {
         font-size: 16px;
-        padding: 8px;
+        padding: 7px 6px;
         min-width: 0;
       }
       .trending-bento,
@@ -1273,11 +1280,46 @@ const subscriptionSwaps = [
       .ledger-grid.cols-2 {
         grid-template-columns: 1fr;
         grid-auto-rows: auto;
-        gap: 10px;
+        gap: 8px;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        overflow: visible;
+        box-shadow: none;
       }
       .dir-row {
-        padding: 15px;
+        padding: 13px 14px;
+        gap: 9px;
+        border: 1px solid var(--border);
+        border-radius: 11px;
+        box-shadow: var(--shadow-card);
+      }
+      .dir-num {
+        font-size: 0.66rem;
+        padding: 1px 6px;
+      }
+      .dir-card-body {
         gap: 11px;
+      }
+      .dir-ico {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+      }
+      .dir-ico img {
+        width: 18px;
+        height: 18px;
+      }
+      .dir-name {
+        font-size: 0.92rem;
+      }
+      .dir-tagline {
+        font-size: 0.76rem;
+        line-height: 1.42;
+      }
+      .dir-card-foot {
+        padding-top: 8px;
+        font-size: 0.65rem;
       }
       .hide-sm {
         display: none;

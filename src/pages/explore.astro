@@ -342,10 +342,24 @@ const categories = [
 
     @media (max-width: 760px) {
       .explore-page {
-        padding-top: 22px;
+        padding-top: 16px;
+      }
+      .explore-header {
+        margin-bottom: 16px;
+      }
+      .eyebrow-tag {
+        font-size: 0.56rem;
+        padding: 3px 9px;
+        margin-bottom: 8px;
       }
       .explore-header h1 {
-        font-size: 1.85rem;
+        font-size: 1.65rem;
+        margin-bottom: 4px;
+      }
+      .explore-header p {
+        font-size: 0.78rem;
+        line-height: 1.45;
+        margin-bottom: 12px;
       }
       .explore-input,
       .explore-select {
@@ -358,8 +372,9 @@ const categories = [
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
         -ms-overflow-style: none;
-        margin: 0 -14px;
-        padding: 2px 14px 4px;
+        margin: 0 -12px;
+        padding: 2px 12px 4px;
+        gap: 5px;
       }
       .cat-pills-row::-webkit-scrollbar {
         display: none;
@@ -367,13 +382,29 @@ const categories = [
       .cat-pill {
         white-space: nowrap;
         flex-shrink: 0;
+        padding: 5px 11px;
+        font-size: 0.72rem;
+        border-radius: 6px;
       }
       .dir-bento {
         grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 8px;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        overflow: visible;
+        box-shadow: none;
+      }
+      .dir-card {
+        padding: 13px 14px;
+        gap: 9px;
+        border: 1px solid var(--border);
+        border-radius: 11px;
+        box-shadow: var(--shadow-card);
       }
       .controls-bar {
         flex-direction: column;
+        gap: 6px;
       }
     }
   </style>

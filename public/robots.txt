@@ -1,0 +1,6 @@
+# robots.txt for goodfinds.tech
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://goodfinds.tech/sitemap.xml

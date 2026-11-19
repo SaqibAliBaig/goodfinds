@@ -11,9 +11,37 @@ export function getStaticPaths() {
 
 const { col } = Astro.props;
 const toolsInCol = data.tools.filter((t) => t.collections.includes(col.slug));
+
+const colMetaDescription = col.desc 
+  ? `${col.fullTitle}: ${col.desc}`
+  : `Curated collection of ${toolsInCol.length} verified websites and free tools in the ${col.title} dossier on GoodFinds.`;
+
+const collectionSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": col.fullTitle,
+  "description": colMetaDescription,
+  "url": `https://goodfinds.tech/collections/${col.slug}`,
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": toolsInCol.length,
+    "itemListElement": toolsInCol.slice(0, 20).map((tool, idx) => ({
+      "@type": "ListItem",
+      "position": idx + 1,
+      "name": tool.name,
+      "url": `https://goodfinds.tech/tool/${tool.id}`
+    }))
+  }
+};
 ---
 
-<Layout title={`${col.fullTitle} — GoodFinds`} activeNav="collections">
+<Layout
+  title={`${col.fullTitle} — Curated Websites & Free Tools | GoodFinds`}
+  description={colMetaDescription}
+  canonical={`https://goodfinds.tech/collections/${col.slug}`}
+  jsonLd={collectionSchema}
+  activeNav="collections"
+>
   <main class="container col-detail">
     <a href="/collections" class="back-link">← All Dossiers</a>
 

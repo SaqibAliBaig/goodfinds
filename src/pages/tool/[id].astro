@@ -37,9 +37,74 @@ const specs = tool.specs || {
   proTip: `Bookmark #${tool.id} with ☆ to save it to your custom stack.`
 };
 const faqs = tool.faqs || [];
+
+const toolMetaDescription = `${tool.name} (#${tool.id}) review: ${tool.tagline} Verified access: ${tool.pricingBadge}. Explore pricing tiers, features, drawbacks & workflows on GoodFinds.`;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://goodfinds.tech"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": tool.category || "Tools",
+      "item": "https://goodfinds.tech/explore"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": `#${tool.id} ${tool.name}`,
+      "item": `https://goodfinds.tech/tool/${tool.id}`
+    }
+  ]
+};
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": tool.name,
+  "applicationCategory": tool.category || "Utility",
+  "operatingSystem": "Web, Windows, macOS, Linux, iOS, Android",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": tool.freePlan || "Free tier available"
+  },
+  "description": tool.whatItDoes || tool.tagline,
+  "url": `https://goodfinds.tech/tool/${tool.id}`
+};
+
+const faqSchema = faqs.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.a
+    }
+  }))
+} : null;
+
+const toolSchemas = [breadcrumbSchema, softwareSchema, ...(faqSchema ? [faqSchema] : [])];
 ---
 
-<Layout title={`#${tool.id} ${tool.name} — In-Depth Review, Pricing, Features & Drawbacks — GoodFinds`} activeNav="explore">
+<Layout
+  title={`#${tool.id} ${tool.name} — In-Depth Review, Pricing, Features & Drawbacks — GoodFinds`}
+  description={toolMetaDescription}
+  canonical={`https://goodfinds.tech/tool/${tool.id}`}
+  type="article"
+  jsonLd={toolSchemas}
+  activeNav="explore"
+>
   <main class="container detail-page">
     <!-- TOP CONTROL BAR WITH KEYBOARD NAVIGATION -->
     <div class="dossier-toolbar">

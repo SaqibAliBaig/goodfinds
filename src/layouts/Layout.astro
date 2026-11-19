@@ -3,15 +3,46 @@ import data from '../data/tools.json';
 
 interface Props {
   title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  type?: 'website' | 'article';
   activeNav?: 'explore' | 'collections' | 'compare' | 'submit' | 'saved' | '';
+  jsonLd?: Record<string, any> | Array<Record<string, any>>;
 }
 
 const {
   title = `${data.site.name} — ${data.site.tagline}`,
-  activeNav = 'explore'
+  description = `A continuously expanding, numbered index of ${data.tools.length}+ essential AI tools, free browser utilities, open-source replacements, and hidden internet gems.`,
+  image = 'https://goodfinds.tech/og-image.png',
+  canonical,
+  type = 'website',
+  activeNav = 'explore',
+  jsonLd
 } = Astro.props;
 
+const pageUrl = canonical 
+  ? (canonical.startsWith('http') ? canonical : `https://goodfinds.tech${canonical.startsWith('/') ? '' : '/'}${canonical}`)
+  : Astro.url.href.replace(/\/$/, '') || 'https://goodfinds.tech';
+
 const allToolIds = data.tools.map((t) => t.id);
+
+const defaultSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "GoodFinds",
+  "url": "https://goodfinds.tech",
+  "description": "A continuously expanding numbered index of 350+ essential AI tools, free browser utilities, open-source replacements, and hidden internet gems.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://goodfinds.tech/explore?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+};
+
+const schemas = jsonLd 
+  ? (Array.isArray(jsonLd) ? [defaultSiteSchema, ...jsonLd] : [defaultSiteSchema, jsonLd]) 
+  : [defaultSiteSchema];
 ---
 
 <!DOCTYPE html>
@@ -19,11 +50,45 @@ const allToolIds = data.tools.map((t) => t.id);
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Primary SEO Meta Tags -->
   <title>{title}</title>
-  <meta name="description" content={data.site.tagline} />
+  <meta name="title" content={title} />
+  <meta name="description" content={description} />
+  <link rel="canonical" href={pageUrl} />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="author" content="GoodFinds" />
+  
+  <!-- Impact Site Verification -->
   <meta name="impact-site-verification" value="9a38b535-28c1-4ecc-9e91-6d9b7c797600" />
+  
+  <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+  <meta property="og:type" content={type} />
+  <meta property="og:url" content={pageUrl} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={image} />
+  <meta property="og:site_name" content="GoodFinds" />
+  <meta property="og:locale" content="en_US" />
+  
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content={pageUrl} />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={image} />
+  
+  <!-- Favicon and App Icons -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
+  <meta name="theme-color" content="#121214" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)" />
+
+  <!-- Structured Data JSON-LD -->
+  {schemas.map((s) => (
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(s)} />
+  ))}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">

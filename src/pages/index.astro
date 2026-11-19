@@ -46,7 +46,12 @@ const subscriptionSwaps = [
 ];
 ---
 
-<Layout activeNav="explore">
+<Layout
+  title={`GoodFinds — The Internet's Most Useful Websites & Free AI Tools (#1–#${data.tools.length})`}
+  description={`A continuously expanding, numbered index of ${data.tools.length}+ essential AI tools, free browser utilities, open-source replacements, and hidden internet gems.`}
+  canonical="https://goodfinds.tech"
+  activeNav="explore"
+>
   <!-- ARCHITECTURAL HERO SECTION -->
   <section class="hero-section">
     <div class="hero-grid-bg" aria-hidden="true"></div>

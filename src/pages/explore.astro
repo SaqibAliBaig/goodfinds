@@ -20,7 +20,12 @@ const categories = [
 ];
 ---
 
-<Layout title={`Complete Index (#1 — #${data.tools.length}) — GoodFinds`} activeNav="explore">
+<Layout
+  title={`Complete Index (#1 — #${data.tools.length}) — All Curated Websites | GoodFinds`}
+  description={`Search and explore all ${data.tools.length}+ verified internet tools, open-source utilities, and AI productivity platforms in the GoodFinds index.`}
+  canonical="https://goodfinds.tech/explore"
+  activeNav="explore"
+>
   <main class="container explore-page">
     <div class="explore-header">
       <div class="eyebrow-tag">COMPLETE ARCHIVE // #1 — #{data.tools.length}+</div>

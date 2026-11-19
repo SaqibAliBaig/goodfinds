@@ -53008,6 +53008,315 @@
           "a": "FMHY (Freemediaheckyeah Safe Wiki) (#350) is most commonly used as a $0 alternative to Algorithmic doomscrolling, ad-riddled mobile games & boredom. By combining FMHY (Freemediaheckyeah Safe Wiki) with adjacent tools in the Rabbit Holes collection, you can build a complete workflow for $0/month."
         }
       ]
+    },
+    {
+      "id": "351",
+      "name": "Submagic",
+      "directoryHook": "AI captions, b-roll & sound effects for viral short-form videos",
+      "tagline": "Generate dynamic animated captions, auto-b-roll, transitions, and sound effects for Reels and TikToks in seconds.",
+      "category": "Creator tools",
+      "categories": [
+        "Creator tools",
+        "AI tools"
+      ],
+      "collections": [
+        "creators"
+      ],
+      "domain": "submagic.co",
+      "url": "https://submagic.co",
+      "isAffiliate": true,
+      "isSponsored": false,
+      "pricingBadge": "Free Trial",
+      "freePlan": "3 free video exports per month with watermark to test AI auto-captions and b-roll.",
+      "paidPlan": "Basic (/mo) removes watermark and unlocks 20 video exports with custom fonts.",
+      "whatItDoes": "Analyzes your talking-head video to automatically generate viral, kinetic captions (like Alex Hormozi style), automatically insert matching b-roll, add zooms/cuts, and sync sound effects with 1 click.",
+      "whyWeLikeIt": [
+        "Cuts short-form video editing time from 2 hours down to 2 minutes.",
+        "Built-in AI auto-B-roll and AI sound effect generator synced to spoken words.",
+        "Auto-zooms, auto-cut silences, and trendy subtitle templates with emojis."
+      ],
+      "limitations": "Free tier videos include a discreet Submagic watermark.",
+      "partnerNetwork": "FirstPromoter (Submagic 30% Recurring)",
+      "deepOverview": [
+        "Analyzes your talking-head video to automatically generate viral, kinetic captions (like Alex Hormozi style), automatically insert matching b-roll, add zooms/cuts, and sync sound effects with 1 click.",
+        "Built at submagic.co for short-form creators, reel/tiktok editors, marketing agencies & solopreneurs, Submagic eliminates the friction of manual premiere/after effects keyframing, scouring stock footage sites for b-roll, and tedious manual subtitle typing. Its free tier provides trial exports to verify accurate transcription and pacing before deciding on an optional upgrade."
+      ],
+      "keyFeatures": [
+        {
+          "title": "Dynamic Animated Captions",
+          "desc": "98.8% transcription accuracy in 50+ languages with auto-highlighted keywords and auto-emojis."
+        },
+        {
+          "title": "Auto-Inserted B-Roll & Transitions",
+          "desc": "Automatically matches what you say with high-definition stock footage, memes, and smooth transitions."
+        },
+        {
+          "title": "Sound Effects & Audio Enhancer",
+          "desc": "Syncs whooshes, dings, and pops to your words while removing background hum and echoes automatically."
+        },
+        {
+          "title": "Zero-Effort Video Polishing",
+          "desc": "One-click auto-zoom on punchlines and automatic silence cut to eliminate awkward pauses."
+        },
+        {
+          "title": "Interoperability & Export Support",
+          "desc": "Supports standard 9:16 vertical exports (MP4, 1080p/4K) optimized directly for Instagram Reels, TikTok, and YouTube Shorts."
+        },
+        {
+          "title": "Cost & Time Replacement",
+          "desc": "Replaces /mo freelance video editors, CapCut manual keyframing, and hours of tedious subtitle editing."
+        }
+      ],
+      "workflowSteps": [
+        {
+          "step": "STEP 1 // UPLOAD",
+          "title": "Upload Your Talking-Head Video",
+          "detail": "Drop any MP4 or MOV short-form video into submagic.co. The AI transcribes the audio in under 30 seconds."
+        },
+        {
+          "step": "STEP 2 // STYLE & ENHANCE",
+          "title": "Pick a Caption Style & Auto-Add B-Roll",
+          "detail": "Select from popular trending subtitle presets (Hormozi, MrBeast, Ali Abdaal), toggle auto-b-roll, and enable auto-sound effects."
+        },
+        {
+          "step": "STEP 3 // EXPORT & POST",
+          "title": "Export Rendered Video",
+          "detail": "Download high-definition 1080p vertical video ready for direct upload to Reels, Shorts, and TikTok. Bookmark #351 with ☆ to keep it in your creator stack."
+        }
+      ],
+      "drawbacks": [
+        {
+          "label": "Primary Free-Tier Catch",
+          "detail": "Free trial exports include a watermark."
+        },
+        {
+          "label": "Format Focus",
+          "detail": "Tailored specifically for vertical talking-head short-form content rather than long-form horizontal cinematic films."
+        },
+        {
+          "label": "Power-User Ceiling",
+          "detail": "High-volume agencies publishing 30+ videos per month will eventually require a paid plan for unlimited exports."
+        },
+        {
+          "label": "When to Use an Alternative",
+          "detail": "If you need a 100% free open-source manual desktop editor with no watermarks, use CapCut Web or DaVinci Resolve."
+        }
+      ],
+      "pricingTiers": [
+        {
+          "tierName": "FREE TRIAL",
+          "price": "",
+          "badge": "TEST DRIVE",
+          "summary": "3 free video exports per month with watermark.",
+          "bullets": [
+            "Full AI transcription and caption styling",
+            "Auto-emojis and keyword highlighting",
+            "Test all premium templates before buying"
+          ]
+        },
+        {
+          "tierName": "BASIC / PRO PLAN",
+          "price": "From /mo",
+          "badge": "POPULAR",
+          "summary": "Removes watermark, unlocks 20+ videos/month, 1080p exports.",
+          "bullets": [
+            "No watermark on exports",
+            "Auto-b-roll and auto-sound effects included",
+            "Custom brand fonts, colors, and templates"
+          ]
+        },
+        {
+          "tierName": "AGENCY / SCALE",
+          "price": "From /mo",
+          "badge": "HIGH VOLUME",
+          "summary": "Up to 100+ videos per month with 4K rendering and multi-user access.",
+          "bullets": [
+            "Collaborative workspace for teams",
+            "Priority GPU rendering queue",
+            "Dedicated support"
+          ]
+        }
+      ],
+      "pricingVerdict": "Ideal for creators who want to test viral animated captions for ; upgrade to the  plan once your reel views justify removing the watermark.",
+      "specs": {
+        "loginRequired": "Free Account (Email / Google)",
+        "creditCard": "No ( to Start)",
+        "platforms": "Web Browser (Chrome, Safari, Edge)",
+        "exportFormats": "MP4 (1080p Vertical 9:16)",
+        "privacyPosture": "Standard Cloud Storage & Secure Processing",
+        "bestFor": "Reel, TikTok & Short-Form Video Creators, Founders, Influencers",
+        "replaces": "Hiring freelance video editors (–/mo), manual Premiere subtitle syncing",
+        "proTip": "Bookmark #351 (Submagic) with the ☆ button to add it to your creator stack."
+      },
+      "faqs": [
+        {
+          "q": "Is Submagic (#351) free to try?",
+          "a": "Yes. Submagic provides a free trial tier allowing you to generate and export up to 3 videos with auto-captions and b-roll without entering a credit card."
+        },
+        {
+          "q": "What makes Submagic different from standard video editors?",
+          "a": "Instead of manually keyframing text, searching for b-roll, and aligning sound effects frame-by-frame, Submagic AI automates the entire pacing, zooming, and styling in under 2 minutes."
+        },
+        {
+          "q": "What tools does Submagic replace?",
+          "a": "Submagic replaces costly video editing freelancers, complex subtitle software, and hours spent cutting dead air and syncing sound effects in desktop NLEs."
+        }
+      ]
+    },
+    {
+      "id": "352",
+      "name": "HeyGen",
+      "directoryHook": "Studio-quality AI video avatars and realistic multi-language dubbing",
+      "tagline": "Generate photorealistic AI avatar presenters from text and translate videos into 40+ languages with voice matching.",
+      "category": "Creator tools",
+      "categories": [
+        "Creator tools",
+        "AI tools"
+      ],
+      "collections": [
+        "creators",
+        "career-cheat-codes"
+      ],
+      "domain": "heygen.com",
+      "url": "https://heygen.com",
+      "isAffiliate": true,
+      "isSponsored": false,
+      "pricingBadge": "Free Credits",
+      "freePlan": "1 free credit on signup (~1 minute of 720p AI avatar video generation with 100+ public avatars).",
+      "paidPlan": "Creator (/mo annual) unlocks 15 monthly credits, 1080p, and instant custom avatar creation.",
+      "whatItDoes": "Transforms text scripts into high-definition videos featuring realistic AI avatars with natural gestures and lip-sync, or translates existing talking videos into 40+ languages while matching the speaker original voice.",
+      "whyWeLikeIt": [
+        "Uncanny photorealistic lip-syncing and natural facial expressions.",
+        "Video Translate feature clones your real voice and auto-syncs your lips into French, Spanish, Hindi, Japanese, and more.",
+        "Instant Avatar creation from a 2-minute phone video of yourself."
+      ],
+      "limitations": "Free tier provides 1 credit to test rendering before requiring paid packages.",
+      "partnerNetwork": "PartnerStack (HeyGen 20% Recurring)",
+      "deepOverview": [
+        "Transforms text scripts into high-definition videos featuring realistic AI avatars with natural gestures and lip-sync, or translates existing talking videos into 40+ languages while matching the speaker original voice.",
+        "Built at heygen.com for educators, marketers, corporate trainers, solopreneurs & international creators, HeyGen eliminates the friction of cameras, studio lighting, teleprompters, and expensive voice actors. Its free tier lets you generate a complete test video to experience the state of the art in digital human generation."
+      ],
+      "keyFeatures": [
+        {
+          "title": "100+ Photorealistic AI Avatars",
+          "desc": "Diverse studio avatars across ethnicities, ages, and outfits with natural micro-expressions and gestures."
+        },
+        {
+          "title": "AI Video Translate & Voice Dubbing",
+          "desc": "Translate your existing videos into 40+ languages with realistic lip-syncing in your exact cloned tone."
+        },
+        {
+          "title": "Custom Instant Avatar Creation",
+          "desc": "Record a quick 2-minute webcam or phone video to generate your own digital twin for infinite videos."
+        },
+        {
+          "title": "Studio Voice Cloning & Scriptwriting",
+          "desc": "Integrated AI script assistant powered by LLMs plus ultra-expressive multi-language voice engines."
+        },
+        {
+          "title": "Multi-Ratio Video Rendering",
+          "desc": "Export in 16:9 widescreen for YouTube/courses or 9:16 vertical for Instagram Reels, Shorts, and TikTok."
+        },
+        {
+          "title": "Cost & Studio Replacement",
+          "desc": "Replaces video production crews, studio rental, camera equipment, and international dubbing agencies."
+        }
+      ],
+      "workflowSteps": [
+        {
+          "step": "STEP 1 // PICK AVATAR",
+          "title": "Select or Create an Avatar",
+          "detail": "Choose from 100+ library avatars or upload a 2-minute clip to generate your own digital presenter."
+        },
+        {
+          "step": "STEP 2 // INPUT SCRIPT",
+          "title": "Type or Paste Your Text",
+          "detail": "Enter your script in any language, pick an AI voice or clone your own, and adjust pauses and pitch."
+        },
+        {
+          "step": "STEP 3 // RENDER & SHARE",
+          "title": "Generate High-Definition Video",
+          "detail": "Hit render to generate a ready-to-publish video in minutes. Bookmark #352 with ☆ to save it in your creator stack."
+        }
+      ],
+      "drawbacks": [
+        {
+          "label": "Primary Free-Tier Catch",
+          "detail": "Free plan is limited to 1 trial credit to test quality."
+        },
+        {
+          "label": "Rendering Time",
+          "detail": "Full avatar video rendering takes 2–5 minutes on cloud GPU servers depending on queue depth."
+        },
+        {
+          "label": "Power-User Ceiling",
+          "detail": "Heavy commercial production requires ongoing credit subscriptions."
+        },
+        {
+          "label": "When to Use an Alternative",
+          "detail": "If you only need text-to-voice without a visual human avatar, use ElevenLabs (#15)."
+        }
+      ],
+      "pricingTiers": [
+        {
+          "tierName": "FREE TRIAL",
+          "price": "",
+          "badge": "TEST DRIVE",
+          "summary": "1 free credit (~1 min video) on signup.",
+          "bullets": [
+            "100+ stock avatars and 300+ voices",
+            "Up to 720p export quality",
+            "No credit card required to test"
+          ]
+        },
+        {
+          "tierName": "CREATOR PLAN",
+          "price": "From /mo",
+          "badge": "MOST POPULAR",
+          "summary": "15 credits/month, 1080p full HD, unlimited instant avatars.",
+          "bullets": [
+            "No watermark on exports",
+            "Instant custom avatar generation",
+            "Auto-captions and priority rendering"
+          ]
+        },
+        {
+          "tierName": "TEAM & ENTERPRISE",
+          "price": "From /mo",
+          "badge": "SCALED TEAMS",
+          "summary": "Multi-seat collaboration, 4K resolution, API access, and custom studio avatars.",
+          "bullets": [
+            "4K avatar video exports",
+            "Team asset sharing and centralized billing",
+            "Brand kit management"
+          ]
+        }
+      ],
+      "pricingVerdict": "The undisputed industry standard for digital human video; use the free credit to test your script before picking a monthly credit tier.",
+      "specs": {
+        "loginRequired": "Free Account (Google / Email)",
+        "creditCard": "No ( to Start)",
+        "platforms": "Web Browser (Chrome, Safari, Edge)",
+        "exportFormats": "MP4 (1080p / 4K / 720p, 16:9 & 9:16)",
+        "privacyPosture": "Enterprise SOC2 & Secure Cloud Infrastructure",
+        "bestFor": "Course Creators, Marketers, Sales Teams & International Content Creators",
+        "replaces": "Camera gear, lighting rigs, teleprompters, studio rentals & video dubbing services",
+        "proTip": "Bookmark #352 (HeyGen) with the ☆ button to add it to your creator stack."
+      },
+      "faqs": [
+        {
+          "q": "Is HeyGen (#352) free to use?",
+          "a": "Yes. HeyGen gives every new account 1 free credit (~1 minute of video generation) to test avatars, voice lip-sync, and rendering without entering a credit card."
+        },
+        {
+          "q": "How does HeyGen Video Translate feature work?",
+          "a": "You upload a video of yourself speaking, choose a target language (e.g. Spanish, German, Hindi), and HeyGen rewrites the words, clones your voice in that language, and manipulates your lips to match the new speech."
+        },
+        {
+          "q": "What software does HeyGen replace?",
+          "a": "HeyGen replaces the need for on-camera talent, cameras, microphones, lighting equipment, and expensive translation/dubbing agencies."
+        }
+      ]
     }
   ],
   "comparisons": [

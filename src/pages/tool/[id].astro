@@ -19,7 +19,7 @@ const relatedTools = data.tools
   .filter((t) => t.id !== tool.id && t.category === tool.category)
   .slice(0, 4);
 
-const trackedUrl = `${tool.url}${tool.url.includes('?') ? '&' : '?'}utm_source=goodfinds&utm_medium=tool_page&subid=tool_${tool.id}`;
+const trackedUrl = tool.isAffiliate ? tool.url : `${tool.url}${tool.url.includes('?') ? '&' : '?'}utm_source=goodfinds&utm_medium=tool_page&subid=tool_${tool.id}`;
 
 const deepOverview = tool.deepOverview || [tool.whatItDoes];
 const keyFeatures = tool.keyFeatures || (tool.whyWeLikeIt || []).map((pt, i) => ({ title: `Key Capability #${i + 1}`, desc: pt }));

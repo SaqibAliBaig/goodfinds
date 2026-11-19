@@ -53318,6 +53318,1560 @@
           "a": "HeyGen replaces the need for on-camera talent, cameras, microphones, lighting equipment, and expensive translation/dubbing agencies."
         }
       ]
+    },
+    {
+      "id": "353",
+      "name": "Opus Clip",
+      "directoryHook": "Turn 1 long video into 10 viral shorts with AI",
+      "tagline": "Generative AI video repurposing tool that turns long YouTube videos or podcasts into viral shorts with auto-captions, b-roll, and virality scores.",
+      "category": "Creator tools",
+      "categories": [
+        "Creator tools",
+        "AI tools"
+      ],
+      "collections": [
+        "creators"
+      ],
+      "domain": "opus.pro",
+      "url": "https://www.opus.pro",
+      "isAffiliate": true,
+      "isSponsored": false,
+      "pricingBadge": "Free Credits",
+      "freePlan": "90 minutes of free video processing credits on signup with auto-captions and virality scoring.",
+      "paidPlan": "Starter (from $9/mo) removes watermark and unlocks 150 processing minutes/month.",
+      "whatItDoes": "Analyzes hours of long-form podcasts, webinars, or YouTube videos to automatically extract the top 10 most viral moments, resize them to vertical 9:16, add animated kinetic captions, and keep the speaker centered with AI face tracking.",
+      "whyWeLikeIt": [
+        "Generates an AI Virality Score for each clip predicting social media engagement.",
+        "Automatically inserts dynamic emojis and highlights key spoken words in subtitles.",
+        "Active speaker detection automatically crops and centers widescreen footage into vertical 9:16."
+      ],
+      "limitations": "Free processing credits come with a subtle watermark on exports.",
+      "partnerNetwork": "PartnerStack (Opus Clip 25%–30% Recurring)",
+      "deepOverview": [
+        "Opus Clip analyzes hours of long-form podcasts, webinars, or YouTube videos to automatically extract the top 10 most viral moments, resize them to vertical 9:16, add animated kinetic captions, and keep the speaker centered with AI face tracking.",
+        "Built at opus.pro for YouTubers, podcasters, marketers, and video agencies, Opus Clip cuts the time required to repurpose 1 long interview into 2 weeks of daily TikToks and Reels from 8 hours down to 5 minutes."
+      ],
+      "keyFeatures": [
+        {
+          "title": "AI Virality Score",
+          "desc": "Proprietary AI rates each extracted clip out of 100 based on narrative hook and retention likelihood."
+        },
+        {
+          "title": "AI Co-Pilot & Dynamic B-Roll",
+          "desc": "Select specific keywords or speakers to curate clips, and auto-insert relevant visual b-roll."
+        },
+        {
+          "title": "Auto Reframe 9:16",
+          "desc": "Detects active faces and dynamically shifts widescreen video into vertical format smoothly."
+        },
+        {
+          "title": "Animated Hormozi-Style Captions",
+          "desc": "Generates animated subtitles with automatic colored emphasis and synchronized emoji reactions."
+        }
+      ],
+      "workflowSteps": [
+        {
+          "step": "1",
+          "action": "Paste Video Link",
+          "detail": "Drop in any YouTube link, Zoom recording, or upload your raw MP4 file directly into Opus Clip."
+        },
+        {
+          "step": "2",
+          "action": "AI Auto-Extracts Clips",
+          "detail": "Opus scans the transcript, identifies hook moments, calculates virality scores, and generates vertical shorts."
+        },
+        {
+          "step": "3",
+          "action": "Export to Reels & TikTok",
+          "detail": "Review the clips, adjust subtitles if desired, and export directly in 1080p for instant publishing."
+        }
+      ],
+      "drawbacks": [
+        {
+          "label": "Watermark on Free Plan",
+          "detail": "The free 90-minute trial places an Opus watermark on exported clips until upgrading."
+        }
+      ],
+      "pricingTiers": [
+        {
+          "tierName": "FREE TRIAL",
+          "price": "$0",
+          "badge": "TEST DRIVE",
+          "summary": "90 free processing minutes on signup.",
+          "bullets": [
+            "Auto-captions & emojis",
+            "AI virality scoring",
+            "Auto reframing 9:16"
+          ]
+        },
+        {
+          "tierName": "STARTER",
+          "price": "From $9/mo",
+          "badge": "CREATOR",
+          "summary": "150 processing minutes/month with no watermark.",
+          "bullets": [
+            "No watermark",
+            "1080p HD exports",
+            "Custom caption templates"
+          ]
+        },
+        {
+          "tierName": "PRO",
+          "price": "From $19/mo",
+          "badge": "POPULAR",
+          "summary": "300 processing minutes/month with multi-speaker support.",
+          "bullets": [
+            "Auto-schedule to social media",
+            "Brand templates & fonts",
+            "Priority rendering speed"
+          ]
+        }
+      ],
+      "pricingVerdict": "The fastest, highest-quality AI repurposing tool for creators with long-form video content; test your first video for free.",
+      "specs": {
+        "loginRequired": "Free Account (Google / Email)",
+        "creditCard": "No ($0 to Start)",
+        "platforms": "Web Browser (Chrome, Safari, Edge)",
+        "exportFormats": "MP4 (1080p, 9:16 vertical)",
+        "privacyPosture": "Secure Cloud Processing",
+        "bestFor": "YouTubers, Podcasters, Short-Form Editors & Social Media Managers",
+        "replaces": "Manual video editors, subtitle sync software, and tedious timeline clipping",
+        "proTip": "Look for clips scored 85+ on the AI virality meter for the highest organic reach on Instagram Reels."
+      },
+      "faqs": [
+        {
+          "q": "Is Opus Clip free to test?",
+          "a": "Yes. Opus Clip provides 90 free processing minutes to analyze your first YouTube video without requiring a credit card."
+        },
+        {
+          "q": "What video formats does Opus Clip accept?",
+          "a": "You can paste public YouTube links or upload MP4, MOV, and WebM files directly."
+        }
+      ]
+    },
+    {
+      "id": "354",
+      "name": "InVideo AI",
+      "directoryHook": "Type a prompt to generate full YouTube videos & Reels",
+      "tagline": "Generate complete publish-ready videos with scripts, hyper-realistic voiceovers, stock b-roll footage, and background music from a single text prompt.",
+      "category": "Creator tools",
+      "categories": [
+        "Creator tools",
+        "AI tools"
+      ],
+      "collections": [
+        "creators",
+        "career-cheat-codes"
+      ],
+      "domain": "invideo.io",
+      "url": "https://invideo.io",
+      "isAffiliate": true,
+      "isSponsored": false,
+      "pricingBadge": "Free Plan",
+      "freePlan": "10 minutes of AI video generation per week with 10M+ stock media library (watermarked on export).",
+      "paidPlan": "Plus (from $20/mo) unlocks 50 mins/mo of watermark-free exports and voice cloning.",
+      "whatItDoes": "Type any topic (e.g. '5 psychological hacks to study faster') and InVideo writes the script, selects matching royalty-free HD stock video clips, synthesizes human voice narration, adds animated subtitles, and generates a ready-to-post MP4.",
+      "whyWeLikeIt": [
+        "Magically produces complete faceless YouTube channels and Reels in under 2 minutes.",
+        "Full text-based timeline editor allows rewriting the script to auto-swap underlying b-roll.",
+        "Access to 16M+ premium iStock and Shutterstock assets built directly into the generator."
+      ],
+      "limitations": "Free exports contain an InVideo watermark and limited monthly AI minutes.",
+      "partnerNetwork": "ShareASale / Impact (InVideo 25%–50% Lifetime Recurring)",
+      "deepOverview": [
+        "Type any topic or upload a blog post, and InVideo AI generates a fully-produced, narratively coherent video complete with script, voiceover, stock footage, text overlays, and soundtrack.",
+        "Designed for faceless content creators, digital marketers, educators, and social media agencies, InVideo AI removes the requirement of having camera gear, editing software, or studio actors."
+      ],
+      "keyFeatures": [
+        {
+          "title": "Prompt-to-Video Engine",
+          "desc": "Turn simple 1-line text ideas into structured 30-second to 15-minute narrative videos."
+        },
+        {
+          "title": "Text-Based Video Editing",
+          "desc": "Give natural language commands like 'change the voice to an energetic male' or 'make scene 3 more dramatic'."
+        },
+        {
+          "title": "16M+ Premium Stock Media",
+          "desc": "Integrated licensed footage from iStock, Shutterstock, and Storyblocks automatically synced to each sentence."
+        },
+        {
+          "title": "Hyper-Realistic AI Voiceovers",
+          "desc": "Human-sounding voiceovers across dozens of regional accents and languages with realistic emotion."
+        }
+      ],
+      "workflowSteps": [
+        {
+          "step": "1",
+          "action": "Enter Your Idea",
+          "detail": "Describe your video topic, target audience, platform (Reels/YouTube), and desired tone."
+        },
+        {
+          "step": "2",
+          "action": "AI Assembles Media",
+          "detail": "InVideo drafts the script, fetches HD stock clips, synthesizes narration, and times the background score."
+        },
+        {
+          "step": "3",
+          "action": "Fine-Tune & Export",
+          "detail": "Edit the text or swap clips in the browser editor, then export high-definition 1080p video."
+        }
+      ],
+      "drawbacks": [
+        {
+          "label": "Watermark on Free Plan",
+          "detail": "Free plan exports carry an InVideo logo watermark until upgrading to Plus."
+        }
+      ],
+      "pricingTiers": [
+        {
+          "tierName": "FREE PLAN",
+          "price": "$0",
+          "badge": "TRY IT",
+          "summary": "10 mins/week of AI generation with 10M+ stock library.",
+          "bullets": [
+            "Prompt-to-video generator",
+            "Standard voices",
+            "InVideo watermark"
+          ]
+        },
+        {
+          "tierName": "PLUS",
+          "price": "From $20/mo",
+          "badge": "MOST POPULAR",
+          "summary": "50 mins/mo AI video, 1 user, no watermark.",
+          "bullets": [
+            "No InVideo watermark",
+            "100 iStock media per month",
+            "Voice cloning included"
+          ]
+        },
+        {
+          "tierName": "MAX",
+          "price": "From $48/mo",
+          "badge": "PRO",
+          "summary": "200 mins/mo AI video, 320 iStock assets.",
+          "bullets": [
+            "Unlimited team members",
+            "400GB cloud storage",
+            "Priority rendering queue"
+          ]
+        }
+      ],
+      "pricingVerdict": "The most versatile prompt-to-video generator for launching faceless YouTube channels or daily short-form reels.",
+      "specs": {
+        "loginRequired": "Free Account (Google / Email)",
+        "creditCard": "No ($0 to Start)",
+        "platforms": "Web Browser & iOS/Android Apps",
+        "exportFormats": "MP4 (1080p, 16:9 widescreen or 9:16 vertical)",
+        "privacyPosture": "Cloud-Based Rendering",
+        "bestFor": "Faceless Creators, Marketers, Solo Entrepreneurs & Educators",
+        "replaces": "Scriptwriters, voiceover artists, video editors & stock footage subscriptions",
+        "proTip": "Use the prompt modifier 'Use vertical format for Instagram Reels with punchy fast cuts' for instant viral styling."
+      },
+      "faqs": [
+        {
+          "q": "Can I monetize videos made with InVideo AI?",
+          "a": "Yes. Paid plans grant full commercial rights for monetization on YouTube, Instagram, TikTok, and client work."
+        },
+        {
+          "q": "Can I edit the script after it is generated?",
+          "a": "Yes. You can edit every sentence in the text editor, and InVideo will instantly adjust the audio and b-roll."
+        }
+      ]
+    },
+    {
+      "id": "355",
+      "name": "Speechify",
+      "directoryHook": "Listen to any PDF, textbook, or webpage at 3x speed",
+      "tagline": "The #1 AI text-to-speech reader that reads PDFs, physical textbooks, articles, and docs out loud with human-like voices.",
+      "category": "Student life",
+      "categories": [
+        "Student life",
+        "AI tools"
+      ],
+      "collections": [
+        "students"
+      ],
+      "domain": "speechify.com",
+      "url": "https://speechify.com",
+      "isAffiliate": true,
+      "isSponsored": false,
+      "pricingBadge": "Free Tier",
+      "freePlan": "10 standard reading voices with up to 1x speed and basic text-to-speech highlighting.",
+      "paidPlan": "Premium ($11.58/mo billed annually) unlocks 60+ natural HD voices (including Snoop Dogg and Gwyneth Paltrow) and 4.5x reading speed.",
+      "whatItDoes": "Converts physical textbook pages (via phone camera OCR), PDFs, Google Docs, and long web articles into ultra-natural spoken audio so students and professionals can 'read' while commuting, exercising, or doing chores.",
+      "whyWeLikeIt": [
+        "Speeds up reading retention up to 4.5x without sounding robotic or pitched.",
+        "Syncs across iPhone, Android, Mac, Chrome Extension, and Web seamlessly.",
+        "Instant OCR snapshot turns printed paper handouts into audio in 3 seconds."
+      ],
+      "limitations": "Premium voices and high-speed playback beyond 1x require the Premium subscription.",
+      "partnerNetwork": "Impact.com (Speechify $10–$30 CPA)",
+      "deepOverview": [
+        "Speechify is an AI text-to-speech reader that turns any written material—including physical books photographed on your phone, dense PDF research papers, or online articles—into high-quality audiobook narration.",
+        "Founded by Cliff Weitzman to overcome dyslexia, Speechify helps millions of students, ADHD readers, and busy professionals finish reading material 2x to 3x faster while retaining higher comprehension."
+      ],
+      "keyFeatures": [
+        {
+          "title": "Snap a Photo OCR",
+          "desc": "Take a picture of any printed textbook page or handout with your phone to start listening in seconds."
+        },
+        {
+          "title": "Celebrity & AI Voices",
+          "desc": "Listen with licensed voices like Snoop Dogg, Gwyneth Paltrow, or 60+ hyper-natural AI accents."
+        },
+        {
+          "title": "Up to 4.5x Speed Listening",
+          "desc": "Train your brain to absorb information at up to 900 words per minute without pitch distortion."
+        },
+        {
+          "title": "Active Word Highlighting",
+          "desc": "Words light up on screen in real time as they are spoken, improving visual and auditory comprehension."
+        }
+      ],
+      "workflowSteps": [
+        {
+          "step": "1",
+          "action": "Upload or Snap Text",
+          "detail": "Drop in a PDF document, paste a web link, or snap a photo of a textbook page."
+        },
+        {
+          "step": "2",
+          "action": "Choose Your Voice & Speed",
+          "detail": "Pick your favorite narrator voice and dial in your preferred listening speed (1.5x–3x)."
+        },
+        {
+          "step": "3",
+          "action": "Listen on Any Device",
+          "detail": "Seamlessly switch between your phone on the bus and your laptop in the library with cloud syncing."
+        }
+      ],
+      "drawbacks": [
+        {
+          "label": "Ultra-Natural Voices Require Pro",
+          "detail": "The free tier uses standard voices; the ultra-realistic human voices require upgrading."
+        }
+      ],
+      "pricingTiers": [
+        {
+          "tierName": "FREE PLAN",
+          "price": "$0",
+          "badge": "BASIC",
+          "summary": "10 standard voices at normal reading speed.",
+          "bullets": [
+            "Basic TTS engine",
+            "Highlight words as they read",
+            "Web, iOS, & Chrome support"
+          ]
+        },
+        {
+          "tierName": "PREMIUM",
+          "price": "$11.58/mo",
+          "badge": "STUDENT FAVORITE",
+          "summary": "60+ natural HD voices, 4.5x speed, snap OCR.",
+          "bullets": [
+            "Celebrity voices included",
+            "Text extraction from images",
+            "Note-taking & audio download"
+          ]
+        }
+      ],
+      "pricingVerdict": "The undisputed gold standard for students and readers who want to finish assigned reading in half the time.",
+      "specs": {
+        "loginRequired": "Free Account (Google / Apple / Email)",
+        "creditCard": "No ($0 to Start)",
+        "platforms": "iOS, Android, Chrome Extension, Mac, Web",
+        "exportFormats": "Streaming Audio & MP3 Downloads (Pro)",
+        "privacyPosture": "Encrypted Cloud Storage",
+        "bestFor": "Students, ADHD Readers, Researchers & Commuters",
+        "replaces": "Audible for custom documents, standard robot screen readers",
+        "proTip": "Use the Chrome Extension to have Speechify read long research papers directly inside Google Docs or Canvas."
+      },
+      "faqs": [
+        {
+          "q": "Can Speechify read physical books?",
+          "a": "Yes. Use the mobile app camera to take photos of printed pages, and Speechify's OCR converts them to spoken audio immediately."
+        },
+        {
+          "q": "Is there a student discount for Speechify?",
+          "a": "Yes, Speechify regularly offers student education discounts on their annual plan."
+        }
+      ]
+    },
+    {
+      "id": "356",
+      "name": "Otter.ai",
+      "directoryHook": "Real-time AI lecture & meeting notes with slide capture",
+      "tagline": "AI meeting assistant that automatically transcribes lectures, Zoom calls, and conversations with automated slide capture and executive summaries.",
+      "category": "Student life",
+      "categories": [
+        "Student life",
+        "Productivity"
+      ],
+      "collections": [
+        "students",
+        "career-cheat-codes"
+      ],
+      "domain": "otter.ai",
+      "url": "https://otter.ai",
+      "isAffiliate": true,
+      "isSponsored": false,
+      "pricingBadge": "Free Plan",
+      "freePlan": "300 monthly transcription minutes (30 minutes per conversation) with automated meeting summaries.",
+      "paidPlan": "Pro ($10/mo student/annual) unlocks 1,200 monthly minutes, advanced search, and audio import.",
+      "whatItDoes": "Records in-person classroom lectures or automatically joins Zoom, Google Meet, and Microsoft Teams to transcribe verbatim spoken dialogue, screenshot shared presentation slides, and generate bulleted study notes.",
+      "whyWeLikeIt": [
+        "Search your entire semester's lectures by keyword to jump to the exact second a professor spoke.",
+        "Automatically identifies different speakers and separates paragraphs cleanly.",
+        "Generates 30-second AI summaries and action item checklists from 1-hour recordings."
+      ],
+      "limitations": "Free tier caps single recordings at 30 minutes and total monthly minutes at 300.",
+      "partnerNetwork": "Impact.com / PartnerStack (Otter.ai Recurring)",
+      "deepOverview": [
+        "Otter.ai records audio, writes real-time notes, captures shared slides, and generates comprehensive meeting summaries with action items.",
+        "Whether you are in a college lecture hall or a company Zoom call, Otter Pilot automatically captures every spoken word so you can engage in the discussion without frantically scribbling notes."
+      ],
+      "keyFeatures": [
+        {
+          "title": "Real-Time Live Transcription",
+          "desc": "Follow along on screen as audio is transcribed into text with high accuracy in real time."
+        },
+        {
+          "title": "Automated Slide Capture",
+          "desc": "When someone shares slides on Zoom or Teams, Otter automatically snapshots and embeds them in your notes."
+        },
+        {
+          "title": "Otter AI Chat",
+          "desc": "Ask questions about past lectures or meetings (e.g. 'What did the professor say about the midterm?') and get exact quotes."
+        },
+        {
+          "title": "Automated Executive Summaries",
+          "desc": "Transforms 60-minute audio recordings into concise 5-bullet summary cards."
+        }
+      ],
+      "workflowSteps": [
+        {
+          "step": "1",
+          "action": "Record or Connect Calendar",
+          "detail": "Hit Record on your phone during class or sync Otter with Google Calendar to auto-join Zoom."
+        },
+        {
+          "step": "2",
+          "action": "Follow Real-Time Transcript",
+          "detail": "Highlight key quotes and tag comments in real time while Otter captures shared slides."
+        },
+        {
+          "step": "3",
+          "action": "Review AI Summary",
+          "detail": "Read the automated summary, export text notes, or search past recordings instantly."
+        }
+      ],
+      "drawbacks": [
+        {
+          "label": "30-Minute Recording Limit on Free",
+          "detail": "Long 1-hour college lectures require either stopping and restarting at 30 minutes or upgrading to Pro."
+        }
+      ],
+      "pricingTiers": [
+        {
+          "tierName": "BASIC",
+          "price": "$0",
+          "badge": "FREE FOREVER",
+          "summary": "300 monthly minutes (30 mins/conversation).",
+          "bullets": [
+            "Real-time transcription",
+            "Automated slide capture",
+            "AI meeting summaries"
+          ]
+        },
+        {
+          "tierName": "PRO",
+          "price": "From $10/mo",
+          "badge": "STUDENTS",
+          "summary": "1,200 monthly minutes (90 mins/conversation).",
+          "bullets": [
+            "Import pre-recorded audio/video",
+            "Advanced search & export options",
+            "Otter AI chat assistance"
+          ]
+        },
+        {
+          "tierName": "BUSINESS",
+          "price": "From $20/mo",
+          "badge": "TEAMS",
+          "summary": "6,000 monthly minutes (4 hours/conversation).",
+          "bullets": [
+            "Admin analytics",
+            "Usage reporting",
+            "Team vocabulary customization"
+          ]
+        }
+      ],
+      "pricingVerdict": "The best automated transcription tool for college students and remote workers who want to stop typing manual notes.",
+      "specs": {
+        "loginRequired": "Free Account (Google / Microsoft / Email)",
+        "creditCard": "No ($0 to Start)",
+        "platforms": "Web, iOS, Android, Zoom, Teams, Google Meet",
+        "exportFormats": "TXT, PDF, DOCX, SRT Subtitles, MP3",
+        "privacyPosture": "SOC 2 Type II Certified & Data Encryption",
+        "bestFor": "College Students, Journalists, Remote Teams & Executives",
+        "replaces": "Manual shorthand note-taking, transcription services",
+        "proTip": "Use the Otter mobile app to record professors in large auditoriums—the noise suppression handles echoes well."
+      },
+      "faqs": [
+        {
+          "q": "Does Otter join meetings automatically?",
+          "a": "Yes. Connect your Google or Outlook calendar, and the OtterPilot bot joins Zoom, Google Meet, or Teams automatically."
+        },
+        {
+          "q": "Can Otter transcribe pre-recorded audio files?",
+          "a": "The free plan allows 3 lifetime file imports; the Pro tier allows unlimited audio/video file imports."
+        }
+      ]
+    },
+    {
+      "id": "357",
+      "name": "NordVPN",
+      "directoryHook": "High-speed encrypted VPN with malware & ad blocking",
+      "tagline": "Secure high-speed VPN with Threat Protection to encrypt campus Wi-Fi, block malicious popups, and unlock geo-restricted streaming libraries.",
+      "category": "Privacy & Security",
+      "categories": [
+        "Privacy & Security",
+        "Utilities"
+      ],
+      "collections": [
+        "privacy-defense",
+        "save-money"
+      ],
+      "domain": "nordvpn.com",
+      "url": "https://nordvpn.com",
+      "isAffiliate": true,
+      "isSponsored": false,
+      "pricingBadge": "30-Day Refund",
+      "freePlan": "30-day risk-free money-back guarantee with unlimited bandwidth and 10 simultaneous device connections.",
+      "paidPlan": "Basic (from $3.39/mo with 3 extra free months on 2-year plans).",
+      "whatItDoes": "Routes your device's internet traffic through 6,000+ encrypted servers across 111 countries, masking your real IP address, bypassing school/work firewall blocks, and allowing access to international Netflix, BBC iPlayer, and YouTube content.",
+      "whyWeLikeIt": [
+        "Built-in Threat Protection blocks intrusive ads, trackers, and malicious URLs before they load.",
+        "NordLynx protocol delivers ultra-fast 6700+ Mbps speeds with zero buffering on 4K streaming.",
+        "Strict independently audited no-logs policy protects privacy on insecure public Wi-Fi."
+      ],
+      "limitations": "Paid upfront subscription required, backed by a 30-day full refund guarantee.",
+      "partnerNetwork": "CJ Affiliate / Impact (NordVPN 40%–100% CPA)",
+      "deepOverview": [
+        "NordVPN is an industry-leading virtual private network that shields your browsing activity on public Wi-Fi and allows you to browse the web with an encrypted IP address located in any of 111 countries.",
+        "Its integrated Threat Protection Pro feature works like an ad-blocker and anti-malware filter, stopping infected downloads and intrusive trackers without needing separate extensions."
+      ],
+      "keyFeatures": [
+        {
+          "title": "6,000+ Servers in 111 Countries",
+          "desc": "Instantly connect anywhere to access international streaming catalogs and bypass local network censorship."
+        },
+        {
+          "title": "Threat Protection Pro",
+          "desc": "Blocks annoying ads, malicious websites, and phishing links before they touch your browser."
+        },
+        {
+          "title": "Ultra-Fast NordLynx Protocol",
+          "desc": "Engineered on WireGuard for industry-leading speed with zero streaming lag or latency spikes."
+        },
+        {
+          "title": "Strict No-Logs Policy",
+          "desc": "Independently audited by PwC and Deloitte to confirm no tracking or logging of user traffic."
+        }
+      ],
+      "workflowSteps": [
+        {
+          "step": "1",
+          "action": "Download & Install",
+          "detail": "Get NordVPN on your phone, laptop, iPad, or browser extension with 1-click install."
+        },
+        {
+          "step": "2",
+          "action": "Hit Quick Connect",
+          "detail": "Tap Quick Connect to encrypt your traffic instantly or choose a specific country server."
+        },
+        {
+          "step": "3",
+          "action": "Browse Without Restrictions",
+          "detail": "Stream blocked content, bypass network firewalls, and use public Wi-Fi securely."
+        }
+      ],
+      "drawbacks": [
+        {
+          "label": "No Permanent Free Tier",
+          "detail": "Operates on a 30-day risk-free money-back guarantee rather than a slow, ad-supported free plan."
+        }
+      ],
+      "pricingTiers": [
+        {
+          "tierName": "BASIC",
+          "price": "From $3.39/mo",
+          "badge": "BEST VALUE",
+          "summary": "High-speed secure VPN for 10 devices.",
+          "bullets": [
+            "6,000+ servers in 111 countries",
+            "NordLynx ultra-fast speeds",
+            "30-day money-back guarantee"
+          ]
+        },
+        {
+          "tierName": "PLUS",
+          "price": "From $4.39/mo",
+          "badge": "POPULAR",
+          "summary": "Adds Threat Protection anti-malware and password manager.",
+          "bullets": [
+            "Threat Protection ad-blocker",
+            "NordPass cross-device password vault",
+            "Data breach scanner"
+          ]
+        },
+        {
+          "tierName": "ULTIMATE",
+          "price": "From $6.39/mo",
+          "badge": "COMPLETE",
+          "summary": "Adds 1TB encrypted cloud storage and identity insurance.",
+          "bullets": [
+            "1TB cloud storage (NordLocker)",
+            "Cyber extortion protection",
+            "Identity theft recovery coverage"
+          ]
+        }
+      ],
+      "pricingVerdict": "The most reliable, highest-speed VPN for students, travelers, and privacy-conscious internet users.",
+      "specs": {
+        "loginRequired": "Account (Email)",
+        "creditCard": "Yes (Covered by 30-Day Money-Back Guarantee)",
+        "platforms": "Windows, macOS, Linux, iOS, Android, Chrome, Firefox",
+        "exportFormats": "Encrypted Network Tunnel (WireGuard / NordLynx)",
+        "privacyPosture": "Strict Audited No-Logs Policy based in Panama",
+        "bestFor": "Streaming Fans, Travelers, Campus Wi-Fi Users & Privacy Enthusiasts",
+        "replaces": "Slow free proxy services, separate ad blockers and DNS scramblers",
+        "proTip": "Connect to UK or Japanese servers to unlock Netflix shows and anime not available in your home country."
+      },
+      "faqs": [
+        {
+          "q": "Does NordVPN work with Netflix and Disney+?",
+          "a": "Yes. NordVPN is specifically optimized for streaming and bypasses regional geo-blocks reliably."
+        },
+        {
+          "q": "How many devices can I use on one account?",
+          "a": "A single NordVPN subscription covers up to 10 devices simultaneously."
+        }
+      ]
+    },
+    {
+      "id": "358",
+      "name": "Hostinger",
+      "directoryHook": "Budget cloud hosting & 1-click AI website builder",
+      "tagline": "Ultra-affordable web hosting and AI website builder with free custom domain, business email, and SSL certificates.",
+      "category": "Career & Coding",
+      "categories": [
+        "Career & Coding",
+        "Productivity"
+      ],
+      "collections": [
+        "career-cheat-codes"
+      ],
+      "domain": "hostinger.com",
+      "url": "https://hostinger.com",
+      "isAffiliate": true,
+      "isSponsored": false,
+      "pricingBadge": "From $2.99/mo",
+      "freePlan": "30-day money-back guarantee with free automatic weekly backups.",
+      "paidPlan": "Premium ($2.99/mo) includes free custom .com domain, 100 websites, and AI website builder.",
+      "whatItDoes": "Enables students, creators, and freelancers to launch professional WordPress blogs, e-commerce stores, or portfolio websites in under 10 minutes using AI site builders, free business email, and lightning-fast LiteSpeed servers.",
+      "whyWeLikeIt": [
+        "Includes a free .com/.tech domain name for the first year with free SSL certificates.",
+        "Built-in AI Website Builder asks 3 questions and generates a complete responsive multi-page website.",
+        "Intuitive hPanel dashboard makes managing DNS, databases, and emails effortless."
+      ],
+      "limitations": "Renews at standard hosting rates after the initial multi-year discount period.",
+      "partnerNetwork": "Hostinger Affiliate Program (60% CPA payout per sale)",
+      "deepOverview": [
+        "Hostinger provides web hosting, cloud infrastructure, and AI website creation tools designed to get individuals and businesses online with minimal budget and zero technical headache.",
+        "Its modern proprietary hPanel replaces complex cPanel interfaces with clean, one-click installers for WordPress, custom business email setups, and automatic SSL provisioning."
+      ],
+      "keyFeatures": [
+        {
+          "title": "Free Domain & SSL",
+          "desc": "Includes a free custom .com, .net, or .tech domain for 1 year plus unlimited free SSL certificates."
+        },
+        {
+          "title": "AI Website Builder",
+          "desc": "Describe your brand or project and Hostinger's AI creates custom pages, layouts, and copy in 60 seconds."
+        },
+        {
+          "title": "1-Click WordPress Setup",
+          "desc": "Automatic WordPress installation with pre-configured LiteSpeed caching for blazing page loads."
+        },
+        {
+          "title": "Free Professional Email",
+          "desc": "Create up to 100 custom domain email addresses (e.g. hello@yourbrand.com) at no extra charge."
+        }
+      ],
+      "workflowSteps": [
+        {
+          "step": "1",
+          "action": "Choose Your Plan",
+          "detail": "Select the Premium hosting tier (starting at $2.99/month with 3 months free)."
+        },
+        {
+          "step": "2",
+          "action": "Claim Free Domain",
+          "detail": "Register your free .com, .org, or .tech domain name during checkout."
+        },
+        {
+          "step": "3",
+          "action": "Launch with AI or WordPress",
+          "detail": "Use the AI site builder or 1-click WordPress install to take your website live immediately."
+        }
+      ],
+      "drawbacks": [
+        {
+          "label": "Best Pricing on 48-Month Term",
+          "detail": "The $2.99/month rate requires choosing a longer commitment upfront."
+        }
+      ],
+      "pricingTiers": [
+        {
+          "tierName": "PREMIUM",
+          "price": "$2.99/mo",
+          "badge": "MOST POPULAR",
+          "summary": "Host up to 100 websites with free domain.",
+          "bullets": [
+            "Free custom domain ($9.99 value)",
+            "Free business email accounts",
+            "AI website builder included"
+          ]
+        },
+        {
+          "tierName": "BUSINESS",
+          "price": "$3.99/mo",
+          "badge": "E-COMMERCE",
+          "summary": "Increased performance with daily automatic backups.",
+          "bullets": [
+            "Daily backups & 1-click restore",
+            "Enhanced DDoS protection",
+            "Free CDN for global speed"
+          ]
+        },
+        {
+          "tierName": "CLOUD STARTUP",
+          "price": "$7.99/mo",
+          "badge": "SCALE",
+          "summary": "Dedicated IP, 10x performance, and cloud architecture.",
+          "bullets": [
+            "Dedicated resources & isolated server",
+            "Standard WooCommerce support",
+            "Priority customer support"
+          ]
+        }
+      ],
+      "pricingVerdict": "The top budget recommendation for students and creators launching their first online portfolio or niche website.",
+      "specs": {
+        "loginRequired": "Account (Email / Google)",
+        "creditCard": "Yes (Credit Card, PayPal, Google Pay, Crypto)",
+        "platforms": "Web Dashboard (Cloud LiteSpeed Servers)",
+        "exportFormats": "WordPress, HTML/CSS, MySQL, Full Backups",
+        "privacyPosture": "Automated Backups & Cloudflare-Protected Nameservers",
+        "bestFor": "Students, Freelancers, Bloggers & First-Time Website Owners",
+        "replaces": "Overpriced legacy hosting providers (Bluehost, GoDaddy)",
+        "proTip": "Use the free business email to set up professional communications for outreach and brand deals."
+      },
+      "faqs": [
+        {
+          "q": "Is a free domain really included?",
+          "a": "Yes. 12-month and longer hosting plans include 1 free year of custom domain registration."
+        },
+        {
+          "q": "Can I host multiple websites on one plan?",
+          "a": "Yes. The Premium plan allows hosting up to 100 different websites under a single account."
+        }
+      ]
+    },
+    {
+      "id": "359",
+      "name": "Klap AI",
+      "directoryHook": "Turn YouTube videos into viral TikToks & Reels in 1 click",
+      "tagline": "AI video repurposing platform that extracts engaging clips from YouTube URLs, complete with dynamic captions and smart facial tracking.",
+      "category": "Creator tools",
+      "categories": [
+        "Creator tools",
+        "AI tools"
+      ],
+      "collections": [
+        "creators"
+      ],
+      "domain": "klap.app",
+      "url": "https://klap.app",
+      "isAffiliate": true,
+      "isSponsored": false,
+      "pricingBadge": "Free Trial",
+      "freePlan": "1 free video trial allowing you to test AI clip extraction and auto-caption styling.",
+      "paidPlan": "Klap Pro ($29/mo) unlocks 10 video uploads per month (up to 100 clips) and 4K exports.",
+      "whatItDoes": "Paste any public YouTube video link and Klap's AI automatically scans the transcript, identifies hook moments with high viral potential, crops widescreen footage to vertical 9:16 using facial detection, and overlays animated subtitles.",
+      "whyWeLikeIt": [
+        "Super-fast browser workflow requiring zero manual timeline cutting or video downloading.",
+        "Customizable animated caption presets inspired by top short-form creators.",
+        "AI smart crop keeps speakers in frame even during rapid multi-person conversations."
+      ],
+      "limitations": "Free trial allows testing 1 video before requiring a subscription.",
+      "partnerNetwork": "Rewardful / FirstPromoter (Klap 30% Recurring)",
+      "deepOverview": [
+        "Klap AI uses advanced language models and computer vision to turn long-form video content into ready-to-publish short clips optimized for TikTok, Instagram Reels, and YouTube Shorts.",
+        "It transcribes speech, evaluates context to find complete, self-contained thoughts, and applies automatic dynamic cropping so you never have to manually reframe subjects."
+      ],
+      "keyFeatures": [
+        {
+          "title": "AI Highlight Detection",
+          "desc": "Extracts topics with strong opening hooks, emotional peaks, or actionable takeaways."
+        },
+        {
+          "title": "Smart Auto-Reframing",
+          "desc": "Focuses on the active face with smooth panning, eliminating awkward wide-angle cuts."
+        },
+        {
+          "title": "Dynamic Kinetic Subtitles",
+          "desc": "Automatically syncs animated captions with customizable fonts, emojis, and color highlights."
+        },
+        {
+          "title": "Direct Browser Publishing",
+          "desc": "Review, edit caption timing, and download ready-to-post 9:16 MP4s in minutes."
+        }
+      ],
+      "workflowSteps": [
+        {
+          "step": "1",
+          "action": "Paste YouTube URL",
+          "detail": "Drop any YouTube link into Klap without downloading heavy video files to your computer."
+        },
+        {
+          "step": "2",
+          "action": "AI Detects Best Moments",
+          "detail": "Klap's AI identifies the highest-potential segments and generates 5–10 vertical clips."
+        },
+        {
+          "step": "3",
+          "action": "Customize & Export",
+          "detail": "Pick your favorite caption style and export crisp vertical videos for Reels and TikTok."
+        }
+      ],
+      "drawbacks": [
+        {
+          "label": "Requires YouTube Link or Upload",
+          "detail": "Works best on long-form conversational content like interviews, podcasts, and speeches."
+        }
+      ],
+      "pricingTiers": [
+        {
+          "tierName": "FREE TRIAL",
+          "price": "$0",
+          "badge": "TEST",
+          "summary": "Process 1 video to test AI clip detection.",
+          "bullets": [
+            "Up to 10 generated clips",
+            "Auto-framing & captions",
+            "Browser preview"
+          ]
+        },
+        {
+          "tierName": "KLAP PRO",
+          "price": "$29/mo",
+          "badge": "CREATOR",
+          "summary": "10 video uploads/month (up to 100 short clips).",
+          "bullets": [
+            "HD/4K video exports",
+            "Custom brand fonts & colors",
+            "No Klap branding"
+          ]
+        },
+        {
+          "tierName": "KLAP PRO+",
+          "price": "$63/mo",
+          "badge": "POWER",
+          "summary": "30 video uploads/month (up to 300 short clips).",
+          "bullets": [
+            "Fastest priority rendering",
+            "Extended video duration support",
+            "Dedicated support"
+          ]
+        }
+      ],
+      "pricingVerdict": "A clean, ultra-fast alternative to Opus Clip and Submagic for podcasters and interviewers.",
+      "specs": {
+        "loginRequired": "Free Account (Google / Email)",
+        "creditCard": "No ($0 to Test)",
+        "platforms": "Web Browser (Cloud-based)",
+        "exportFormats": "MP4 (1080p / 4K, 9:16 vertical)",
+        "privacyPosture": "Cloud Processing Infrastructure",
+        "bestFor": "Podcasters, Streamers, Agencies & Content Repurposers",
+        "replaces": "Manual video clipping, subtitle timing software",
+        "proTip": "Use Klap on long podcast episodes to get your entire week's worth of Reels in one single upload."
+      },
+      "faqs": [
+        {
+          "q": "Do I need to download the video first?",
+          "a": "No. You can just paste any public YouTube link, and Klap processes the stream directly in the cloud."
+        },
+        {
+          "q": "Can I adjust the subtitle text?",
+          "a": "Yes. You can edit any word, fix spelling, or adjust highlight colors with 1 click in the editor."
+        }
+      ]
+    },
+    {
+      "id": "360",
+      "name": "Murf AI",
+      "directoryHook": "Studio-quality AI voiceovers with emotional inflection",
+      "tagline": "AI voice generator and voiceover studio offering 120+ natural human voices across 20+ languages for video, presentations, and audiobooks.",
+      "category": "Creator tools",
+      "categories": [
+        "Creator tools",
+        "AI tools"
+      ],
+      "collections": [
+        "creators"
+      ],
+      "domain": "murf.ai",
+      "url": "https://murf.ai",
+      "isAffiliate": true,
+      "isSponsored": false,
+      "pricingBadge": "Free Plan",
+      "freePlan": "10 minutes of free voice generation and 10 minutes of transcription to test all 120+ voices.",
+      "paidPlan": "Creator ($23/mo billed annually) unlocks unlimited downloads, commercial usage rights, and 60+ voices.",
+      "whatItDoes": "Generates studio-grade voiceovers from text scripts with fine-grained controls for pitch, pauses, emphasis, and speed. Creators can sync their voiceover directly against video clips and background music tracks in the browser.",
+      "whyWeLikeIt": [
+        "Granular pitch, speed, and pause modifiers make voices sound conversational rather than robotic.",
+        "Ability to change speaking styles between promotional, conversational, sad, angry, and calm.",
+        "Built-in royalty-free background music library that automatically ducks audio under voice lines."
+      ],
+      "limitations": "Free plan allows testing and sharing but requires an upgraded plan for audio downloads.",
+      "partnerNetwork": "Rewardful (Murf AI 20% Recurring for 24 months)",
+      "deepOverview": [
+        "Murf AI is an AI voice generator that enables creators, educators, and product teams to create lifelike voiceovers in minutes without hiring voice talent or recording in a sound booth.",
+        "Its studio interface allows uploading video footage and precisely timing synthesized voice segments against individual visual cuts, complete with automated audio ducking."
+      ],
+      "keyFeatures": [
+        {
+          "title": "120+ Lifelike AI Voices",
+          "desc": "Natural human-sounding voices across 20+ languages and dozens of natural accents."
+        },
+        {
+          "title": "Fine-Grained Voice Editing",
+          "desc": "Adjust pitch, speed, emphasis, and custom pause durations down to the millisecond."
+        },
+        {
+          "title": "Voice Changer (Audio-to-Audio)",
+          "desc": "Upload raw smartphone voice recordings and swap them into professional studio actor voices."
+        },
+        {
+          "title": "Integrated Video Studio",
+          "desc": "Sync voice lines directly against uploaded MP4 video clips with royalty-free music."
+        }
+      ],
+      "workflowSteps": [
+        {
+          "step": "1",
+          "action": "Paste Your Script",
+          "detail": "Drop in your text script and assign different voices or accents to different blocks."
+        },
+        {
+          "step": "2",
+          "action": "Tune Pitch & Tone",
+          "detail": "Highlight words to add emphasis, insert pauses, or adjust the speed of delivery."
+        },
+        {
+          "step": "3",
+          "action": "Render & Download",
+          "detail": "Listen to the preview, sync with background music, and export high-bitrate MP3 or WAV."
+        }
+      ],
+      "drawbacks": [
+        {
+          "label": "Downloads Locked on Free Plan",
+          "detail": "You can generate and test voices on the free plan, but exporting audio files requires Creator tier."
+        }
+      ],
+      "pricingTiers": [
+        {
+          "tierName": "FREE PLAN",
+          "price": "$0",
+          "badge": "EVALUATION",
+          "summary": "10 mins voice generation & sharing.",
+          "bullets": [
+            "Access all 120+ voices",
+            "No credit card required",
+            "Shareable preview links"
+          ]
+        },
+        {
+          "tierName": "CREATOR",
+          "price": "From $23/mo",
+          "badge": "MOST POPULAR",
+          "summary": "Unlimited downloads & commercial usage rights.",
+          "bullets": [
+            "Unlimited audio downloads",
+            "Access to 60+ voices",
+            "Commercial rights for monetization"
+          ]
+        },
+        {
+          "tierName": "BUSINESS",
+          "price": "From $79/mo",
+          "badge": "TEAMS",
+          "summary": "Full voice library, AI voice changer, and collaboration.",
+          "bullets": [
+            "All 120+ voices & 20+ languages",
+            "Voice changer included",
+            "Multi-user collaboration"
+          ]
+        }
+      ],
+      "pricingVerdict": "The premier voice studio for explainer videos, educational courses, and faceless YouTube channels.",
+      "specs": {
+        "loginRequired": "Free Account (Google / Email)",
+        "creditCard": "No ($0 to Test)",
+        "platforms": "Web Browser (Chrome, Safari, Firefox)",
+        "exportFormats": "MP3, WAV, FLAC, MP4 Video",
+        "privacyPosture": "Enterprise Cloud Security",
+        "bestFor": "Course Creators, YouTubers, Video Marketers & Audio Producers",
+        "replaces": "Expensive voice actors, home sound booths, robotic TTS tools",
+        "proTip": "Use the 'Emphasis' slider on key adjectives in your script to make promotional hooks sound natural and enthusiastic."
+      },
+      "faqs": [
+        {
+          "q": "Can I use Murf voices on YouTube?",
+          "a": "Yes. Paid plans include full commercial rights for YouTube, social media ads, and commercial podcasts."
+        },
+        {
+          "q": "How natural do the voices sound?",
+          "a": "Murf's neural voices include realistic breath sounds and conversational pacing that rival human narrators."
+        }
+      ]
+    },
+    {
+      "id": "361",
+      "name": "Writesonic",
+      "directoryHook": "AI writing & SEO article generator with live Google data",
+      "tagline": "AI content suite featuring Chatsonic, 1-click SEO article writers, and factual research backed by real-time Google search data.",
+      "category": "AI tools",
+      "categories": [
+        "AI tools",
+        "Career & Coding"
+      ],
+      "collections": [
+        "creators",
+        "career-cheat-codes"
+      ],
+      "domain": "writesonic.com",
+      "url": "https://writesonic.com",
+      "isAffiliate": true,
+      "isSponsored": false,
+      "pricingBadge": "Free Trial",
+      "freePlan": "25 one-time generations to test Chatsonic and short-form copy templates.",
+      "paidPlan": "Chatsonic Individual ($12/mo) unlocks unlimited GPT-4o generations and Google search integration.",
+      "whatItDoes": "Combines multiple leading LLMs with real-time web search to draft long-form SEO blog posts, LinkedIn content, YouTube video scripts, and product descriptions without hallucinating outdated facts.",
+      "whyWeLikeIt": [
+        "Chatsonic pulls live real-time internet information directly into answers with cited sources.",
+        "AI Article Writer 6.0 writes complete 2,500-word rankable articles based on competitor SERP analysis.",
+        "Brand Voice feature learns your writing style and guidelines to maintain tone consistency."
+      ],
+      "limitations": "Free trial includes 25 generations before requiring an upgrade.",
+      "partnerNetwork": "FirstPromoter (Writesonic 30% Lifetime Recurring)",
+      "deepOverview": [
+        "Writesonic is an AI engagement and content creation platform that combines conversational search (Chatsonic) with automated long-form article writing and brand voice consistency.",
+        "Unlike standard ChatGPT, Writesonic grounds its outputs in real-time Google search results, ensuring product reviews, news summaries, and technical articles contain up-to-date facts and working citations."
+      ],
+      "keyFeatures": [
+        {
+          "title": "Chatsonic Real-Time Search",
+          "desc": "Chat with an AI that queries Google Search in real time for breaking news and current data."
+        },
+        {
+          "title": "AI Article Writer 6.0",
+          "desc": "Generate complete, SEO-optimized 2,500-word blog posts using top-ranking competitor SERP data."
+        },
+        {
+          "title": "Brand Voice Customization",
+          "desc": "Upload your existing articles or brand guidelines so AI writes in your distinct company tone."
+        },
+        {
+          "title": "100+ Pre-Built Templates",
+          "desc": "Instant generators for viral tweets, LinkedIn hooks, YouTube descriptions, and email cold pitches."
+        }
+      ],
+      "workflowSteps": [
+        {
+          "step": "1",
+          "action": "Choose a Template",
+          "detail": "Select from Chatsonic, Article Writer, Social Media Copy, or Ad Headlines."
+        },
+        {
+          "step": "2",
+          "action": "Input Topic & Keywords",
+          "detail": "Provide your topic keywords, target country, and preferred tone of voice."
+        },
+        {
+          "step": "3",
+          "action": "Generate & Polish",
+          "detail": "Generate complete drafts with real-time citations and export to WordPress or Google Docs."
+        }
+      ],
+      "drawbacks": [
+        {
+          "label": "Token Quota on Advanced Models",
+          "detail": "Heavy users running GPT-4o will consume monthly word quotas faster."
+        }
+      ],
+      "pricingTiers": [
+        {
+          "tierName": "FREE TRIAL",
+          "price": "$0",
+          "badge": "TEST",
+          "summary": "25 free generations to test Chatsonic.",
+          "bullets": [
+            "Chatsonic with Google Search",
+            "100+ AI copywriting templates",
+            "No credit card required"
+          ]
+        },
+        {
+          "tierName": "CHATSONIC PRO",
+          "price": "From $12/mo",
+          "badge": "INDIVIDUAL",
+          "summary": "Unlimited AI search and content drafting.",
+          "bullets": [
+            "Unlimited generations",
+            "Image generation included",
+            "Personal brand voice"
+          ]
+        },
+        {
+          "tierName": "STANDARD",
+          "price": "From $79/mo",
+          "badge": "TEAMS",
+          "summary": "Full AI article writer and SEO research suite.",
+          "bullets": [
+            "AI Article Writer 6.0",
+            "Internal linking & SEO optimization",
+            "WordPress & Zapier integrations"
+          ]
+        }
+      ],
+      "pricingVerdict": "A powerful, Google-connected alternative to ChatGPT for bloggers, copywriters, and digital marketers.",
+      "specs": {
+        "loginRequired": "Free Account (Google / Email)",
+        "creditCard": "No ($0 to Test)",
+        "platforms": "Web Browser & Chrome Extension",
+        "exportFormats": "Google Docs, WordPress, HTML, Markdown, PDF",
+        "privacyPosture": "Enterprise Cloud Infrastructure",
+        "bestFor": "Bloggers, Copywriters, Freelancers & SEO Specialists",
+        "replaces": "Jasper ($49/mo), manual keyword search tools",
+        "proTip": "Use Chatsonic to research topics that happened yesterday—it cites live web pages unlike static AI models."
+      },
+      "faqs": [
+        {
+          "q": "Does Writesonic write factual, updated articles?",
+          "a": "Yes. Chatsonic and Article Writer are connected to live Google search to pull current facts and source links."
+        },
+        {
+          "q": "Can I publish directly to WordPress?",
+          "a": "Yes. Writesonic has a 1-click integration to publish drafts straight into your WordPress blog."
+        }
+      ]
+    },
+    {
+      "id": "362",
+      "name": "Lovo.ai (Genny)",
+      "directoryHook": "AI voice generator with 500+ emotional voices",
+      "tagline": "Award-winning AI voice generator and video editor with 500+ realistic voices in 100+ languages capable of expressing 30+ emotions.",
+      "category": "Creator tools",
+      "categories": [
+        "Creator tools",
+        "AI tools"
+      ],
+      "collections": [
+        "creators"
+      ],
+      "domain": "lovo.ai",
+      "url": "https://lovo.ai",
+      "isAffiliate": true,
+      "isSponsored": false,
+      "pricingBadge": "14-Day Pro Trial",
+      "freePlan": "14-day free trial of Pro tier with 20 minutes of voice generation credits.",
+      "paidPlan": "Basic ($24/mo) unlocks 2 hours of voice generation per month and commercial licensing.",
+      "whatItDoes": "Generates expressive AI voice acting for video games, animations, YouTube videos, audiobooks, and commercials with granular emotional inflections (whispering, screaming, sobbing, drunkenness, excitement).",
+      "whyWeLikeIt": [
+        "Unrivaled emotional voice acting library featuring over 30 distinct human emotions.",
+        "Integrated multi-track timeline video editor with built-in AI image generation and scriptwriting.",
+        "Voice cloning requires just 10 seconds of clear speech to create a recognizable replica."
+      ],
+      "limitations": "Full Pro features revert to basic tier after the 14-day evaluation period.",
+      "partnerNetwork": "Rewardful (Lovo 20% Lifetime Recurring)",
+      "deepOverview": [
+        "Lovo.ai (through its flagship platform Genny) is a next-generation AI voice and video creation workspace built for creators, game developers, marketers, and video editors.",
+        "It specializes in emotional voice synthesis, allowing creators to apply specific vocal states like suspense, laughter, fear, or enthusiasm to individual spoken phrases."
+      ],
+      "keyFeatures": [
+        {
+          "title": "500+ AI Voices Across 100+ Languages",
+          "desc": "The largest catalog of hyper-realistic character and professional narrator voices."
+        },
+        {
+          "title": "30+ Granular Emotion Modifiers",
+          "desc": "Inject authentic human feelings into voices: anger, sadness, surprise, love, and laughter."
+        },
+        {
+          "title": "10-Second Voice Cloning",
+          "desc": "Clone any real human voice from a short 10-second smartphone recording."
+        },
+        {
+          "title": "All-in-One Video Studio",
+          "desc": "Edit video clips, add AI-generated images, and sync audio tracks on a multi-layer timeline."
+        }
+      ],
+      "workflowSteps": [
+        {
+          "step": "1",
+          "action": "Type or Upload Script",
+          "detail": "Paste your narration script into Genny's multi-character text blocks."
+        },
+        {
+          "step": "2",
+          "action": "Select Voices & Emotions",
+          "detail": "Choose from 500+ voices and apply emotional tones to match dramatic scenes."
+        },
+        {
+          "step": "3",
+          "action": "Export High-Res Video/Audio",
+          "detail": "Export lossless WAV audio or full HD video with embedded subtitles."
+        }
+      ],
+      "drawbacks": [
+        {
+          "label": "Trial Period Ends After 14 Days",
+          "detail": "Requires a paid subscription after the trial period to continue unlimited rendering."
+        }
+      ],
+      "pricingTiers": [
+        {
+          "tierName": "FREE TRIAL",
+          "price": "$0",
+          "badge": "14-DAY PRO",
+          "summary": "20 minutes of voice generation with all Pro features.",
+          "bullets": [
+            "Access all 500+ voices",
+            "Emotion modifiers & cloning test",
+            "Commercial rights for 14 days"
+          ]
+        },
+        {
+          "tierName": "BASIC",
+          "price": "From $24/mo",
+          "badge": "SOLO",
+          "summary": "2 hours of voice generation/month.",
+          "bullets": [
+            "Unlimited downloads",
+            "5 custom voice clones",
+            "Global commercial rights"
+          ]
+        },
+        {
+          "tierName": "PRO",
+          "price": "From $36/mo",
+          "badge": "MOST POPULAR",
+          "summary": "5 hours of voice generation/month.",
+          "bullets": [
+            "Unlimited voice clones",
+            "Priority rendering speed",
+            "Auto-subtitles generator"
+          ]
+        }
+      ],
+      "pricingVerdict": "The best AI voice platform for dramatic storytelling, gaming, animation, and video marketing.",
+      "specs": {
+        "loginRequired": "Free Account (Google / Email)",
+        "creditCard": "No ($0 for 14-Day Trial)",
+        "platforms": "Web Browser (Chrome, Safari, Edge)",
+        "exportFormats": "MP3, WAV, MP4 Video",
+        "privacyPosture": "Enterprise Cloud Infrastructure",
+        "bestFor": "Game Developers, Animators, YouTubers & Audiobook Creators",
+        "replaces": "Expensive voice actors, multi-thousand-dollar recording equipment",
+        "proTip": "Combine Lovo's 'Whispering' emotion modifier with dark ambient music for suspenseful crime/history YouTube shorts."
+      },
+      "faqs": [
+        {
+          "q": "Can I clone my own voice on Lovo?",
+          "a": "Yes. Genny's rapid voice cloning requires only a 10-second audio sample to create a recognizable custom voice."
+        },
+        {
+          "q": "Are Lovo voiceovers commercially usable?",
+          "a": "Yes. Paid plans and the 14-day trial grant full commercial usage rights for YouTube and advertisements."
+        }
+      ]
+    },
+    {
+      "id": "363",
+      "name": "Fliki",
+      "directoryHook": "Text-to-video with AI voices in 80+ languages",
+      "tagline": "Convert blog posts, tweets, product listings, or scripts into captivating videos with AI voiceovers and rich stock media in minutes.",
+      "category": "Creator tools",
+      "categories": [
+        "Creator tools",
+        "AI tools"
+      ],
+      "collections": [
+        "creators"
+      ],
+      "domain": "fliki.ai",
+      "url": "https://fliki.ai",
+      "isAffiliate": true,
+      "isSponsored": false,
+      "pricingBadge": "Free Plan",
+      "freePlan": "5 minutes of free audio and video content per month with standard AI voices.",
+      "paidPlan": "Standard ($21/mo) unlocks 2,160 minutes/year of HD video exports and 1,000+ voices.",
+      "whatItDoes": "Paste a URL or script, and Fliki breaks it into storyboard scenes, selects relevant stock video footage, synthesizes realistic AI voices in 80+ languages, and adds subtitles automatically.",
+      "whyWeLikeIt": [
+        "Transforms a published blog post URL into a complete narrated video with zero editing experience.",
+        "Huge voice catalog featuring 2,000+ realistic voices across 80+ languages and 100+ dialects.",
+        "Super-fast rendering engine built specifically for non-technical social media managers."
+      ],
+      "limitations": "Free plan output contains a small Fliki watermark and 720p resolution.",
+      "partnerNetwork": "FirstPromoter (Fliki 25% Lifetime Recurring)",
+      "deepOverview": [
+        "Fliki simplifies video creation by merging text-to-speech with automated media curation into a scene-by-scene script editor.",
+        "Instead of wrestling with complex timelines and keyframes, you simply type your script or paste an article URL; Fliki selects relevant video backgrounds, writes subtitles, and handles the voiceover automatically."
+      ],
+      "keyFeatures": [
+        {
+          "title": "Blog-to-Video Converter",
+          "desc": "Paste any blog post URL and Fliki summarizes it into a 60-second video script with matching stock video."
+        },
+        {
+          "title": "2,000+ Voices Across 80+ Languages",
+          "desc": "Unmatched language and dialect coverage for localizing content across the globe."
+        },
+        {
+          "title": "Tweet-to-Video",
+          "desc": "Turn viral tweets and threads into dynamic video reels with clean animated cards."
+        },
+        {
+          "title": "Rich Stock Media Library",
+          "desc": "Millions of royalty-free video clips, images, and audio tracks integrated seamlessly."
+        }
+      ],
+      "workflowSteps": [
+        {
+          "step": "1",
+          "action": "Paste URL or Script",
+          "detail": "Drop in a blog post link, idea prompt, or script draft."
+        },
+        {
+          "step": "2",
+          "action": "Review AI Storyboard",
+          "detail": "Fliki breaks your content into scenes with matching b-roll, voices, and music."
+        },
+        {
+          "step": "3",
+          "action": "Export & Post",
+          "detail": "Swap any media you want to personalize, and export vertical 9:16 or horizontal 16:9 video."
+        }
+      ],
+      "drawbacks": [
+        {
+          "label": "Watermark on Free Exports",
+          "detail": "Free tier outputs feature a subtle Fliki badge until upgrading to Standard."
+        }
+      ],
+      "pricingTiers": [
+        {
+          "tierName": "FREE PLAN",
+          "price": "$0",
+          "badge": "TRY IT",
+          "summary": "5 minutes of credits per month.",
+          "bullets": [
+            "Access to 300+ voices",
+            "720p low-res exports",
+            "Fliki watermark"
+          ]
+        },
+        {
+          "tierName": "STANDARD",
+          "price": "From $21/mo",
+          "badge": "POPULAR",
+          "summary": "2,160 minutes/year of HD video.",
+          "bullets": [
+            "1,000+ realistic AI voices",
+            "Full 1080p HD exports",
+            "No watermarks & commercial rights"
+          ]
+        },
+        {
+          "tierName": "PREMIUM",
+          "price": "From $66/mo",
+          "badge": "POWER",
+          "summary": "7,200 minutes/year with ultra-HD voices.",
+          "bullets": [
+            "2,000+ ultra-realistic voices",
+            "Voice cloning included",
+            "Fastest priority rendering queue"
+          ]
+        }
+      ],
+      "pricingVerdict": "The easiest, fastest tool for converting articles and written blog content into automated social video reels.",
+      "specs": {
+        "loginRequired": "Free Account (Google / Email)",
+        "creditCard": "No ($0 to Start)",
+        "platforms": "Web Browser (Cloud-based)",
+        "exportFormats": "MP4 (1080p, 16:9, 9:16, 1:1 square)",
+        "privacyPosture": "Cloud Infrastructure Security",
+        "bestFor": "Content Marketers, Bloggers, Solopreneurs & Educators",
+        "replaces": "Manual video editors, stock footage sites, separate voiceover tools",
+        "proTip": "Use the 'Idea to Video' prompt feature to outline a 30-second TikTok from just a simple question."
+      },
+      "faqs": [
+        {
+          "q": "Can I convert an existing article into video?",
+          "a": "Yes. Simply paste the article link, and Fliki auto-summarizes the text and pairs each point with video clips."
+        },
+        {
+          "q": "Does Fliki support non-English languages?",
+          "a": "Yes. Fliki supports over 80 languages and 100+ regional dialects with localized AI voices."
+        }
+      ]
+    },
+    {
+      "id": "364",
+      "name": "Castmagic",
+      "directoryHook": "Turn audio & podcasts into 20+ social media assets",
+      "tagline": "AI tool that transforms long podcasts, Zoom recordings, and YouTube audio into show notes, timestamps, newsletters, and viral tweets.",
+      "category": "Creator tools",
+      "categories": [
+        "Creator tools",
+        "Productivity"
+      ],
+      "collections": [
+        "creators",
+        "career-cheat-codes"
+      ],
+      "domain": "castmagic.io",
+      "url": "https://castmagic.io",
+      "isAffiliate": true,
+      "isSponsored": false,
+      "pricingBadge": "Free Trial",
+      "freePlan": "Free trial with 1 audio recording upload to generate full suite of social assets.",
+      "paidPlan": "Hobby ($23/mo billed annually) unlocks 200 recording minutes/month and custom prompt workspaces.",
+      "whatItDoes": "Upload any MP3 or YouTube link, and Castmagic transcribes the audio with high fidelity, then automatically outputs clean episode titles, key quotes, timestamped chapters, LinkedIn summaries, and Twitter threads.",
+      "whyWeLikeIt": [
+        "Eliminates hours of tedious post-production writing for podcasters, YouTubers, and coaches.",
+        "Custom Magic Chat prompt engine lets you interrogate your recording like a private ChatGPT.",
+        "Automatically identifies high-impact soundbites for social media teaser clips."
+      ],
+      "limitations": "Requires ongoing recording credits for regular weekly podcast processing.",
+      "partnerNetwork": "Rewardful (Castmagic 30% Recurring)",
+      "deepOverview": [
+        "Castmagic is a post-production tool that uses AI to convert spoken audio into 20+ ready-to-publish digital content assets.",
+        "Instead of spending hours manually listening back to interviews to write show notes, timestamps, newsletters, and social media quotes, Castmagic does it automatically in under 60 seconds."
+      ],
+      "keyFeatures": [
+        {
+          "title": "Automated Show Notes & Timestamps",
+          "desc": "Generates professional episode summaries with accurate clickable chapter markers."
+        },
+        {
+          "title": "Social Media Thread Generator",
+          "desc": "Extracts key insights and turns them into LinkedIn carousels, Twitter/X threads, and Instagram captions."
+        },
+        {
+          "title": "Magic Chat AI Assistant",
+          "desc": "Ask questions directly against your audio file (e.g. 'Draft a newsletter intro based on minute 14')."
+        },
+        {
+          "title": "Custom Prompt Presets",
+          "desc": "Save custom writing prompts to match your exact agency or brand newsletter format."
+        }
+      ],
+      "workflowSteps": [
+        {
+          "step": "1",
+          "action": "Upload Audio File",
+          "detail": "Upload an MP3, WAV, or paste a public YouTube/podcast link."
+        },
+        {
+          "step": "2",
+          "action": "Instant AI Transcription",
+          "detail": "Castmagic transcribes the file with speaker diarization and highlights core themes."
+        },
+        {
+          "step": "3",
+          "action": "Copy Social Assets",
+          "detail": "Copy ready-to-post show notes, quote cards, Twitter threads, and email newsletters."
+        }
+      ],
+      "drawbacks": [
+        {
+          "label": "Credit-Based Monthly Model",
+          "detail": "Heavy multi-show networks will need the Pro or Agency tier for expanded minute allowances."
+        }
+      ],
+      "pricingTiers": [
+        {
+          "tierName": "FREE TRIAL",
+          "price": "$0",
+          "badge": "TEST",
+          "summary": "Upload 1 recording to test asset generation.",
+          "bullets": [
+            "Full asset suite preview",
+            "Show notes & timestamps",
+            "Magic Chat access"
+          ]
+        },
+        {
+          "tierName": "HOBBY",
+          "price": "From $23/mo",
+          "badge": "SOLO CREATOR",
+          "summary": "200 minutes/month of audio processing.",
+          "bullets": [
+            "Unlimited asset generations",
+            "Custom prompt presets",
+            "Export to Notion & Google Docs"
+          ]
+        },
+        {
+          "tierName": "STARTER",
+          "price": "From $59/mo",
+          "badge": "PRODUCERS",
+          "summary": "500 minutes/month with multi-show workspaces.",
+          "bullets": [
+            "Multiple creator workspaces",
+            "Collaborative team sharing",
+            "Priority transcription pipeline"
+          ]
+        }
+      ],
+      "pricingVerdict": "The ultimate post-production time-saver for podcasters, webinar hosts, and content repurposing agencies.",
+      "specs": {
+        "loginRequired": "Free Account (Google / Email)",
+        "creditCard": "No ($0 to Test)",
+        "platforms": "Web Browser (Desktop & Mobile)",
+        "exportFormats": "Markdown, TXT, DOCX, Notion Sync, JSON",
+        "privacyPosture": "Encrypted Cloud Storage & Private LLM Processing",
+        "bestFor": "Podcasters, Coaches, Webinar Hosts & Content Agencies",
+        "replaces": "Virtual assistants, post-production copywriters, manual timestamping",
+        "proTip": "Use Magic Chat to prompt 'Extract 3 controversial opinions mentioned in this episode for a viral LinkedIn hook'."
+      },
+      "faqs": [
+        {
+          "q": "Can Castmagic process YouTube videos?",
+          "a": "Yes. Simply paste the YouTube link and Castmagic pulls the audio track automatically."
+        },
+        {
+          "q": "How accurate is the transcription?",
+          "a": "Castmagic uses Whisper-based neural transcription with speaker separation for high accuracy even with background noise."
+        }
+      ]
     }
   ],
   "comparisons": [

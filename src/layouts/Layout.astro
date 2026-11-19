@@ -519,50 +519,38 @@ const schemas = jsonLd
       color: var(--text);
     }
 
-    /* EDITORIAL NEWSLETTER DISPATCH BOX */
+    /* EDITORIAL NEWSLETTER DISPATCH BOX (MINIMALIST / SWISS AESTHETIC) */
     .kit-banner {
-      margin: 64px 0 44px;
-      background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-row) 100%);
+      margin: 56px 0 36px;
+      background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 38px 42px;
-      display: grid;
-      grid-template-columns: 1.25fr 1fr;
-      gap: 40px;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
-    }
-
-    .kit-banner::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--lime-bright, #a8ff29), transparent);
-      opacity: 0.6;
-    }
-
-    .kit-main-content {
+      border-radius: 12px;
+      padding: 32px 36px 28px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 22px;
+      box-shadow: var(--shadow-card);
     }
 
-    .kit-header {
+    .kit-top-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 36px;
+    }
+
+    .kit-left {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
+      max-width: 580px;
     }
 
     .kit-eyebrow {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
       color: var(--text-muted);
       text-transform: uppercase;
       display: inline-flex;
@@ -571,210 +559,136 @@ const schemas = jsonLd
     }
 
     .kit-eyebrow-dot {
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       background: #16a34a;
-      box-shadow: 0 0 8px rgba(22, 163, 74, 0.4);
     }
 
     :root:not([data-theme="light"]) .kit-eyebrow-dot {
       background: #a8ff29;
-      box-shadow: 0 0 10px rgba(168, 255, 41, 0.5);
     }
 
     .kit-title {
-      font-size: 1.45rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
       color: var(--text);
-      line-height: 1.25;
+      line-height: 1.3;
     }
 
-    .kit-subtitle {
-      font-size: 0.86rem;
+    .kit-desc {
+      font-size: 0.84rem;
       color: var(--text-secondary);
       line-height: 1.55;
     }
 
-    .kit-perks-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-
-    .kit-perk-item {
+    .kit-right {
       display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 10px 14px;
-      background: var(--bg-inset);
-      border: 1px solid var(--border-subtle);
-      border-radius: 10px;
-      transition: border-color 0.15s ease;
-    }
-
-    .kit-perk-item:hover {
-      border-color: var(--border-light);
-    }
-
-    .kit-perk-icon {
-      font-size: 1.1rem;
-      line-height: 1;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
       flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .kit-perk-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .kit-perk-text strong {
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--text);
-      letter-spacing: -0.01em;
-    }
-
-    .kit-perk-text span {
-      font-size: 0.76rem;
-      color: var(--text-secondary);
-      line-height: 1.4;
-    }
-
-    .kit-form-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-light);
-      border-radius: 14px;
-      padding: 28px 24px;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .kit-card-head {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .kit-card-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      background: var(--lime-soft);
-      color: var(--lime-ink);
-      border: 1px solid var(--lime-border);
-      border-radius: 6px;
-      padding: 3px 8px;
-      width: fit-content;
-    }
-
-    .kit-card-title {
-      font-size: 1.18rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--text);
-    }
-
-    .kit-card-sub {
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-      line-height: 1.45;
     }
 
     .kit-form {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .kit-input-wrap {
-      position: relative;
-      display: flex;
       align-items: center;
-      width: 100%;
-    }
-
-    .kit-mail-icon {
-      position: absolute;
-      left: 14px;
-      color: var(--text-muted);
-      pointer-events: none;
+      gap: 8px;
     }
 
     .kit-input {
       background: var(--bg-inset);
       border: 1px solid var(--border);
       color: var(--text);
-      padding: 12px 14px 12px 40px;
-      border-radius: 10px;
-      font-size: 0.86rem;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.84rem;
       font-family: inherit;
       outline: none;
-      width: 100%;
-      transition: all 0.15s ease;
+      width: 250px;
+      transition: border-color 0.15s ease;
     }
 
     .kit-input:focus {
       border-color: var(--border-hover);
-      box-shadow: 0 0 0 3px var(--lime-glow);
     }
 
     .kit-submit {
       background: var(--btn-primary-bg);
       color: var(--btn-primary-text);
-      font-weight: 700;
-      font-size: 0.86rem;
-      padding: 12px 20px;
-      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 10px 18px;
+      border-radius: 8px;
       border: none;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: opacity 0.15s ease, transform 0.15s ease;
-      width: 100%;
+      white-space: nowrap;
+      transition: opacity 0.15s ease;
     }
 
     .kit-submit:hover {
-      opacity: 0.92;
-      transform: translateY(-1px);
+      opacity: 0.9;
     }
 
-    .kit-trust-row {
+    .kit-meta-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 8px;
-      flex-wrap: wrap;
-      padding-top: 10px;
+    }
+
+    .kit-meta-sep {
+      opacity: 0.35;
+    }
+
+    /* MINIMALIST EDITORIAL VALUE STRIP (NO EMOJIS / ARCHITECTURAL) */
+    .kit-perks-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      padding-top: 20px;
       border-top: 1px solid var(--border-subtle);
     }
 
-    .kit-trust-badge {
-      font-size: 0.72rem;
+    .kit-perk-node {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .kit-perk-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
       color: var(--text-muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
+      padding-top: 2px;
+      letter-spacing: 0.04em;
     }
 
-    .kit-trust-badge svg {
-      color: #16a34a;
+    :root:not([data-theme="light"]) .kit-perk-num {
+      color: var(--lime);
     }
 
-    :root:not([data-theme="light"]) .kit-trust-badge svg {
-      color: #a8ff29;
+    .kit-perk-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .kit-perk-detail strong {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .kit-perk-detail span {
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
     }
 
     /* ARCHITECTURAL FOOTER */
@@ -1040,13 +954,25 @@ const schemas = jsonLd
         flex: 1;
         justify-content: center;
       }
-      .kit-banner {
-        grid-template-columns: 1fr;
-        gap: 32px;
-        padding: 30px 24px;
+      .kit-top-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
       }
-      .kit-title {
-        font-size: 1.3rem;
+      .kit-right {
+        align-items: flex-start;
+        width: 100%;
+      }
+      .kit-form {
+        width: 100%;
+      }
+      .kit-input {
+        flex: 1;
+        min-width: 0;
+      }
+      .kit-perks-strip {
+        grid-template-columns: 1fr;
+        gap: 16px;
       }
       .footer-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1150,33 +1076,40 @@ const schemas = jsonLd
         font-size: 0.82rem;
       }
       .kit-banner {
-        margin: 36px 0 24px;
-        padding: 22px 18px;
-        gap: 24px;
+        margin: 28px 0 20px;
+        padding: 20px 16px;
+        gap: 18px;
         border-radius: 12px;
       }
       .kit-title {
-        font-size: 1.15rem;
+        font-size: 1.1rem;
       }
-      .kit-subtitle {
+      .kit-desc {
         font-size: 0.8rem;
       }
-      .kit-perk-item {
-        padding: 9px 12px;
-        gap: 10px;
-      }
-      .kit-form-card {
-        padding: 20px 16px;
-        gap: 14px;
-        border-radius: 12px;
+      .kit-form {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        width: 100%;
       }
       .kit-input {
+        width: 100%;
         font-size: 16px;
+        padding: 9px 12px;
       }
-      .kit-trust-row {
-        flex-direction: column;
-        align-items: flex-start;
+      .kit-submit {
+        width: 100%;
+        padding: 10px 16px;
+      }
+      .kit-meta-note {
+        flex-wrap: wrap;
         gap: 6px;
+      }
+      .kit-perks-strip {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding-top: 16px;
       }
       .site-footer {
         padding: 26px 0 24px;
@@ -1259,81 +1192,62 @@ const schemas = jsonLd
   <!-- KIT (CONVERTKIT) FREE WEEKLY NEWSLETTER BANNER -->
   <div class="container" id="kit-newsletter">
     <section class="kit-banner">
-      <div class="kit-main-content">
-        <div class="kit-header">
+      <div class="kit-top-row">
+        <div class="kit-left">
           <div class="kit-eyebrow">
             <span class="kit-eyebrow-dot"></span>
-            FRIDAY DISPATCH // 0% NOISE · 100% SIGNAL
+            FRIDAY DISPATCH // ISSUE ARCHIVE
           </div>
-          <h2 class="kit-title">Never miss a hidden tool before it gets paywalled.</h2>
-          <p class="kit-subtitle">
-            Every week, dozens of promising AI utilities and developer tools launch 100% free — then turn on expensive $20/month paywalls once they gain traction. We test 50+ websites weekly, strip out the marketing fluff and malware, and deliver the top 5 battle-tested gems to your inbox every Friday morning.
+          <h2 class="kit-title">Five useful websites, every Friday morning.</h2>
+          <p class="kit-desc">
+            A 60-second filter for high-leverage internet tools. We monitor new releases, test them manually, and send 5 battle-tested utilities and generous free tiers before features get locked behind subscriptions.
           </p>
         </div>
 
-        <!-- 3 VALUE PILLARS (WHY VISITORS NEED TO SUBSCRIBE) -->
-        <div class="kit-perks-grid">
-          <div class="kit-perk-item">
-            <div class="kit-perk-icon">⚡</div>
-            <div class="kit-perk-text">
-              <strong>Pre-Paywall Radar</strong>
-              <span>Catch generous free tiers & open-source releases before pricing locks down.</span>
-            </div>
-          </div>
-          <div class="kit-perk-item">
-            <div class="kit-perk-icon">🛡️</div>
-            <div class="kit-perk-text">
-              <strong>100% Human Tested</strong>
-              <span>No SEO bait, ad-farms, or malware. Every site is manually vetted and safe.</span>
-            </div>
-          </div>
-          <div class="kit-perk-item">
-            <div class="kit-perk-icon">⏱️</div>
-            <div class="kit-perk-text">
-              <strong>60-Second Friday Read</strong>
-              <span>5 direct links with 1-sentence takeaways. Delivered every Friday, zero spam.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="kit-form-card">
-        <div class="kit-card-head">
-          <div class="kit-card-badge">Free Forever</div>
-          <h3 class="kit-card-title">Join the Friday Dispatch</h3>
-          <p class="kit-card-sub">Join 2,400+ creators, students & developers saving hours every week.</p>
-        </div>
-
-        <form class="kit-form" action={data.site.kitActionUrl} method="post" onsubmit="handleKitSubmit(event)">
-          <div class="kit-input-wrap">
-            <svg class="kit-mail-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
+        <div class="kit-right">
+          <form class="kit-form" action={data.site.kitActionUrl} method="post" onsubmit="handleKitSubmit(event)">
             <input
               type="email"
               name="email_address"
               id="kitEmailInput"
               class="kit-input"
-              placeholder="Enter your email address..."
+              placeholder="you@domain.com"
               required
             />
+            <button type="submit" class="kit-submit" id="kitSubmitBtn">Subscribe →</button>
+          </form>
+          <div class="kit-meta-note">
+            <span>Free weekly dispatch</span>
+            <span class="kit-meta-sep">/</span>
+            <span>1-click unsubscribe</span>
+            <span class="kit-meta-sep">/</span>
+            <span>Zero spam</span>
           </div>
-          <button type="submit" class="kit-submit" id="kitSubmitBtn">
-            <span>Get Friday's 5 Gems</span>
-            <span class="kit-arrow">→</span>
-          </button>
-        </form>
+        </div>
+      </div>
 
-        <div class="kit-trust-row">
-          <span class="kit-trust-badge">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            1-click unsubscribe anytime
-          </span>
-          <span class="kit-trust-badge">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Zero spam guarantee
-          </span>
+      <!-- MINIMALIST EDITORIAL VALUE STRIP -->
+      <div class="kit-perks-strip">
+        <div class="kit-perk-node">
+          <span class="kit-perk-num">01</span>
+          <div class="kit-perk-detail">
+            <strong>Pre-Paywall Radar</strong>
+            <span>Catch generous free tiers & open-source tools early</span>
+          </div>
+        </div>
+        <div class="kit-perk-node">
+          <span class="kit-perk-num">02</span>
+          <div class="kit-perk-detail">
+            <strong>Human Vetted</strong>
+            <span>Personally tested. Zero malware, ad-traps, or affiliate fluff</span>
+          </div>
+        </div>
+        <div class="kit-perk-node">
+          <span class="kit-perk-num">03</span>
+          <div class="kit-perk-detail">
+            <strong>60-Second Read</strong>
+            <span>5 direct bookmarks and 1-line takeaways every Friday morning</span>
+          </div>
         </div>
       </div>
     </section>

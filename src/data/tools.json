@@ -181,127 +181,132 @@
         "AI tools"
       ],
       "deepOverview": [
-        "Turns a single text prompt, outline, or uploaded class/work document into a complete, formatted 10-slide deck in under 30 seconds.",
-        "Built at gamma.app for students, researchers, content creators & knowledge workers, Gamma eliminates the friction of manual powerpoint formatting, canva pro slide decks, pitch pro ($20/mo). Because it is backed by an open-source or public-interest architecture, you get transparent, inspectable functionality without dark-pattern paywalls or surprise subscription traps."
+        "Gamma turns a raw outline, messy meeting notes, or an uploaded document into a fully designed, presentation-ready 10-slide deck in under 30 seconds.",
+        "Built at gamma.app for students, consultants, freelancers, and office teams, Gamma eliminates hours of fighting misaligned PowerPoint boxes, Canva export paywalls, or Pitch Pro ($20/mo). You start with 400 free AI credits (no credit card required), edit every slide visually in your browser, and export straight to PowerPoint (.PPTX), Google Slides, or PDF—or send an interactive live web link."
       ],
       "keyFeatures": [
         {
-          "title": "Core Workflow Speed & Output",
-          "desc": "Saves 2–3 hours of manual slide formatting and alignment."
+          "title": "30-Second Outline-to-Deck Generation",
+          "desc": "Paste messy notes, upload a doc, or enter a prompt to generate a structured 10-slide presentation with clean visual hierarchy automatically."
         },
         {
-          "title": "High-Leverage Feature Set",
-          "desc": "Exports directly to PowerPoint (.PPTX), PDF, or Google Slides."
+          "title": "1-Click .PPTX, Google Slides & PDF Export",
+          "desc": "Export straight to PowerPoint (.PPTX), Google Slides, PDF, or PNG so you are never trapped inside a proprietary slide viewer."
         },
         {
-          "title": "Free-Tier Generosity & Access",
-          "desc": "Generous 400-credit free allowance to test full decks."
+          "title": "400 Free AI Credits (No Credit Card)",
+          "desc": "Sign up for $0 with no card gate and get 400 starter credits—enough to generate and refine multiple complete decks right away."
         },
         {
-          "title": "Zero-Paywall Entry & Clean UX",
-          "desc": "Start on the verified Free Plan (400 free AI credits at signup; unlimited viewing & sharing.) without entering a credit card or getting locked into a forced trial."
+          "title": "Smart Card Layouts (Zero Alignment Hell)",
+          "desc": "Swap themes, add columns, or restructure entire slides in one click without text boxes exploding across the canvas."
         },
         {
-          "title": "Interoperability & Export Support",
-          "desc": "Supports standard formats (Markdown, PDF, DOCX, TXT, Copy-to-Clipboard, Share Link) across Web Browser (Chrome, Edge, Safari, Brave, Mobile Web), making it easy to drop into your existing stack."
+          "title": "Interactive Live Web Proposals & Decks",
+          "desc": "Share a clean, mobile-friendly live URL instead of heavy attachments—ideal for client proposals, pitch decks, and class hand-ins."
         },
         {
-          "title": "Cost-Replacement Leverage",
-          "desc": "Directly replaces or reduces reliance on Manual PowerPoint formatting, Canva Pro slide decks, Pitch Pro ($20/mo), keeping your monthly software overhead at $0."
+          "title": "Replaces $20+/mo Slide Subscriptions",
+          "desc": "Directly replaces hours of manual PowerPoint formatting, Canva Pro slide templates, and Pitch Pro ($20/mo) for solo users."
         }
       ],
       "workflowSteps": [
         {
-          "step": "STEP 1 // LAUNCH & CONFIGURE",
-          "title": "Create Your $0 Workspace on gamma.app",
-          "detail": "Sign in with a free account at gamma.app to activate the Free Plan (400 free AI credits at signup; unlimited viewing & sharing.). Skip any optional trial upsells."
+          "step": "STEP 1 // CLAIM YOUR 400 FREE CREDITS",
+          "title": "Create Your $0 Workspace on gamma.app (No Card Needed)",
+          "detail": "Open Gamma using the launch button above and create a free account to activate your 400 starter AI credits. Skip any optional upgrade prompts—theme switching and exports work on the free tier."
         },
         {
-          "step": "STEP 2 // EXECUTE CORE WORKFLOW",
-          "title": "Create presentations with AI",
-          "detail": "Turns a single text prompt, outline, or uploaded class/work document into a complete, formatted 10-slide deck in under 30 seconds. Use the built-in presets and controls to dial in your output in seconds rather than starting from a blank canvas."
+          "step": "STEP 2 // THE OUTLINE-FIRST CREDIT TRICK",
+          "title": "Paste Rough Notes Instead of a Vague 1-Line Prompt",
+          "detail": "Most beginners burn half their free credits regenerating generic 1-line prompts. Instead, grab sourced facts from #2 (Perplexity) or notes from #3 (NotebookLM), choose 'Paste in text', and generate a clean 10-slide deck on try #1."
         },
         {
-          "step": "STEP 3 // EXPORT & STACK",
-          "title": "Export Clean Output or Combine with Companion Tools",
-          "detail": "Download, copy, or share your finished work (Markdown, PDF, DOCX, TXT, Copy-to-Clipboard, Share Link). Bookmark #1 with the ☆ button so it stays in your personal GoodFinds stack."
+          "step": "STEP 3 // EXPORT & STACK COMPANION TOOLS",
+          "title": "Export to .PPTX, Google Slides, or Live Link",
+          "detail": "Tweak headlines inline, then export directly to PowerPoint (.PPTX), Google Slides, or PDF—or share the live web link. Pair #1 with #2 (research), #3 (PDF study guides), and #10 (cited writing) for an end-to-end stack."
         }
       ],
       "drawbacks": [
         {
           "label": "Primary Free-Tier Catch",
-          "detail": "Free tier exports include a small 'Made with Gamma' badge."
+          "detail": "Free-tier PDF and .PPTX exports include a small 'Made with Gamma' corner badge (removable on Plus, or easy to crop/ignore for internal decks)."
         },
         {
-          "label": "Platform & Environment Trade-Off",
-          "detail": "As a community/open-source tool, the UI prioritizes raw utility and local control over flashy commercial hand-holding or 24/7 live phone support."
+          "label": "One-Time Free Credit Pool",
+          "detail": "The 400 starter AI credits do not automatically refill each month on the free plan—use the outline-first trick above so you don't burn credits on trial-and-error prompts."
         },
         {
-          "label": "Power-User Ceiling",
-          "detail": "Heavy daily commercial users who exceed the free allowance (400 free AI credits at signup; unlimited viewing & sharing.) will eventually encounter the Plus ($8/mo) removes badge and unlocks unlimited AI generations. upgrade prompt."
+          "label": "Cloud SaaS Dependency",
+          "detail": "Gamma is a proprietary browser-based SaaS app that requires an internet connection for AI generation and live editing (export to .PPTX if you need offline presenting)."
         },
         {
-          "label": "When to Use an Alternative",
-          "detail": "If your workflow strictly requires native offline mobile editing or proprietary enterprise file locking, check the adjacent tools below in the AI tools index."
+          "label": "When Upgrading Actually Makes Sense",
+          "detail": "Freelancers, consultants, and weekly presenters who send client-facing proposals and need unbranded exports with unlimited generations will eventually want Plus ($8/mo)."
         }
       ],
       "pricingTiers": [
         {
-          "tierName": "FREE / COMMUNITY TIER",
+          "tierName": "FREE STARTER PLAN",
           "price": "$0",
           "badge": "VERIFIED FREE",
-          "summary": "400 free AI credits at signup; unlimited viewing & sharing.",
+          "summary": "400 free AI credits at signup; unlimited viewing, editing, and sharing.",
           "bullets": [
-            "Access model: Free Plan — verified active at gamma.app",
-            "No credit card required to start or test core functionality",
-            "Includes: Saves 2–3 hours of manual slide formatting and alignment."
+            "No credit card required to start or export presentations",
+            "Exports to PowerPoint (.PPTX), Google Slides, and PDF",
+            "Includes full theme switching and interactive live web links"
           ]
         },
         {
-          "tierName": "PRO / PLUS UPGRADE",
-          "price": "Optional Paid",
-          "badge": "OPTIONAL",
-          "summary": "Plus ($8/mo) removes badge and unlocks unlimited AI generations.",
+          "tierName": "PLUS PLAN",
+          "price": "$8/mo",
+          "badge": "MOST POPULAR",
+          "summary": "Removes the 'Made with Gamma' badge and unlocks unlimited AI deck generation.",
           "bullets": [
-            "Upgrade details: Plus ($8/mo) removes badge and unlocks unlimited AI generations.",
-            "Removes primary free-tier constraint (Free tier exports include a small 'Made with Gamma' badge.)",
-            "Only needed if you hit high-volume daily production or team limits"
+            "Unlimited AI generations (removes the 400-credit cap)",
+            "Clean, unbranded .PPTX, PDF, and Google Slides exports",
+            "Up to 20 cards per AI generation with upgraded image models"
           ]
         },
         {
-          "tierName": "STUDENT / SELF-HOST / TEAM PERKS",
-          "price": "MIT / GPL / Open",
-          "badge": "OPEN SOURCE",
-          "summary": "Source code is publicly auditable; can be used freely across personal, academic, and commercial projects.",
+          "tierName": "PRO PLAN",
+          "price": "$15/mo",
+          "badge": "POWER USERS",
+          "summary": "Built for freelancers, founders, and teams shipping custom-branded client decks.",
           "bullets": [
-            "Replaces: Manual PowerPoint formatting, Canva Pro slide decks, Pitch Pro ($20/mo)",
-            "Best suited for: Students, Researchers, Content Creators & Knowledge Workers"
+            "Custom brand fonts, custom domains, and deck viewer analytics",
+            "Up to 60 cards per generation with priority AI models",
+            "Replaces Pitch Pro ($20/mo) and paid agency slide retainers"
           ]
         }
       ],
-      "pricingVerdict": "90%+ of solo users, students, and creators can stay on the $0 Free Tier indefinitely; only upgrade if you outgrow (400 free AI credits at signup; unlimited viewing & sharing.).",
+      "pricingVerdict": "Students and occasional presenters can get multiple full decks out of the $0 Free Plan (400 credits, no card needed) using the outline-first trick. If you ship weekly client proposals or work decks and want badge-free exports, Plus ($8/mo) pays for itself on your first presentation.",
       "specs": {
-        "loginRequired": "Free Account (Email / OAuth)",
+        "loginRequired": "Free Account (Google / Email)",
         "creditCard": "No ($0 to Start)",
         "platforms": "Web Browser (Chrome, Edge, Safari, Brave, Mobile Web)",
-        "exportFormats": "Markdown, PDF, DOCX, TXT, Copy-to-Clipboard, Share Link",
-        "privacyPosture": "Open-Source / Transparent Codebase",
-        "bestFor": "Students, Researchers, Content Creators & Knowledge Workers",
+        "exportFormats": "PowerPoint (.PPTX), Google Slides, PDF, PNG, Live Web Link",
+        "privacyPosture": "Cloud SaaS (HTTPS Encrypted, Private Decks by Default)",
+        "bestFor": "Students, Consultants, Freelancers, Founders & Office Teams",
         "replaces": "Manual PowerPoint formatting, Canva Pro slide decks, Pitch Pro ($20/mo)",
-        "proTip": "Bookmark #1 (Gamma) with the ☆ button or press [S] on your keyboard to add it to your shareable GoodFinds stack."
+        "proTip": "Use 'Paste in text' with notes from #2 (Perplexity) or #3 (NotebookLM) so your first deck nails the layout without wasting your 400 free credits."
       },
       "faqs": [
         {
-          "q": "Is Gamma (#1) completely free to use?",
-          "a": "Yes. Gamma is listed in the GoodFinds Index under the \"Free Plan\" access model. Specifically: 400 free AI credits at signup; unlimited viewing & sharing. You do not need a credit card to use the free tier at gamma.app."
+          "q": "Is Gamma (#1) free to use without a credit card?",
+          "a": "Yes. Gamma includes a $0 Free Plan with 400 starter AI credits and unlimited viewing, editing, and sharing—no credit card is required to sign up or export decks at gamma.app."
         },
         {
-          "q": "What is the main catch or drawback of Gamma?",
-          "a": "Our editorial testing notes the following primary trade-off: Free tier exports include a small 'Made with Gamma' badge. Additionally, paid tiers (Plus ($8/mo) removes badge and unlocks unlimited AI generations.) exist for heavy commercial or team volume, though most solo users never need to upgrade."
+          "q": "How do I avoid burning through my 400 free credits?",
+          "a": "Instead of typing a vague one-line prompt and regenerating five times, paste a structured outline or messy notes using Gamma's 'Paste in text' mode (you can build the outline first with #2 Perplexity or #3 NotebookLM). That way your deck lands clean on the first generation."
         },
         {
-          "q": "What paid software does Gamma replace?",
-          "a": "Gamma (#1) is most commonly used as a $0 alternative to Manual PowerPoint formatting, Canva Pro slide decks, Pitch Pro ($20/mo). By combining Gamma with adjacent tools in the AI tools collection, you can build a complete workflow for $0/month."
+          "q": "What is the main catch on Gamma's free plan?",
+          "a": "Two honest trade-offs: free-tier exports carry a small 'Made with Gamma' corner badge, and the 400 free credits are a starter allowance rather than a monthly refill. Heavy presenters who want unlimited unbranded decks can upgrade to Plus ($8/mo)."
+        },
+        {
+          "q": "Can I export Gamma presentations to PowerPoint or Google Slides?",
+          "a": "Yes. Even on the free plan, you can export your finished deck directly to PowerPoint (.PPTX), Google Slides, PDF, or PNG—or present straight from a responsive live web link."
         }
       ]
     },

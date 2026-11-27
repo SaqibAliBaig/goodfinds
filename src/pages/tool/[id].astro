@@ -211,27 +211,30 @@ const toolSchemas = [breadcrumbSchema, softwareSchema, ...(faqSchema ? [faqSchem
           <div class="gu-top-row">
             <div class="gu-kicker">
               <span class="gu-pulse"></span>
-              <span>HONEST UPGRADE BRIEF // FREE VS. PLUS ($8/MO)</span>
+              <span>FREE VS. PLUS ($8/MO) // IS IT WORTH UPGRADING?</span>
             </div>
-            <span class="gu-anchor-pill">≈ $0.27 / DAY · REPLACES $20+/MO SLIDE TOOLS</span>
+            <span class="gu-anchor-pill">ONLY $0.27 / DAY · CANCEL ANYTIME</span>
           </div>
 
           <div class="gu-header-grid">
             <div class="gu-headline-col">
               <h2 class="gu-title">
-                Free gets you 400 credits to test it.<br />
-                <em class="gu-serif">Plus ($8/mo) is how you ship decks people take seriously.</em>
+                Free gives you 400 credits to try it.<br />
+                <em class="gu-serif">Plus ($8/mo) gives you clean slides with zero limits.</em>
               </h2>
               <p class="gu-sub">
-                Start with the $0 free credits to see the 30-second magic firsthand. Just know the two real friction points that hit the moment you present to a boss, client, or class: <strong>your 400 free credits never refill</strong>, and every free export carries a visible <strong>“Made with Gamma”</strong> corner stamp.
+                Start free to see how fast Gamma builds a full presentation from your notes. Just know two catches before presenting to a teacher, boss, or client: <strong>your 400 free credits never refill</strong>, and every free download has a <strong>“Made with Gamma”</strong> watermark in the corner.
               </p>
             </div>
 
-            <!-- INTERACTIVE SELF-PERSUASION ROI CALCULATOR -->
+            <!-- INTERACTIVE SELF-PERSUASION CALCULATOR -->
             <div class="gu-calc-card">
               <div class="gu-calc-head">
-                <label for="gammaDeckSlider" class="gu-calc-label">HOW MANY DECKS DO YOU MAKE / MONTH?</label>
-                <span class="gu-calc-count" id="gammaDeckCount">4 decks / mo</span>
+                <div>
+                  <label for="gammaDeckSlider" class="gu-calc-label">PRESENTATIONS YOU MAKE PER MONTH</label>
+                  <span class="gu-calc-hint">Class slides, work reports, or client pitches</span>
+                </div>
+                <span class="gu-calc-count" id="gammaDeckCount">4 presentations / mo</span>
               </div>
               <input
                 type="range"
@@ -242,22 +245,27 @@ const toolSchemas = [breadcrumbSchema, softwareSchema, ...(faqSchema ? [faqSchem
                 value="4"
                 aria-label="Presentations created per month"
               />
+              <div class="gu-slider-ticks" aria-hidden="true">
+                <span>1 / mo</span>
+                <span>Drag to calculate</span>
+                <span>15+ / mo</span>
+              </div>
               <div class="gu-calc-metrics">
                 <div class="gu-metric">
-                  <span class="gu-m-label">COST PER DECK</span>
+                  <span class="gu-m-label">COST / PRESENTATION</span>
                   <strong class="gu-m-val accent" id="gammaCostPerDeck">$2.00</strong>
                 </div>
                 <div class="gu-metric">
-                  <span class="gu-m-label">TIME RECLAIMED</span>
+                  <span class="gu-m-label">HOURS SAVED</span>
                   <strong class="gu-m-val" id="gammaHoursSaved">10 hrs / mo</strong>
                 </div>
                 <div class="gu-metric">
-                  <span class="gu-m-label">VS. PITCH PRO ($20)</span>
-                  <strong class="gu-m-val emerald">Save $144/yr</strong>
+                  <span class="gu-m-label">DAILY COST</span>
+                  <strong class="gu-m-val emerald">$0.27 / day</strong>
                 </div>
               </div>
               <p class="gu-calc-verdict" id="gammaCalcVerdict">
-                Sweet spot: $2.00 per presentation—less than a coffee for watermark-free exports and 10 hours back.
+                Just $2.00 per presentation—cheaper than a coffee to skip 10 hours of PowerPoint work and remove the watermark.
               </p>
             </div>
           </div>
@@ -266,8 +274,8 @@ const toolSchemas = [breadcrumbSchema, softwareSchema, ...(faqSchema ? [faqSchem
           <div class="gu-compare-grid">
             <div class="gu-tier-box is-free">
               <div class="gu-tier-top">
-                <span class="gu-tier-tag">FREE STARTER · $0</span>
-                <span class="gu-tier-status muted">BEST FOR TESTING</span>
+                <span class="gu-tier-tag">FREE PLAN · $0</span>
+                <span class="gu-tier-status muted">GOOD FOR TESTING</span>
               </div>
 
               <div class="gu-slide-mock free-mock" aria-hidden="true">
@@ -280,16 +288,16 @@ const toolSchemas = [breadcrumbSchema, softwareSchema, ...(faqSchema ? [faqSchem
               </div>
 
               <ul class="gu-list">
-                <li class="con"><strong>400 one-time credits</strong> — does not refill monthly; runs out mid-deadline</li>
-                <li class="con"><strong>Visible corner badge</strong> stamped on exported PDFs &amp; PowerPoints</li>
-                <li class="con">Capped at <strong>10 cards</strong> per AI prompt generation</li>
+                <li class="con"><strong>400 one-time credits</strong> — does not refill each month, so it runs out fast</li>
+                <li class="con"><strong>Visible watermark</strong> stamped on every exported PowerPoint &amp; PDF</li>
+                <li class="con">Limited to <strong>10 slides</strong> per AI presentation</li>
               </ul>
             </div>
 
             <div class="gu-tier-box is-plus">
               <div class="gu-tier-top">
                 <span class="gu-tier-tag plus-tag">GAMMA PLUS · $8/MO</span>
-                <span class="gu-tier-status hot">★ SMARTEST UPGRADE</span>
+                <span class="gu-tier-status hot">★ BEST VALUE</span>
               </div>
 
               <div class="gu-slide-mock plus-mock" aria-hidden="true">
@@ -298,13 +306,13 @@ const toolSchemas = [breadcrumbSchema, softwareSchema, ...(faqSchema ? [faqSchem
                   <span class="ml-bar"></span>
                   <span class="ml-bar short"></span>
                 </div>
-                <span class="mock-clean-pill">✓ Clean Client-Ready Export</span>
+                <span class="mock-clean-pill">✓ Clean Slides (No Watermark)</span>
               </div>
 
               <ul class="gu-list">
-                <li class="pro"><strong>Unlimited AI generations</strong> — never hit 0 credits at 11:45 PM</li>
-                <li class="pro"><strong>100% badge-free exports</strong> (.PPTX, Google Slides, PDF &amp; live links)</li>
-                <li class="pro"><strong>Up to 20 cards per prompt</strong> + upgraded AI image models &amp; cancel anytime</li>
+                <li class="pro"><strong>Unlimited AI slides</strong> — never run out of credits before a deadline</li>
+                <li class="pro"><strong>No watermark</strong> on PowerPoint (.PPTX), Google Slides, or PDF downloads</li>
+                <li class="pro"><strong>Up to 20 slides at once</strong> + sharper AI images &amp; cancel anytime</li>
               </ul>
             </div>
           </div>
@@ -318,7 +326,7 @@ const toolSchemas = [breadcrumbSchema, softwareSchema, ...(faqSchema ? [faqSchem
                 rel="noopener sponsored"
                 class="gu-primary-btn"
               >
-                <span>Start with 400 Free Credits &amp; Unlock Plus ($8/mo)</span>
+                <span>Start Free (400 Credits) or Upgrade to Plus ($8/mo)</span>
                 <span class="arr-diag">↗</span>
               </a>
               <a href="#workflow-trick" class="gu-secondary-btn">
@@ -326,7 +334,7 @@ const toolSchemas = [breadcrumbSchema, softwareSchema, ...(faqSchema ? [faqSchem
               </a>
             </div>
             <p class="gu-disclosure">
-              <strong>Real talk &amp; disclosure:</strong> Test the 400 free credits first—zero credit card needed. If you ship real client, boss, or graded decks regularly, upgrading to Plus ($8/mo) pays for itself on your very first presentation. GoodFinds uses an official partner link (no extra cost to you).
+              <strong>Honest tip &amp; disclosure:</strong> Try the 400 free credits first—no credit card needed. If you make slides regularly for school, work, or clients, Plus ($8/mo) pays for itself on your very first presentation. GoodFinds uses an official partner link at zero extra cost to you.
             </p>
           </div>
         </section>
@@ -979,12 +987,13 @@ const toolSchemas = [breadcrumbSchema, softwareSchema, ...(faqSchema ? [faqSchem
 
     .gu-calc-head {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
-      gap: 8px;
+      gap: 10px;
     }
 
     .gu-calc-label {
+      display: block;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.62rem;
       font-weight: 700;
@@ -992,15 +1001,34 @@ const toolSchemas = [breadcrumbSchema, softwareSchema, ...(faqSchema ? [faqSchem
       color: var(--text-muted);
     }
 
+    .gu-calc-hint {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
     .gu-calc-count {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       font-weight: 700;
       color: var(--text);
       background: var(--bg-inset);
       border: 1px solid var(--border);
-      padding: 2px 9px;
+      padding: 3px 9px;
       border-radius: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .gu-slider-ticks {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      color: var(--text-muted);
+      margin-top: -6px;
     }
 
     .gu-slider {
@@ -2372,6 +2400,13 @@ const toolSchemas = [breadcrumbSchema, softwareSchema, ...(faqSchema ? [faqSchem
         padding: 13px 13px;
         gap: 10px;
       }
+      .gu-calc-head {
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .gu-m-label {
+        font-size: 0.52rem;
+      }
       .gu-m-val {
         font-size: 0.8rem;
       }
@@ -2559,21 +2594,22 @@ const toolSchemas = [breadcrumbSchema, softwareSchema, ...(faqSchema ? [faqSchem
       const verdictEl = document.getElementById('gammaCalcVerdict');
 
       function updateGammaRoi() {
-        const decks = Math.max(1, parseInt(gammaSlider.value, 10) || 4);
-        const costPerDeck = (8 / decks).toFixed(2);
-        const hoursSaved = Math.round(decks * 2.5 * 10) / 10;
+        const count = Math.max(1, parseInt(gammaSlider.value, 10) || 4);
+        const costEach = (8 / count).toFixed(2);
+        const hoursSaved = Math.round(count * 2.5 * 10) / 10;
+        const unit = count === 1 ? 'presentation' : 'presentations';
 
-        if (countEl) countEl.textContent = `${decks} ${decks === 1 ? 'deck' : 'decks'} / mo`;
-        if (costEl) costEl.textContent = `$${costPerDeck}`;
+        if (countEl) countEl.textContent = `${count} ${unit} / mo`;
+        if (costEl) costEl.textContent = `$${costEach}`;
         if (hoursEl) hoursEl.textContent = `${hoursSaved} hrs / mo`;
 
         if (verdictEl) {
-          if (decks <= 2) {
-            verdictEl.textContent = `Even at ${decks} ${decks === 1 ? 'deck' : 'decks'}/mo, that's $${costPerDeck}/deck for badge-free exports and ${hoursSaved} hours of your life back.`;
-          } else if (decks <= 6) {
-            verdictEl.textContent = `Sweet spot: $${costPerDeck} per presentation—less than a coffee for watermark-free exports and ${hoursSaved} hours saved.`;
+          if (count <= 2) {
+            verdictEl.textContent = `Even at ${count} ${unit} a month, it's $${costEach} each to skip ${hoursSaved} hours of slide formatting and remove the watermark.`;
+          } else if (count <= 6) {
+            verdictEl.textContent = `Just $${costEach} per presentation—cheaper than a coffee to save ${hoursSaved} hours a month with zero watermarks.`;
           } else {
-            verdictEl.textContent = `Power presenter territory: just $${costPerDeck}/deck with unlimited AI generations, zero credit anxiety, and ${hoursSaved} hrs/mo reclaimed.`;
+            verdictEl.textContent = `Only $${costEach} per presentation—unlimited AI slides, no watermark, and ${hoursSaved} hours saved every month.`;
           }
         }
       }

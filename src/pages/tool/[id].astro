@@ -20,6 +20,7 @@ const relatedTools = data.tools
   .slice(0, 4);
 
 const trackedUrl = tool.isAffiliate ? tool.url : `${tool.url}${tool.url.includes('?') ? '&' : '?'}utm_source=goodfinds&utm_medium=tool_page&subid=tool_${tool.id}`;
+const isGamma = tool.id === '1';
 
 const deepOverview = tool.deepOverview || [tool.whatItDoes];
 const keyFeatures = tool.keyFeatures || (tool.whyWeLikeIt || []).map((pt, i) => ({ title: `Key Capability #${i + 1}`, desc: pt }));
@@ -204,6 +205,133 @@ const toolSchemas = [breadcrumbSchema, softwareSchema, ...(faqSchema ? [faqSchem
         </div>
       </div>
 
+      <!-- GAMMA-ONLY HIGH-CONVERSION UPGRADE BRIEF (#1 EXCLUSIVE) -->
+      {isGamma && (
+        <section class="gamma-upgrade-spotlight" aria-label="Why Gamma Plus Pays for Itself">
+          <div class="gu-top-row">
+            <div class="gu-kicker">
+              <span class="gu-pulse"></span>
+              <span>HONEST UPGRADE BRIEF // FREE VS. PLUS ($8/MO)</span>
+            </div>
+            <span class="gu-anchor-pill">≈ $0.27 / DAY · REPLACES $20+/MO SLIDE TOOLS</span>
+          </div>
+
+          <div class="gu-header-grid">
+            <div class="gu-headline-col">
+              <h2 class="gu-title">
+                Free gets you 400 credits to test it.<br />
+                <em class="gu-serif">Plus ($8/mo) is how you ship decks people take seriously.</em>
+              </h2>
+              <p class="gu-sub">
+                Start with the $0 free credits to see the 30-second magic firsthand. Just know the two real friction points that hit the moment you present to a boss, client, or class: <strong>your 400 free credits never refill</strong>, and every free export carries a visible <strong>“Made with Gamma”</strong> corner stamp.
+              </p>
+            </div>
+
+            <!-- INTERACTIVE SELF-PERSUASION ROI CALCULATOR -->
+            <div class="gu-calc-card">
+              <div class="gu-calc-head">
+                <label for="gammaDeckSlider" class="gu-calc-label">HOW MANY DECKS DO YOU MAKE / MONTH?</label>
+                <span class="gu-calc-count" id="gammaDeckCount">4 decks / mo</span>
+              </div>
+              <input
+                type="range"
+                id="gammaDeckSlider"
+                class="gu-slider"
+                min="1"
+                max="15"
+                value="4"
+                aria-label="Presentations created per month"
+              />
+              <div class="gu-calc-metrics">
+                <div class="gu-metric">
+                  <span class="gu-m-label">COST PER DECK</span>
+                  <strong class="gu-m-val accent" id="gammaCostPerDeck">$2.00</strong>
+                </div>
+                <div class="gu-metric">
+                  <span class="gu-m-label">TIME RECLAIMED</span>
+                  <strong class="gu-m-val" id="gammaHoursSaved">10 hrs / mo</strong>
+                </div>
+                <div class="gu-metric">
+                  <span class="gu-m-label">VS. PITCH PRO ($20)</span>
+                  <strong class="gu-m-val emerald">Save $144/yr</strong>
+                </div>
+              </div>
+              <p class="gu-calc-verdict" id="gammaCalcVerdict">
+                Sweet spot: $2.00 per presentation—less than a coffee for watermark-free exports and 10 hours back.
+              </p>
+            </div>
+          </div>
+
+          <!-- VISUAL CONTRAST: FREE CATCH VS. PLUS UNLOCK -->
+          <div class="gu-compare-grid">
+            <div class="gu-tier-box is-free">
+              <div class="gu-tier-top">
+                <span class="gu-tier-tag">FREE STARTER · $0</span>
+                <span class="gu-tier-status muted">BEST FOR TESTING</span>
+              </div>
+
+              <div class="gu-slide-mock free-mock" aria-hidden="true">
+                <div class="mock-lines">
+                  <span class="ml-title"></span>
+                  <span class="ml-bar"></span>
+                  <span class="ml-bar short"></span>
+                </div>
+                <span class="mock-watermark-pill">⚠ Made with Gamma</span>
+              </div>
+
+              <ul class="gu-list">
+                <li class="con"><strong>400 one-time credits</strong> — does not refill monthly; runs out mid-deadline</li>
+                <li class="con"><strong>Visible corner badge</strong> stamped on exported PDFs &amp; PowerPoints</li>
+                <li class="con">Capped at <strong>10 cards</strong> per AI prompt generation</li>
+              </ul>
+            </div>
+
+            <div class="gu-tier-box is-plus">
+              <div class="gu-tier-top">
+                <span class="gu-tier-tag plus-tag">GAMMA PLUS · $8/MO</span>
+                <span class="gu-tier-status hot">★ SMARTEST UPGRADE</span>
+              </div>
+
+              <div class="gu-slide-mock plus-mock" aria-hidden="true">
+                <div class="mock-lines">
+                  <span class="ml-title"></span>
+                  <span class="ml-bar"></span>
+                  <span class="ml-bar short"></span>
+                </div>
+                <span class="mock-clean-pill">✓ Clean Client-Ready Export</span>
+              </div>
+
+              <ul class="gu-list">
+                <li class="pro"><strong>Unlimited AI generations</strong> — never hit 0 credits at 11:45 PM</li>
+                <li class="pro"><strong>100% badge-free exports</strong> (.PPTX, Google Slides, PDF &amp; live links)</li>
+                <li class="pro"><strong>Up to 20 cards per prompt</strong> + upgraded AI image models &amp; cancel anytime</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- FRICTIONLESS DUAL CTA + TRANSPARENT DISCLOSURE -->
+          <div class="gu-footer-bar">
+            <div class="gu-cta-group">
+              <a
+                href={trackedUrl}
+                target="_blank"
+                rel="noopener sponsored"
+                class="gu-primary-btn"
+              >
+                <span>Start with 400 Free Credits &amp; Unlock Plus ($8/mo)</span>
+                <span class="arr-diag">↗</span>
+              </a>
+              <a href="#workflow-trick" class="gu-secondary-btn">
+                Read the credit-saving trick ↓
+              </a>
+            </div>
+            <p class="gu-disclosure">
+              <strong>Real talk &amp; disclosure:</strong> Test the 400 free credits first—zero credit card needed. If you ship real client, boss, or graded decks regularly, upgrading to Plus ($8/mo) pays for itself on your very first presentation. GoodFinds uses an official partner link (no extra cost to you).
+            </p>
+          </div>
+        </section>
+      )}
+
       <!-- 3. TWO-COLUMN IN-DEPTH ARCHITECTURAL SPLIT -->
       <div class="dossier-split">
         <!-- LEFT COLUMN: DEEP EDITORIAL BREAKDOWN -->
@@ -248,7 +376,7 @@ const toolSchemas = [breadcrumbSchema, softwareSchema, ...(faqSchema ? [faqSchem
 
           <!-- SECTION 3: STEP-BY-STEP TACTICAL WORKFLOW -->
           {workflowSteps.length > 0 && (
-            <div class="ed-block">
+            <div class="ed-block" id="workflow-trick">
               <div class="ed-label">3 // HOW TO USE IT FOR $0 (STEP-BY-STEP WORKFLOW)</div>
               <div class="workflow-list">
                 {workflowSteps.map((wf) => (
@@ -300,22 +428,38 @@ const toolSchemas = [breadcrumbSchema, softwareSchema, ...(faqSchema ? [faqSchem
             <div class="ed-label">COMPLETE PRICING PLANS & TIER BREAKDOWN</div>
 
             <div class="pricing-tiers-stack">
-              {pricingTiers.map((tier, idx) => (
-                <div class={`pricing-tier-card ${idx === 0 ? 'primary-free-tier' : ''}`}>
-                  <div class="pt-head">
-                    <span class="pt-name">{tier.tierName}</span>
-                    <div class="pt-price">{tier.price}</div>
+              {pricingTiers.map((tier, idx) => {
+                const isGammaPlusCard = isGamma && idx === 1;
+                return (
+                  <div class={`pricing-tier-card ${idx === 0 ? 'primary-free-tier' : ''} ${isGammaPlusCard ? 'gamma-featured-tier' : ''}`}>
+                    <div class="pt-head">
+                      <div>
+                        <span class="pt-name">{tier.tierName}</span>
+                        {isGammaPlusCard && <span class="pt-best-badge">BEST VALUE</span>}
+                      </div>
+                      <div class="pt-price">{tier.price}</div>
+                    </div>
+                    <p class="pt-summary">{tier.summary}</p>
+                    {tier.bullets && tier.bullets.length > 0 && (
+                      <ul class="pt-bullets">
+                        {tier.bullets.map((b) => (
+                          <li>{b}</li>
+                        ))}
+                      </ul>
+                    )}
+                    {isGammaPlusCard && (
+                      <a
+                        href={trackedUrl}
+                        target="_blank"
+                        rel="noopener sponsored"
+                        class="pt-upgrade-cta"
+                      >
+                        Try Free → Upgrade to Plus ($8/mo) ↗
+                      </a>
+                    )}
                   </div>
-                  <p class="pt-summary">{tier.summary}</p>
-                  {tier.bullets && tier.bullets.length > 0 && (
-                    <ul class="pt-bullets">
-                      {tier.bullets.map((b) => (
-                        <li>{b}</li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {tool.pricingVerdict && (
@@ -696,6 +840,602 @@ const toolSchemas = [breadcrumbSchema, softwareSchema, ...(faqSchema ? [faqSchem
       border-radius: 50%;
       background: #16a34a;
       flex-shrink: 0;
+    }
+
+    /* GAMMA-ONLY HIGH-CONVERSION UPGRADE SPOTLIGHT (#1) */
+    #workflow-trick {
+      scroll-margin-top: 86px;
+    }
+
+    .gamma-upgrade-spotlight {
+      position: relative;
+      padding: 28px 32px;
+      border-bottom: 1px solid var(--border);
+      background:
+        radial-gradient(ellipse 65% 80% at 92% 0%, rgba(168, 255, 41, 0.095), transparent 65%),
+        radial-gradient(ellipse 50% 70% at 8% 100%, rgba(139, 92, 246, 0.07), transparent 65%),
+        linear-gradient(180deg, rgba(16, 18, 23, 0.98) 0%, var(--bg-inset) 100%);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    :global(:root[data-theme="light"]) .gamma-upgrade-spotlight {
+      background:
+        radial-gradient(ellipse 65% 80% at 92% 0%, rgba(5, 150, 105, 0.08), transparent 65%),
+        radial-gradient(ellipse 50% 70% at 8% 100%, rgba(91, 33, 182, 0.045), transparent 65%),
+        linear-gradient(180deg, #ffffff 0%, #f5f4ef 100%);
+    }
+
+    .gu-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .gu-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--lime-ink);
+      background: var(--lime-soft);
+      border: 1px solid var(--lime-border);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    :global(:root[data-theme="light"]) .gu-kicker {
+      color: #047857;
+      background: rgba(5, 150, 105, 0.09);
+      border-color: rgba(5, 150, 105, 0.28);
+    }
+
+    .gu-pulse {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #a8ff29;
+      box-shadow: 0 0 8px rgba(168, 255, 41, 0.85);
+      flex-shrink: 0;
+    }
+
+    :global(:root[data-theme="light"]) .gu-pulse {
+      background: #059669;
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.18);
+    }
+
+    .gu-anchor-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .gu-header-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    .gu-title {
+      font-size: clamp(1.32rem, 2.2vw, 1.72rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.18;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .gu-serif {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.12em;
+      letter-spacing: -0.005em;
+      color: var(--lime-ink);
+    }
+
+    :global(:root[data-theme="light"]) .gu-serif {
+      color: #047857;
+    }
+
+    .gu-sub {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .gu-sub strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* INTERACTIVE ROI CALCULATOR CARD */
+    .gu-calc-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 11px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+    }
+
+    :global(:root[data-theme="light"]) .gu-calc-card {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .gu-calc-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .gu-calc-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .gu-calc-count {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text);
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      padding: 2px 9px;
+      border-radius: 6px;
+    }
+
+    .gu-slider {
+      width: 100%;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--border-light);
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+    }
+
+    .gu-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #a8ff29;
+      border: 2px solid #090a0d;
+      box-shadow: 0 0 0 3px rgba(168, 255, 41, 0.25);
+      cursor: pointer;
+      transition: transform 0.12s ease;
+    }
+
+    .gu-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.12);
+    }
+
+    .gu-slider::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #a8ff29;
+      border: 2px solid #090a0d;
+      box-shadow: 0 0 0 3px rgba(168, 255, 41, 0.25);
+      cursor: pointer;
+    }
+
+    :global(:root[data-theme="light"]) .gu-slider::-webkit-slider-thumb {
+      background: #059669;
+      border-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.22);
+    }
+
+    :global(:root[data-theme="light"]) .gu-slider::-moz-range-thumb {
+      background: #059669;
+      border-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.22);
+    }
+
+    .gu-calc-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .gu-metric {
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 9px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .gu-m-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.56rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .gu-m-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .gu-m-val.accent {
+      color: var(--lime-ink);
+    }
+
+    :global(:root[data-theme="light"]) .gu-m-val.accent {
+      color: #047857;
+    }
+
+    .gu-m-val.emerald {
+      color: var(--emerald-ink);
+    }
+
+    .gu-calc-verdict {
+      font-size: 0.76rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 9px;
+    }
+
+    /* FREE VS. PLUS SIDE-BY-SIDE CONTRAST */
+    .gu-compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .gu-tier-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .gu-tier-box.is-free {
+      opacity: 0.9;
+    }
+
+    .gu-tier-box.is-plus {
+      border-color: rgba(168, 255, 41, 0.42);
+      box-shadow: 0 0 0 1px rgba(168, 255, 41, 0.14), 0 10px 30px rgba(0, 0, 0, 0.28);
+      background: linear-gradient(180deg, rgba(168, 255, 41, 0.045) 0%, var(--bg-card) 55%);
+    }
+
+    :global(:root[data-theme="light"]) .gu-tier-box.is-plus {
+      border-color: rgba(5, 150, 105, 0.45);
+      box-shadow: 0 0 0 1px rgba(5, 150, 105, 0.14), 0 8px 24px rgba(5, 150, 105, 0.08);
+      background: linear-gradient(180deg, rgba(5, 150, 105, 0.05) 0%, #ffffff 60%);
+    }
+
+    .gu-tier-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .gu-tier-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .gu-tier-tag.plus-tag {
+      color: var(--text);
+    }
+
+    .gu-tier-status {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 5px;
+      letter-spacing: 0.04em;
+    }
+
+    .gu-tier-status.muted {
+      color: var(--text-muted);
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+    }
+
+    .gu-tier-status.hot {
+      color: #090a0d;
+      background: #a8ff29;
+    }
+
+    :global(:root[data-theme="light"]) .gu-tier-status.hot {
+      color: #ffffff;
+      background: #059669;
+    }
+
+    /* MINI SLIDE MOCKUPS (WATERMARK VS. CLEAN) */
+    .gu-slide-mock {
+      position: relative;
+      height: 62px;
+      border-radius: 8px;
+      padding: 11px 13px;
+      border: 1px solid var(--border);
+      background: var(--bg-inset);
+      display: flex;
+      align-items: flex-start;
+      overflow: hidden;
+    }
+
+    .gu-slide-mock.plus-mock {
+      border-color: rgba(168, 255, 41, 0.22);
+    }
+
+    :global(:root[data-theme="light"]) .gu-slide-mock.plus-mock {
+      border-color: rgba(5, 150, 105, 0.25);
+    }
+
+    .mock-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 58%;
+    }
+
+    .ml-title {
+      height: 7px;
+      width: 68%;
+      border-radius: 3px;
+      background: var(--border-hover);
+    }
+
+    .ml-bar {
+      height: 5px;
+      width: 100%;
+      border-radius: 3px;
+      background: var(--border-light);
+    }
+
+    .ml-bar.short {
+      width: 72%;
+    }
+
+    .mock-watermark-pill {
+      position: absolute;
+      right: 8px;
+      bottom: 7px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      font-weight: 700;
+      color: #f59e0b;
+      background: rgba(245, 158, 11, 0.14);
+      border: 1px dashed rgba(245, 158, 11, 0.5);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    :global(:root[data-theme="light"]) .mock-watermark-pill {
+      color: #b45309;
+      background: rgba(245, 158, 11, 0.12);
+      border-color: rgba(180, 83, 9, 0.45);
+    }
+
+    .mock-clean-pill {
+      position: absolute;
+      right: 8px;
+      bottom: 7px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      font-weight: 700;
+      color: var(--emerald-ink);
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .gu-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .gu-list li {
+      font-size: 0.79rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .gu-list li strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .gu-list li.con::before {
+      content: '✕';
+      position: absolute;
+      left: 0;
+      top: 1px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #f59e0b;
+    }
+
+    .gu-list li.pro::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: var(--lime-ink);
+    }
+
+    :global(:root[data-theme="light"]) .gu-list li.pro::before {
+      color: #059669;
+    }
+
+    /* FOOTER CTA BAR */
+    .gu-footer-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 4px;
+    }
+
+    .gu-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .gu-primary-btn {
+      background: #a8ff29;
+      color: #090a0d;
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      padding: 13px 22px;
+      border-radius: 9px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 6px 22px rgba(168, 255, 41, 0.24);
+      transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease;
+    }
+
+    .gu-primary-btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.04);
+      box-shadow: 0 10px 28px rgba(168, 255, 41, 0.34);
+    }
+
+    :global(:root[data-theme="light"]) .gu-primary-btn {
+      background: #059669;
+      color: #ffffff;
+      box-shadow: 0 6px 20px rgba(5, 150, 105, 0.24);
+    }
+
+    :global(:root[data-theme="light"]) .gu-primary-btn:hover {
+      background: #047857;
+      box-shadow: 0 10px 24px rgba(5, 150, 105, 0.3);
+    }
+
+    .gu-secondary-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 12px 16px;
+      border-radius: 9px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.14s ease, background-color 0.14s ease;
+    }
+
+    .gu-secondary-btn:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+    }
+
+    .gu-disclosure {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .gu-disclosure strong {
+      color: var(--text-secondary);
+    }
+
+    /* SIDEBAR GAMMA PLUS HIGHLIGHT */
+    .pricing-tier-card.gamma-featured-tier {
+      border-color: rgba(168, 255, 41, 0.4);
+      background: linear-gradient(180deg, rgba(168, 255, 41, 0.05) 0%, var(--bg-inset) 70%);
+    }
+
+    :global(:root[data-theme="light"]) .pricing-tier-card.gamma-featured-tier {
+      border-color: rgba(5, 150, 105, 0.42);
+      background: linear-gradient(180deg, rgba(5, 150, 105, 0.06) 0%, var(--bg-inset) 70%);
+    }
+
+    .pt-best-badge {
+      display: inline-block;
+      margin-left: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.56rem;
+      font-weight: 800;
+      color: #090a0d;
+      background: #a8ff29;
+      padding: 1px 6px;
+      border-radius: 4px;
+      vertical-align: middle;
+    }
+
+    :global(:root[data-theme="light"]) .pt-best-badge {
+      color: #ffffff;
+      background: #059669;
+    }
+
+    .pt-upgrade-cta {
+      margin-top: 6px;
+      display: block;
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 9px 12px;
+      border-radius: 7px;
+      background: #a8ff29;
+      color: #090a0d;
+      transition: opacity 0.14s ease, transform 0.14s ease;
+    }
+
+    .pt-upgrade-cta:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    :global(:root[data-theme="light"]) .pt-upgrade-cta {
+      background: #059669;
+      color: #ffffff;
     }
 
     /* TWO-COLUMN SPLIT */
@@ -1472,6 +2212,13 @@ const toolSchemas = [breadcrumbSchema, softwareSchema, ...(faqSchema ? [faqSchem
     }
 
     @media (max-width: 980px) {
+      .gamma-upgrade-spotlight {
+        padding: 22px 20px;
+      }
+      .gu-header-grid,
+      .gu-compare-grid {
+        grid-template-columns: 1fr;
+      }
       .dossier-head {
         flex-direction: column;
       }
@@ -1606,6 +2353,37 @@ const toolSchemas = [breadcrumbSchema, softwareSchema, ...(faqSchema ? [faqSchem
       .spec-sidebar {
         padding: 15px 14px;
         gap: 18px;
+      }
+      .gamma-upgrade-spotlight {
+        padding: 16px 14px;
+        gap: 14px;
+      }
+      .gu-anchor-pill {
+        font-size: 0.58rem;
+      }
+      .gu-title {
+        font-size: 1.24rem;
+      }
+      .gu-sub {
+        font-size: 0.8rem;
+      }
+      .gu-calc-card,
+      .gu-tier-box {
+        padding: 13px 13px;
+        gap: 10px;
+      }
+      .gu-m-val {
+        font-size: 0.8rem;
+      }
+      .gu-cta-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .gu-primary-btn,
+      .gu-secondary-btn {
+        width: 100%;
+        padding: 12px 14px;
+        font-size: 0.81rem;
       }
       .ed-block,
       .sidebar-section {
@@ -1770,6 +2548,38 @@ const toolSchemas = [breadcrumbSchema, softwareSchema, ...(faqSchema ? [faqSchem
           saveCompanionStackBtn.textContent = origLabel;
         }, 2200);
       });
+    }
+
+    // Gamma-only interactive ROI calculator
+    const gammaSlider = document.getElementById('gammaDeckSlider');
+    if (gammaSlider) {
+      const countEl = document.getElementById('gammaDeckCount');
+      const costEl = document.getElementById('gammaCostPerDeck');
+      const hoursEl = document.getElementById('gammaHoursSaved');
+      const verdictEl = document.getElementById('gammaCalcVerdict');
+
+      function updateGammaRoi() {
+        const decks = Math.max(1, parseInt(gammaSlider.value, 10) || 4);
+        const costPerDeck = (8 / decks).toFixed(2);
+        const hoursSaved = Math.round(decks * 2.5 * 10) / 10;
+
+        if (countEl) countEl.textContent = `${decks} ${decks === 1 ? 'deck' : 'decks'} / mo`;
+        if (costEl) costEl.textContent = `$${costPerDeck}`;
+        if (hoursEl) hoursEl.textContent = `${hoursSaved} hrs / mo`;
+
+        if (verdictEl) {
+          if (decks <= 2) {
+            verdictEl.textContent = `Even at ${decks} ${decks === 1 ? 'deck' : 'decks'}/mo, that's $${costPerDeck}/deck for badge-free exports and ${hoursSaved} hours of your life back.`;
+          } else if (decks <= 6) {
+            verdictEl.textContent = `Sweet spot: $${costPerDeck} per presentation—less than a coffee for watermark-free exports and ${hoursSaved} hours saved.`;
+          } else {
+            verdictEl.textContent = `Power presenter territory: just $${costPerDeck}/deck with unlimited AI generations, zero credit anxiety, and ${hoursSaved} hrs/mo reclaimed.`;
+          }
+        }
+      }
+
+      gammaSlider.addEventListener('input', updateGammaRoi);
+      updateGammaRoi();
     }
 
     // Keyboard navigation: Left/Right arrows for Prev/Next tool, S to bookmark
